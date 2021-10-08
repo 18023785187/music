@@ -15,7 +15,7 @@ interface IProps {
 function Lyric(props: IProps) {
     const { lyric, even } = props
     const { lyrics, duration, album, artists, mvid, id, name } = lyric
-    const { txt, range } = lyrics
+    const { txt, range } = lyrics ? lyrics : { txt: '', range: [{}] }
     const { name: albumName, id: albumId } = album
     const { first, second } = range[0]
     const [show, setShow] = useState<boolean>(false)

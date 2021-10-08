@@ -14,7 +14,7 @@ import Userprofiles from './Userprofiles'
 function route(type: string, data: { [propsName: string]: any }): JSX.Element {
     switch (type) {
         case '1':
-            return <Songs></Songs>
+            return <Songs data={data}></Songs>
         case '100':
             return <Artists data={data}></Artists>
         case '10':
@@ -30,7 +30,7 @@ function route(type: string, data: { [propsName: string]: any }): JSX.Element {
         case '1002':
             return <Userprofiles data={data}></Userprofiles>
         default:
-            return <Songs></Songs>
+            return <Songs data={data}></Songs>
     }
 }
 
