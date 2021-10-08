@@ -1,0 +1,50 @@
+import React, { Fragment, lazy, Suspense } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom'
+
+import Top from './components/Top'
+import Login from './components/Login'
+import Toast from './components/Toast'
+import Footer from './components/Footer';
+import Player from './components/Player';
+import Back from './components/Back'
+
+// 路由配置
+import { NAVPATH, ROOT_NAVPATH, NOT_FOUND, SEATCH } from 'pages/path'
+const Discover = lazy(() => import('pages/Discover'))
+const DiscoverArtist = lazy(() => import('pages/DiscoverArtist'))
+const DiscoverPlaylist = lazy(() => import('pages/DiscoverPlaylist'))
+const DiscoverAlbum = lazy(() => import('pages/DiscoverAlbum'))
+const DiscoverToplist = lazy(() => import('pages/DiscoverToplist'))
+const Search = lazy(() => import('pages/Search'))
+const DownLoad = lazy(() => import('pages/DownLoad'))
+const NotFound = lazy(() => import('pages/NotFound'))
+
+function App() {
+
+  return (
+    <Fragment>
+      <Top />
+      <Suspense fallback=''>
+        <Switch>
+          <Route exact path={NAVPATH.ROOT} component={Discover} />
+          <Route exact path={ROOT_NAVPATH.DISCOVER} component={Discover} />
+          <Route path={ROOT_NAVPATH.ARTIST} component={DiscoverArtist} />
+          <Route path={ROOT_NAVPATH.PLAYLIST} component={DiscoverPlaylist} />
+          <Route path={ROOT_NAVPATH.ALBUM} component={DiscoverAlbum} />
+          <Route path={ROOT_NAVPATH.TOPLIST} component={DiscoverToplist} />
+          <Route path={SEATCH} component={Search} />
+          <Route exact path={NOT_FOUND} component={NotFound} />
+          <Route exact path={NAVPATH.DOWNLOAD} component={DownLoad} />
+          <Redirect to={NOT_FOUND} />
+        </Switch>
+        <Login />
+        <Toast />
+      </Suspense>
+      <Footer />
+      <Player />
+      <Back />
+    </Fragment>
+  );
+}
+
+export default App;

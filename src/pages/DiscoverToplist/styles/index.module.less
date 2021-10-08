@@ -1,0 +1,323 @@
+// 排行榜样式
+@import url('~assets/css/constant.less');
+
+.discover-toplist {
+
+    :global {
+        display: flex;
+        background: url('@{img-url}/wrap3.png') repeat-y center 0;
+
+
+        .toplist-left {
+
+            width: 240px;
+
+            .n-minelst-2 {
+
+                h2 {
+                    padding: 0 10px 12px 15px;
+                    font-size: @nav-font-size;
+                    color: #000;
+                }
+
+                .scd {
+                    margin-top: 20px;
+                }
+
+                ul {
+
+                    .high {
+                        background: #e6e6e6 !important;
+                    }
+
+                    .mine {
+                        width: 100%;
+                        height: 62px;
+                        vertical-align: middle;
+
+                        &:hover {
+                            background-color: #f4f2f2;
+                        }
+
+                        .item {
+                            display: flex;
+                            padding: 10px 0 10px 20px;
+
+                            .left {
+                                overflow: hidden;
+                                width: 40px;
+                                margin-right: 10px;
+                            }
+
+                            .name {
+                                width: 150px;
+                                overflow: hidden;
+                                margin-top: 2px;
+                                margin-bottom: 8px;
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .main {
+            width: 740px;
+
+            .g-wrap {
+                display: flex;
+
+                .cover {
+                    position: relative;
+                    width: 150px;
+                    height: 150px;
+                    padding: 3px;
+                    border: 1px solid #ccc;
+
+                    .msk {
+                        position: absolute;
+                        width: 150px;
+                        height: 150px;
+                        background-position: -230px -380px;
+                        top: 3px;
+                        left: 3px;
+                    }
+                }
+
+                .cnt {
+                    flex: 1;
+                    margin-left: 29px;
+
+                    .hd {
+                        margin: 16px 0 4px;
+                        line-height: 24px;
+
+                        h2 {
+                            line-height: 24px;
+                            font-size: 20px;
+                            font-weight: normal;
+                        }
+                    }
+
+                    .user {
+                        margin: 0 0 20px;
+                        line-height: 35px;
+
+                        .i {
+                            margin-left: 3px;
+                            margin-top: -5px;
+                        }
+
+                        .sep {
+                            margin-left: 5px;
+                            margin-right: 3px;
+                            line-height: 35px;
+                        }
+                    }
+                }
+            }
+
+            .g-wrap12 {
+                .u-title {
+                    justify-content: space-between;
+
+                    .title-left {
+                        display: flex;
+                    }
+
+                    .more {
+                        margin-top: 6px;
+                    }
+                }
+
+                .m-table {
+                    width: 100%;
+                    border: 1px solid #d9d9d9;
+                    box-sizing: border-box;
+                    table-layout: fixed;
+
+                    th {
+                        height: 36px;
+                        padding: 0;
+                        background-color: #f7f7f7;
+                        background-position: 0 0;
+                        background-repeat: repeat-x;
+                        border: 1px solid #d9d9d9;
+                        border-bottom: 0;
+                        vertical-align: top;
+                        text-align: left;
+                        font-weight: normal;
+                        color: #666;
+                        background: url('@{img-url}/table.png');
+
+                        .wp {
+                            height: 18px;
+                            line-height: 18px;
+                            padding: 8px 10px;
+                        }
+                    }
+
+                    .w2-1 {
+                        width: 91px;
+                    }
+
+                    .w3-1 {
+                        width: 26%;
+                    }
+
+                    .even {
+                        td {
+                            background-color: #f7f7f7;
+                        }
+                    }
+
+                    td {
+                        padding: 6px 10px;
+                        line-height: 18px;
+                        text-align: left;
+
+                        .hd {
+                            display: flex;
+                            height: 18px;
+
+                            .num {
+                                float: left;
+                                width: 25px;
+                                margin-left: 0;
+                                text-align: center;
+                                color: #999;
+                            }
+
+                            .rk {
+                                float: right;
+                                width: 32px;
+                                margin-right: -5px;
+                                text-align: center;
+                            }
+                        }
+
+                        .tt {
+                            .rpic {
+                                float: left;
+                                width: 50px;
+                                height: 50px;
+                                margin-right: 14px;
+                            }
+
+                            .ply {
+                                float: left;
+                                margin-right: 8px;
+                                width: 17px;
+                                height: 17px;
+                                cursor: pointer;
+                                background-position: 0 -103px !important;
+                                background: url('@{img-url}/table.png') no-repeat;
+
+                                &:hover {
+                                    background-position: 0 -128px !important;
+                                }
+                            }
+
+                            .ttc {
+                                display: flex;
+                                align-items: center;
+                                height: 18px;
+                                margin-right: 20px;
+                                vertical-align: middle;
+
+                                .txt {
+                                    display: flex;
+                                    align-items: center;
+                                    max-width: 85%;
+                                    display: inline-block;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+
+                                .mv {
+                                    display: inline-block;
+                                    width: 23px;
+                                    height: 17px;
+                                    margin-left: 4px;
+                                    background-position: 0 -151px;
+                                    overflow: hidden;
+                                    text-indent: -9999px;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        background-position: -30px -151px;
+                                    }
+                                }
+
+                                .mvm {
+                                    transform: translateY(4px);
+                                }
+                            }
+                        }
+
+                        .text {
+                            width: 154px;
+                            position: relative;
+                            zoom: 1;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+
+                    .s-fc3 {
+                        position: relative;
+
+                        &:hover {
+                            .u-dur {
+                                display: none;
+                            }
+
+                            .hshow {
+                                display: block;
+                            }
+                        }
+
+                        .hshow {
+                            position: absolute;
+                            transform: translateY(-10px);
+                            display: none;
+                        }
+                    }
+
+                    .rank {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+
+                        .ply {
+                            margin-top: 17px;
+                        }
+
+                        .ttc {
+                            margin-top: 16px;
+                        }
+                    }
+
+                    .icn {
+                        display: inline-block;
+                        width: 18px;
+                        height: 16px;
+                        margin: 2px 0 0 4px;
+                        overflow: hidden;
+                        text-indent: -999px;
+                        cursor: pointer;
+                    }
+                }
+
+                .m-table-rank {
+
+                    .first {
+                        width: 77px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+/**
+ * 路由表
+ */
+
+// 顶部导航
+enum NAVPATH {
+    ROOT = '/',
+    MY = '/my',
+    FRIEND = '/friend',
+    DOWNLOAD = '/download',
+    NULL = ''
+}
+
+// 首页导航
+enum ROOT_NAVPATH {
+    DISCOVER = '/discover',
+    TOPLIST = '/discover/toplist',
+    PLAYLIST = '/discover/playlist',
+    DJRADIO = '/discover/djradio',
+    ARTIST = '/discover/artist',
+    ALBUM = '/discover/album'
+}
+
+// 歌手
+enum ROOT_ARTIST {
+    SIGNED = ROOT_NAVPATH.ARTIST,
+    CAT = ROOT_NAVPATH.ARTIST + '/cat/'
+}
+
+// 用户
+enum USER {
+    HOME = 'user/home',
+    LEVEL = 'user/level'
+}
+
+// 专辑
+const ALBUM = '/album'
+const ALBUM_PATH = '/album/:id'
+
+// 歌单
+const PLAY_LIST = '/playlist'
+
+//
+const ARTIST = '/artist'
+
+// 歌
+const SONG = '/song'
+
+// mv
+const MV = '/mv'
+
+// 搜索
+const SEATCH = '/search'
+
+// 404
+const NOT_FOUND = '/not_found'
+
+export {
+    NAVPATH,
+    ROOT_NAVPATH,
+    ROOT_ARTIST,
+    USER,
+    ALBUM,
+    ALBUM_PATH,
+    PLAY_LIST,
+    ARTIST,
+    SONG,
+    MV,
+    SEATCH,
+    NOT_FOUND
+}

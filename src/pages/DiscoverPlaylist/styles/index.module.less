@@ -1,0 +1,120 @@
+// 歌单
+@import url('~assets/css/constant.less');
+
+.discover-playlist {
+
+    :global {
+        .u-title {
+            position: relative;
+
+            h3 {
+                display: flex;
+
+                .menu {
+                    font-size: @base-font-size;
+                    font-weight: normal;
+                    margin: 2px 0 0 12px;
+
+                    i {
+                        color: #0c73c2;
+
+                        .down {
+                            display: inline-block;
+                            overflow: hidden;
+                            vertical-align: middle;
+                            margin-left: 5px;
+                            width: 8px;
+                            height: 5px;
+                            background-position: -70px -543px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .catlist {
+            position: absolute;
+            left: 110px;
+            top: 180px;
+            z-index: 5;
+            width: 720px;
+
+            .hd {
+                height: 32px;
+
+                .icn {
+                    position: absolute;
+                    top: 2px;
+                    left: 132px;
+                    display: inline-block;
+                    width: 24px;
+                    height: 11px;
+                    background-position: -48px 0;
+                    vertical-align: middle;
+                }
+            }
+
+            .bd {
+                width: 700px;
+                padding: 0 10px;
+                background-position: -720px 0;
+                background-repeat: repeat-y;
+
+                h3 {
+                    height: 37px;
+                    padding-left: 26px;
+                    border-bottom: 1px solid #e6e6e6;
+                    font-weight: normal;
+                }
+
+                dl {
+                    display: flex;
+                    justify-content: space-between;
+
+                    dt {
+                        flex: 0 0 auto;
+                        width: 70px;
+                        margin: 0 -100px 0 26px;
+                        padding-top: 15px;
+                        border-right: 1px solid #e6e6e6;
+                        font-weight: bold;
+
+                        i {
+                            display: inline-block;
+                            overflow: hidden;
+                            vertical-align: middle;
+                            margin-right: 8px;
+                            margin-bottom: 4px;
+                        }
+                    }
+
+                    dd {
+                        width: 573px;
+                        margin-left: 96px;
+                        padding: 16px 15px 0 15px;
+                        border-left: 1px solid #e6e6e6;
+                        line-height: 24px;
+
+                        a {
+                            white-space: nowrap;
+                        }
+
+                        .line {
+                            margin: 0 10px 0 10px;
+                            color: #d8d8d8;
+                        }
+                    }
+
+                    .last {
+                        padding-bottom: 25px;
+                    }
+                }
+            }
+
+            .ft {
+                height: 20px;
+                background-position: -1440px -12px;
+            }
+        }
+    }
+}

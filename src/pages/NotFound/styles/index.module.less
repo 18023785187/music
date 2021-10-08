@@ -1,0 +1,37 @@
+// 找不到页面
+@import url('~assets/css/constant.less');
+
+.not-found {
+    min-height: @min-height;
+    padding-bottom: 126px;
+    box-sizing: border-box;
+    background-color: @bg-main;
+    border: @border;
+    border-width: 0 1px;
+
+    :global {
+        .f-content {
+            padding: 40px;
+
+            .f-404 {
+                padding: 125px 0 0;
+                text-align: center;
+
+                i {
+                    width: 270px;
+                    height: 112px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    background-position: 0 -405px;
+                }
+
+                .note {
+                    margin-top: 35px;
+                    font-size: 18px;
+                    font-family: "Microsoft Yahei";
+                    color: @tint-color;
+                }
+            }
+        }
+    }
+}

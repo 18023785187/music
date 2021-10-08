@@ -1,0 +1,89 @@
+// 播放器样式
+.playbar {
+    :global {
+        position: fixed;
+        z-index: 999;
+        zoom: 1;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 53px;
+
+        .updn {
+            position: relative;
+            z-index: 1002;
+
+            .left {
+                position: absolute;
+                top: -14px;
+                right: 15px;
+                width: 52px;
+                height: 67px;
+                background-position: 0 -380px;
+
+                .btn {
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    margin: 6px 0 0 17px;
+                    background-position: -100px -380px;
+
+                    &:hover {
+                        background-position: -100px -400px;
+                    }
+                }
+
+                .btn-lock {
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    margin: 6px 0 0 17px;
+                    background-position: -80px -380px;
+
+                    &:hover {
+                        background-position: -80px -400px;
+                    }
+                }
+            }
+
+            .right {
+                position: absolute;
+                top: -1px;
+                right: 0;
+                width: 15px;
+                height: 54px;
+                background-position: -52px -393px;
+                pointer-events: none;
+            }
+        }
+
+        .hand {
+            position: absolute;
+            top: -10px;
+            width: 100%;
+            height: 20px;
+        }
+
+        .bg {
+            height: 53px;
+            zoom: 1;
+            margin-right: 67px;
+            background-position: 0 0;
+            background-repeat: repeat-x;
+        }
+
+        .wrap {
+            position: absolute;
+            z-index: 1003;
+            left: 50%;
+            top: 6px;
+            height: 47px;
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+}
+
+.down {
+    bottom: -46px;
+}

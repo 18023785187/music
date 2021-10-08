@@ -1,0 +1,116 @@
+// 首页我的
+.my-info() {
+    min-height: 126px;
+
+    .info1 {
+        height: 126px;
+        padding-top: 0;
+
+        .note {
+            width: 205px;
+            margin: 0 auto;
+            padding: 16px 0;
+            line-height: 22px;
+            color: @tint-color;
+        }
+
+        .btn {
+            display: block;
+            width: 100px;
+            height: 31px;
+            margin: 0 auto;
+            line-height: 31px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 1px 0 #8a060b;
+        }
+    }
+
+    .info2 {
+        height: 165px;
+        padding-top: 20px;
+
+        .user-info {
+            display: flex;
+
+            .img {
+                display: block;
+                width: 80px;
+                height: 80px;
+                margin-left: 20px;
+                padding: 2px;
+                background: @bg-main;
+                border: 1px solid #dadada;
+            }
+
+            .info {
+                width: 115px;
+                margin-left: 18px;
+                padding-top: 3px;
+
+                h4 {
+                    display: flex;
+                    margin: 0 !important;
+                    font-size: @nav-font-size;
+
+                    .nm {
+                        width: auto;
+                        max-width: 60px;
+                        vertical-align: middle;
+                    }
+
+                    .vip-level {
+                        display: inline-block;
+                        width: 43px;
+                        height: 16px;
+                        background-size: 100% 15px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        margin-left: 5px;
+                    }
+                }
+
+                p {
+                    width: 100%;
+                    margin-top: 5px;
+
+                    .u-lv {
+                        display: inline-block;
+                        height: 17px;
+                        overflow: hidden;
+                        padding-left: 25px;
+                        line-height: 18px;
+                        color: #999;
+                        font-weight: bold;
+                        font-style: italic;
+                        vertical-align: middle;
+                    }
+                }
+
+                .btnwrap {
+                    margin-top: 15px;
+
+                    i {
+                        display: inline-block;
+                        height: 31px;
+                        line-height: 31px;
+                        overflow: hidden;
+                        vertical-align: top;
+                        text-align: center;
+                    }
+
+                    .box {
+                        padding: 0 5px 0 0;
+                        white-space: nowrap;
+
+                        .box-r {
+                            width: 60px;
+                            padding: 0 15px 0 20px;
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

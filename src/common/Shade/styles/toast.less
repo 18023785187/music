@@ -1,0 +1,19 @@
+// 弹出提示框组件
+.toast() {
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 280px;
+    padding: 16px;
+    border: 1px solid #fcfcfc;
+    background-color: @bg-main;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .4);
+    box-sizing: border-box;
+
+    i {
+        display: inline-block;
+    }
+}

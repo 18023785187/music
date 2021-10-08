@@ -1,0 +1,149 @@
+// 歌手样式
+@import url('~assets/css/constant.less');
+
+.discover-artist {
+    :global {
+
+        .g-bd2 {
+            display: flex;
+            min-height: @min-height;
+            background-color: @bg-main;
+            border: @border;
+            border-width: 0 1px;
+            background: url('@{img-url}/wrap2.png') repeat-y center 0;
+
+            // 左侧
+            .g-sd2 {
+                position: relative;
+                width: 180px;
+
+                .g-left {
+                    padding: 0 10px 40px;
+                    margin-top: 51px;
+
+                    .blk {
+                        margin: 5px 0 0;
+                        padding-top: 16px;
+                        border-top: @border;
+
+                        &:nth-child(1) {
+                            margin: 0;
+                            padding-top: 0;
+                            border-top: 0;
+                        }
+
+                        .tit {
+                            height: 25px;
+                            padding-left: 14px;
+                            font-size: 16px;
+                            font-family: "Microsoft Yahei";
+                        }
+
+                        ul {
+                            li {
+                                margin-bottom: 2px;
+                                width: 160px;
+                                height: 29px;
+                                line-height: 29px;
+
+                                a {
+                                    display: block;
+                                    width: 133px;
+                                    padding-left: 27px;
+                                    background-position: 0 -30px !important;
+                                    color: @base-color;
+                                    background: url('@{img-url}/singer.png') no-repeat 0 9999px;
+                                }
+
+                                .active {
+                                    background-position: 0 0 !important;
+                                    color: #c20c0c;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .g-mn2 {
+                flex: 1;
+
+                .g-wrap {
+                    padding: 40px;
+
+                    h3 {
+                        font-size: 24px;
+                        font-weight: normal;
+                    }
+
+                    .ltlst {
+                        margin-top: 20px;
+                        margin-left: -3px;
+
+                        li {
+                            display: inline-block;
+                            margin-left: 3px;
+                            font-size: @nav-font-size;
+
+                            a {
+                                display: inline-block;
+                                width: 21px;
+                                height: 24px;
+                                line-height: 24px;
+                                text-align: center;
+                                font-size: @base-font-size;
+                            }
+
+                            &:nth-child(1),
+                            &:last-child {
+                                a {
+                                    width: 45px;
+                                }
+                            }
+
+                            .high {
+                                background: #c20c0c;
+                                border-radius: 2px;
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    .m-cvrlst {
+                        li {
+                            padding-left: 17px;
+                        }
+
+                        .line {
+                            width: 100%;
+                            margin-bottom: 12px;
+                            border-bottom: 1px dotted #999;
+                        }
+
+                        .sml {
+                            height: 30px;
+                            width: 130px;
+                            line-height: 23px;
+
+                            .nm {
+                                display: inline-block;
+                                max-width: 105px;
+                                color: #000;
+                                vertical-align: middle;
+                            }
+
+                            .i {
+                                display: inline-block;
+                                width: 17px;
+                                height: 18px;
+                                margin-left: 2px;
+                                overflow: hidden;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

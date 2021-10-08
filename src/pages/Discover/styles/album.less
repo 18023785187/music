@@ -1,0 +1,101 @@
+// 新碟
+.album() {
+    .disk {
+        height: 186px;
+        margin: 20px 0 37px;
+        border: @border;
+
+        .inner {
+            position: relative;
+            height: 184px;
+            padding-left: 16px;
+            background: @bg;
+            border: 1px solid #fff;
+
+            .roll {
+                width: 645px;
+                height: 180px;
+
+                .roll-item {
+                    display: flex;
+                    width: 645px;
+                    margin: 28px 0 0 0;
+
+                    li {
+                        width: 118px;
+                        height: 150px;
+                        margin-left: 11px;
+                        background-position: -260px 100px;
+
+                        .cover {
+                            position: relative;
+                            margin-bottom: 7px;
+                            width: 100px;
+                            height: 100px;
+
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            a {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 118px;
+                                height: 100px;
+                                background-position: 0 -570px;
+                            }
+
+                            .play {
+                                position: absolute;
+                                display: none;
+                                right: 10px;
+                                bottom: 5px;
+                                width: 22px;
+                                height: 22px;
+                                background-position: 0 -85px;
+                            }
+
+                            &:hover {
+                                .play {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        p {
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+
+            .btn {
+                position: absolute;
+                top: 71px;
+                width: 17px;
+                height: 17px;
+            }
+
+            .btn-left {
+                left: 3px;
+                background-position: -260px -75px;
+
+                &:hover {
+                    background-position: -280px -75px;
+                }
+            }
+
+            .btn-right {
+                right: 5px;
+                background-position: -300px -75px;
+
+                &:hover {
+                    background-position: -320px -75px;
+                }
+            }
+        }
+    }
+}

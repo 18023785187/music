@@ -1,0 +1,226 @@
+// 下载页样式
+@import url('~assets/css/constant.less');
+
+@main-bg: #fff;
+
+.download {
+    :global {
+        width: 100%;
+        height: 100%;
+        background: url('@{img-url}/download/bg.png') no-repeat;
+        background-color: #222;
+        background-size: cover;
+        font-family: PingFangSC-Regular;
+
+        .qrcode {
+            position: fixed;
+            z-index: 10;
+            top: 325px;
+            right: 25px;
+            padding: 16px 18px 9px;
+            background: @main-bg;
+            box-shadow: 0 0 10px 0 rgb(0 0 0 / 50%);
+            border-radius: 10px;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+
+            img {
+                display: block;
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        .clients {
+            position: absolute;
+            line-height: 60px;
+            height: 60px;
+            top: 75px;
+            right: 25px;
+            font-size: 14px;
+            color: @main-bg;
+
+            i {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-top: 20px;
+                margin-right: 6px;
+                background-size: contain !important;
+                vertical-align: text-bottom;
+                background: url('@{img-url}/download/down.png') no-repeat;
+            }
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        .download-wrap {
+            width: @main-width;
+            margin: 0 auto;
+
+            .download-main {
+                padding: 112px 0;
+
+                .pc {
+                    display: inline-block;
+                    width: 556px;
+                    height: 100%;
+                    text-align: center;
+
+                    img {
+                        width: 557px;
+                        height: 328px;
+                        margin: 0 auto 3px;
+                    }
+                }
+
+                .phone {
+                    position: relative;
+                    display: inline-block;
+                    margin-left: 220px;
+                    width: 300px;
+                    height: 100%;
+                    text-align: center;
+
+                    img {
+                        width: 299px;
+                        height: 331px;
+                        margin: 0 auto;
+                    }
+                }
+
+                .title {
+                    margin-bottom: 33px;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 22px;
+                    opacity: 0.8;
+                    color: @main-bg;
+                }
+
+                .main-type {
+                    width: 100%;
+                    margin: 26px auto;
+                    font-size: 16px;
+                    color: #eee;
+                    text-align: center;
+
+                    span {
+                        display: inline-block;
+                        height: 28px;
+                        line-height: 24px;
+
+                        &:last-child {
+                            padding-left: 40px;
+                        }
+
+                        i {
+                            display: inline-block;
+                            height: 44px;
+                            background-size: contain;
+                        }
+                    }
+                }
+
+                .main-btn {
+                    width: 300px;
+                    height: 65px;
+                    margin: 0 auto;
+                    border-radius: 65px;
+                    background-color: @main-bg;
+                    color: #D10000;
+                    font-size: 22px;
+                    line-height: 65px;
+                    text-align: center;
+                    cursor: pointer;
+                    box-sizing: content-box;
+
+                    &:hover {
+                        opacity: .7;
+                    }
+
+                    i {
+                        display: inline-block;
+                        width: 21px;
+                        height: 21px;
+                        margin-right: 3px;
+                        background-size: contain !important;
+                        vertical-align: -3px;
+                        background: url('@{img-url}/download/qrcode.png') no-repeat;
+                    }
+                }
+            }
+        }
+
+        .mac {
+            background: url('@{img-url}/download/mac.png');
+        }
+
+        .windows {
+            background: url('@{img-url}/download/windows.png');
+        }
+
+        .iphone {
+            background: url('@{img-url}/download/iphone.png');
+        }
+
+        .android {
+            background: url('@{img-url}/download/android.png');
+        }
+
+        .dcnt {
+            background: @main-bg;
+            height: 437px;
+            border-bottom: 1px solid #e3e3e3;
+
+            .lt {
+                float: left;
+                margin-left: 30px;
+            }
+
+            .rt {
+                float: right;
+                margin-right: 57px;
+            }
+
+            .tit {
+                font-size: 40px;
+                font-weight: normal;
+                padding: 45px 0 5px 0;
+            }
+
+            .txt {
+                font-size: 16px;
+                color: #666;
+                line-height: 24px;
+            }
+        }
+
+        .dcnt2 {
+            background: #f8f8f8;
+        }
+
+        .pt1 {
+            padding-top: 120px;
+        }
+
+        .pt2 {
+            padding-top: 106px;
+        }
+
+        .pt3 {
+            padding-top: 72px;
+        }
+
+        .pt4 {
+            padding-top: 95px;
+        }
+
+        .pt5 {
+            padding-top: 53px;
+        }
+    }
+}

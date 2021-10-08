@@ -1,0 +1,98 @@
+// 歌单
+@import url('~assets/css/constant.less');
+
+.recommend {
+    :global {
+
+        .tab {
+            margin: 7px 0 0 20px;
+
+            a {
+                color: @tint-color;
+            }
+        }
+
+        .recommend-list {
+            margin: 30px 0 0 -50px;
+
+            .recommend-item {
+                display: inline-block;
+                width: 140px;
+                height: 188px;
+                overflow: hidden;
+                padding: 0 0 30px 50px;
+                line-height: 1.4;
+
+                .cover {
+                    position: relative;
+                    width: 140px;
+                    height: 140px;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    a {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .bottom {
+                        display: flex;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 27px;
+                        background-position: 0 -537px;
+                        color: #ccc;
+
+                        .icon-play {
+                            position: absolute;
+                            right: 10px;
+                            bottom: 5px;
+                            width: 16px;
+                            height: 17px;
+                            background-position: 0 0;
+
+                            &:hover {
+                                background-position: 0 -60px;
+                            }
+                        }
+
+                        .nb {
+                            margin: 7px 0 0 0;
+                        }
+
+                        .icon-headset {
+                            display: inline-block;
+                            width: 14px;
+                            height: 11px;
+                            background-position: 0 -24px;
+                            margin: 9px 5px 9px 10px;
+                        }
+                    }
+                }
+
+                .dec {
+                    margin: 8px 0 3px;
+                    font-size: @nav-font-size;
+                    overflow: hidden;
+
+                    a {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        vertical-align: middle;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

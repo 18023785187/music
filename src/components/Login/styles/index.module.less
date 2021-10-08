@@ -1,0 +1,43 @@
+// 弹窗外壳样式
+@import url('~assets/css/constant.less');
+@import url('./main.less');
+@import url('./qr.less');
+@import url('./email.less');
+@import url('./input.less');
+@import url('./footer.less');
+@import url('./phone.less');
+@import url('./enroll.less');
+
+@min-height: 332px;
+
+.login {
+    :global {
+        .login-main {
+            .login-main;
+        }
+
+        .qr {
+            .qr;
+
+            .suc {
+                .suc;
+            }
+        }
+
+        .email {
+            .email;
+        }
+
+        .phone {
+            .phone;
+        }
+
+        .enroll {
+            .enroll;
+        }
+
+        .footer {
+            .footer;
+        }
+    }
+}

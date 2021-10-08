@@ -1,0 +1,237 @@
+// 顶部导航栏样式
+@import url('~assets/css/constant.less');
+
+.top {
+    min-width: 965px;
+    width: 100%;
+
+    :global {
+        .top-box {
+            position: relative;
+            z-index: 1000;
+            height: 70px;
+            box-sizing: border-box;
+            background: #242424;
+            border-bottom: 1px solid #000;
+
+            .top-content {
+                display: flex;
+                width: 1100px;
+                margin: 0 auto;
+
+                .top-left {
+                    flex: 1 0 auto;
+                    display: flex;
+
+                    .logo {
+                        width: 176px;
+                        height: 69px;
+                        margin: 0;
+                        background-position: 0 0;
+
+                        a {
+                            display: block;
+                            width: 157px;
+                            height: 100%;
+                            padding-right: 20px;
+                            text-indent: -9999px;
+                        }
+                    }
+
+                    .top-nav {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .top-nav-item {
+                            position: relative;
+                            font-size: @nav-font-size;
+
+                            a {
+                                display: block;
+                                padding: 0 19px;
+                                text-align: center;
+                                line-height: 70px;
+                                color: #ccc;
+
+                                &:hover {
+                                    .high;
+                                }
+
+                                .cor {
+                                    display: block;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 64px;
+                                    width: 12px;
+                                    height: 7px;
+                                    margin-left: -6px;
+                                    overflow: hidden;
+                                    background-position: -226px 0;
+                                }
+                            }
+                        }
+
+                        .lst {
+                            .hot {
+                                display: block;
+                                position: absolute;
+                                top: 21px;
+                                left: 100px;
+                                width: 28px;
+                                height: 19px;
+                                background-position: -190px 0;
+                            }
+                        }
+                    }
+                }
+
+                .top-right {
+                    flex: 1 0 auto;
+                    display: flex;
+                    flex-direction: row-reverse;
+
+                    .top-search {
+                        position: relative;
+                        width: 158px;
+                        height: 32px;
+
+                        .top-search-bg {
+                            width: 158px;
+                            height: 32px;
+                            margin-top: 19px;
+                            background-position: 0 -99px;
+                            background-color: #fff;
+                            border-radius: 32px;
+
+                            .input {
+                                position: relative;
+
+                                input {
+                                    width: 70%;
+                                    line-height: @font-size;
+                                    margin: 0;
+                                    padding: 0;
+                                    background: transparent;
+                                    border: 0;
+                                    margin: 8px 0 0 30px;
+                                }
+
+                                .ph {
+                                    position: absolute;
+                                    top: 9px;
+                                    left: 30px;
+                                    color: #9b9b9b;
+                                    cursor: text;
+                                }
+                            }
+                        }
+
+                        .u-lstlay {
+                            top: 59px;
+                            width: 240px;
+                        }
+                    }
+
+                    .topvd {
+                        display: inline-block;
+                        width: 90px;
+                        height: 32px;
+                        margin: 19px 0 0 12px;
+                        box-sizing: border-box;
+                        padding-left: 16px;
+                        border: 1px solid #4F4F4F;
+                        line-height: 33px;
+                        color: #ccc;
+                        border-radius: 20px;
+
+                        &:hover {
+                            color: #fff;
+                            border: 1px solid #ccc;
+                        }
+                    }
+
+                    .top-login {
+                        height: 45px;
+                        margin: 19px 0 0 20px;
+                        padding: 0 22px 0 0;
+
+                        .login {
+                            display: block;
+                            width: 28px;
+                            margin-top: 8px;
+                            color: #787878;
+                        }
+                    }
+                }
+            }
+        }
+
+        .m-subnav-up {
+            height: 5px !important;
+        }
+
+        .m-subnav {
+            height: 35px;
+            box-sizing: border-box;
+            background-color: #C20C0C;
+            border-bottom: 1px solid #a40011;
+
+            .wrap {
+                width: 1100px;
+                height: 34px;
+                margin: 0 auto;
+
+                .nav {
+                    display: flex;
+                    padding-left: 180px;
+
+                    li {
+                        height: 34px;
+                        text-align: center;
+
+                        a {
+                            display: block;
+                            height: 34px;
+                            color: @bg-main;
+
+                            em {
+                                position: relative;
+                                display: inline-block;
+                                height: 20px;
+                                padding: 0 13px;
+                                margin: 7px 17px 0;
+                                border-radius: 20px;
+                                line-height: 21px;
+
+                                &:hover {
+                                    .em-high;
+                                }
+
+                                img {
+                                    display: inline-block;
+                                    position: absolute;
+                                    width: 8px;
+                                    height: 8px;
+                                    top: 2px;
+                                }
+                            }
+
+                            .em-high {
+                                .em-high;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .high {
+            color: #fff !important;
+            background: #000 !important;
+        }
+
+        .em-high() {
+            background: #9B0909;
+        }
+    }
+}

@@ -1,0 +1,142 @@
+// 轮播图样式
+.banner() {
+    overflow: hidden;
+
+    .banner-bg {
+        position: relative;
+        background-size: 10000px !important;
+        background-position: center 0 !important;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(50px);
+        }
+
+        .banner-box {
+            display: flex;
+            position: relative;
+            width: 982px;
+            height: 285px;
+
+            .banner-content {
+                position: relative;
+                width: 730px;
+                height: 100%;
+
+                a {
+                    position: absolute;
+                    z-index: 901;
+                    display: block;
+                    height: 100%;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .dots {
+                    position: absolute;
+                    z-index: 901;
+                    top: 259px;
+                    left: 0;
+                    width: 730px;
+                    height: 20px;
+                    text-align: center;
+
+                    .dots-item {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        background-position: 3px -343px;
+
+                        &:hover{
+                            .dots-high;
+                        }
+                    }
+
+                    .dots-high(){
+                        background-position: -16px -343px;
+                    }
+
+                    .dots-high{
+                        .dots-high;
+                    }
+                }
+            }
+
+            .b-download {
+                position: relative;
+                width: 252px;
+                height: 100%;
+
+                .img {
+                    position: absolute;
+                    z-index: 901;
+                    width: 100%;
+                    height: 100%;
+
+                    a {
+                        display: block;
+                        width: 215px;
+                        height: 56px;
+                        margin: 186px 0 0 19px;
+                        background-position: 0 9999px;
+                        text-indent: -9999px;
+
+                        &:hover {
+                            background-position: 0 -290px;
+                        }
+                    }
+
+                    p {
+                        margin: 10px auto;
+                        text-align: center;
+                        color: #8d8d8d;
+                    }
+                }
+            }
+
+            .btn-img {
+                background: url('@{img-url}/discover/banner.png') no-repeat 0 0;
+            }
+
+            .btn {
+                position: absolute;
+                z-index: 901;
+                top: 50%;
+                margin-top: -31px;
+                width: 37px;
+                height: 63px;
+                text-indent: -9999px;
+            }
+
+            .btn-left {
+                left: -68px;
+                background-position: 0 -360px;
+
+                &:hover {
+                    background-position: 0 -430px;
+                }
+            }
+
+            .btn-right {
+                right: -68px;
+                background-position: 0 -508px;
+
+                &:hover {
+                    background-position: 0 -578px;
+                }
+            }
+        }
+    }
+}
