@@ -24,7 +24,7 @@ function route(type: string, data: { [propsName: string]: any }): JSX.Element {
         case '1006':
             return <Lyrics data={data}></Lyrics>
         case '1000':
-            return <Playlists></Playlists>
+            return <Playlists data={data}></Playlists>
         case '1009':
             return <DjRadios data={data}></DjRadios>
         case '1002':

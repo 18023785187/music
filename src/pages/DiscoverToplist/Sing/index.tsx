@@ -85,10 +85,9 @@ function Sing(props: IProps) {
         cancelGetComment.cancelGetComment && cancelGetComment.cancelGetComment()
         let { id } = parse
         if (!id) id = defaultId
-        // const { cursor } = comment
-        console.log(comment)
+        const { cursor } = comment
 
-        _getComment(id as string, 2, 3, Number(page) + 1, 20).then(res => {
+        _getComment(id as string, 2, 3, Number(page) + 1, 20, cursor).then(res => {
             try {
                 setComment(res.data)
             } catch (e) {
