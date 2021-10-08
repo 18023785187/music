@@ -35,7 +35,6 @@ enum USER {
 
 // 专辑
 const ALBUM = '/album'
-const ALBUM_PATH = '/album/:id'
 
 // 歌单
 const PLAY_LIST = '/playlist'
@@ -49,6 +48,9 @@ const SONG = '/song'
 // mv
 const MV = '/mv'
 
+// 主播
+const DJRADIO = '/djradio'
+
 // 搜索
 const SEATCH = '/search'
 
@@ -61,11 +63,11 @@ export {
     ROOT_ARTIST,
     USER,
     ALBUM,
-    ALBUM_PATH,
     PLAY_LIST,
     ARTIST,
     SONG,
     MV,
+    DJRADIO,
     SEATCH,
     NOT_FOUND
 }

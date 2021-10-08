@@ -37,7 +37,7 @@ function filter(type: number | string): number {
         case 1000:
             return 30
         case 1009:
-            return 10
+            return 30
         case 1002:
             return 30
         default:

@@ -2,12 +2,19 @@
  * 用户页
  */
 import React from 'react'
+import Profiles from 'common/Profiles'
 
-function Userprofiles() {
+interface IProps {
+    data: { [props: string]: any }
+}
 
+function Userprofiles(props: IProps) {
+    const { data: userprofiles } = props
 
     return (
-        <div>用户</div>
+        <div className='userprofiles'>
+            <Profiles profiles={userprofiles.userprofiles ? userprofiles.userprofiles : []} />
+        </div>
     )
 }
 
