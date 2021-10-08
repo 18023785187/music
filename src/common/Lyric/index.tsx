@@ -21,7 +21,7 @@ function Lyric(props: IProps) {
     const [show, setShow] = useState<boolean>(false)
 
     const handlerTxt = useCallback((c: number = -1): string => {
-        if(!txt) return ''
+        if (!txt) return ''
 
         const keywords = txt.substring(first, second)
         let t: string = txt.substring(first).replace(new RegExp(keywords, 'g'), `<span class='s-fc7'>${keywords}</span>`)
@@ -90,23 +90,26 @@ function Lyric(props: IProps) {
                     <div className='td'>{formatDate(new Date(duration), 'mm:ss')}</div>
                 </div>
             </div>
-            <div className={styles['lyric']}>
-                <div style={{ display: show ? 'none' : 'block' }} dangerouslySetInnerHTML={{ __html: handlerTxt(4) }}></div>
-                <div style={{ display: show ? 'block' : 'none' }} dangerouslySetInnerHTML={{ __html: handlerTxt() }}></div>
-                <div className='crl'>
-                    <span className='pointer' onClick={() => setShow(!show)}>
-                        {
-                            show ? (<>
-                                收起
-                                <i className='icon1 u-icn-70'></i>
-                            </>) : (<>
-                                展开
-                                <i className='icon1 u-icn-69'></i>
-                            </>)
-                        }
-                    </span>
-                </div>
-            </div>
+            {/* 歌词 */}
+            {
+                txt ? <div className={styles['lyric']}>
+                    <div style={{ display: show ? 'none' : 'block' }} dangerouslySetInnerHTML={{ __html: handlerTxt(4) }}></div>
+                    <div style={{ display: show ? 'block' : 'none' }} dangerouslySetInnerHTML={{ __html: handlerTxt() }}></div>
+                    <div className='crl'>
+                        <span className='pointer' onClick={() => setShow(!show)}>
+                            {
+                                show ? (<>
+                                    收起
+                                    <i className='icon1 u-icn-70'></i>
+                                </>) : (<>
+                                    展开
+                                    <i className='icon1 u-icn-69'></i>
+                                </>)
+                            }
+                        </span>
+                    </div>
+                </div> : ''
+            }
         </>
     )
 }
