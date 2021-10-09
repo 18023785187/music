@@ -2,9 +2,11 @@
  * 歌单页
  */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { PLAY_LIST, USER } from 'pages/path'
+import { useAddSong, usePlaySong } from 'components/Player/useFunc'
+import { getSongDetail } from 'network/song'
 import LazyLoad from '@/LazyLoad'
 
 interface IProps {
@@ -13,6 +15,28 @@ interface IProps {
 
 function Playlists(props: IProps) {
     const { data: playlists } = props
+    const addSong = useAddSong()
+    const playSong = usePlaySong()
+
+    const addSongClick = useCallback((id: number | string) => {
+        getSongDetail(id).then((res: any) => {
+            try {
+                addSong(res.songs[0])
+            } catch (e) {
+
+            }
+        })
+    }, [addSong])
+
+    const playSongClick = useCallback((id: number | string) => {
+        getSongDetail(id).then((res: any) => {
+            try {
+                playSong(res.songs[0])
+            } catch (e) {
+
+            }
+        })
+    }, [playSong])
 
     useEffect(() => {
         LazyLoad.update()
@@ -31,7 +55,7 @@ function Playlists(props: IProps) {
                                 <tr key={id} className={`h-flag ${index % 2 === 1 ? 'even' : ''}`}>
                                     <td className='first w0'>
                                         <div className='hd'>
-                                            <i className='ply table-img' title='播放'></i>
+                                            <i className='ply table-img' title='播放' onClick={() => playSongClick(playlist.id)}></i>
                                         </div>
                                     </td>
                                     <td className='w7'>
@@ -42,7 +66,7 @@ function Playlists(props: IProps) {
                                     </td>
                                     <td>
                                         <div className='hshow'>
-                                            <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表"></span>
+                                            <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表" onClick={() => addSongClick(playlist.id)}></span>
                                             <span className='pointer icon1 u-btn icn icn-fav' title="收藏"></span>
                                             <span className='pointer icon1 u-btn icn icn-share' title="分享"></span>
                                         </div>

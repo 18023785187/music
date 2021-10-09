@@ -25,7 +25,6 @@ function Search(props: IProps) {
     useEffect(() => {
         const { s, type, offset } = parse
         search(s as string, type as string, offset as string ?? 0).then((res: any) => {
-            console.log(res)
             try {
                 setData(res.result)
             } catch (e) {

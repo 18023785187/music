@@ -1,0 +1,86 @@
+// 播放器
+.play() {
+    position: relative;
+    width: 581px;
+
+    .words {
+        display: flex;
+        height: 28px;
+        overflow: hidden;
+        color: #e8e8e8;
+        text-shadow: 0 1px 0 #171717;
+        line-height: 28px;
+
+        .name {
+            max-width: 300px;
+            color: #e8e8e8;
+        }
+
+        .mv {
+            width: 19px;
+            height: 17px;
+            margin: 6px 0 0 3px;
+            background-position: 0 -57px;
+
+            &:hover {
+                background-position: -20px -57px;
+            }
+        }
+
+        .by {
+            max-width: 220px;
+            margin-left: 15px;
+            color: #9b9b9b;
+        }
+    }
+
+    .m-pbar {
+        position: relative;
+        width: 466px;
+
+        .barbg {
+            width: 466px;
+            height: 9px;
+            background-position: right 0;
+
+            .rdy {
+                height: 9px;
+                background-position: right -30px;
+            }
+
+            .cur {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 9px;
+                background-position: left -66px;
+
+                .iconall {
+                    position: absolute;
+                    top: -7px;
+                    right: -13px;
+                    width: 22px;
+                    height: 24px;
+                    margin-left: -11px;
+                    background-position: 0 -250px;
+
+                    &:hover {
+                        background-position: 0 -280px;
+                    }
+                }
+            }
+        }
+
+        .time {
+            position: absolute;
+            top: -4px;
+            right: -84px;
+            color: #797979;
+            text-shadow: 0 1px 0 #121212;
+
+            em {
+                color: #a1a1a1;
+            }
+        }
+    }
+}

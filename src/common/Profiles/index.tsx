@@ -12,8 +12,6 @@ interface IProps {
 function Profiles(props: IProps) {
     const { profiles } = props
 
-    console.log(profiles)
-
     return (
         <table className={styles['profiles']} cellSpacing="0" cellPadding="0">
             <tbody>

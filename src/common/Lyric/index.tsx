@@ -4,7 +4,9 @@
 import React, { useState, useCallback, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { ALBUM, ARTIST, MV, SONG } from 'pages/path'
+import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import { formatDate } from 'utils'
+import { getSongDetail } from 'network/song'
 import styles from './styles/index.module.less'
 
 interface IProps {
@@ -19,6 +21,28 @@ function Lyric(props: IProps) {
     const { name: albumName, id: albumId } = album
     const { first, second } = range[0]
     const [show, setShow] = useState<boolean>(false)
+    const addSong = useAddSong()
+    const playSong = usePlaySong()
+
+    const addSongClick = useCallback((id: number | string) => {
+        getSongDetail(id).then((res: any) => {
+            try {
+                addSong(res.songs[0])
+            } catch (e) {
+
+            }
+        })
+    }, [addSong])
+
+    const playSongClick = useCallback((id: number | string) => {
+        getSongDetail(id).then((res: any) => {
+            try {
+                playSong(res.songs[0])
+            } catch (e) {
+
+            }
+        })
+    }, [playSong])
 
     const handlerTxt = useCallback((c: number = -1): string => {
         if (!txt) return ''
@@ -44,7 +68,7 @@ function Lyric(props: IProps) {
                 <div className='box'>
                     <div className='td'>
                         <div className='hd'>
-                            <i className='ply table-img pointer' title='播放'></i>
+                            <i className='ply table-img pointer' title='播放' onClick={() => playSongClick(lyric.id)}></i>
                         </div>
                     </div>
                     <div className='td w0'>
@@ -59,7 +83,7 @@ function Lyric(props: IProps) {
                     </div>
                     <div className='td'>
                         <div className='hshow'>
-                            <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表"></span>
+                            <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表" onClick={() => addSongClick(lyric.id)}></span>
                             <span className='pointer icon1 u-btn icn icn-fav' title="收藏"></span>
                             <span className='pointer icon1 u-btn icn icn-share' title="分享"></span>
                             <span className='pointer table-img u-btn icn icn-dl' title="下载"></span>

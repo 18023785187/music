@@ -1,4 +1,8 @@
 // 播放器样式
+@import url('./btns.less');
+@import url('./head.less');
+@import url('./play.less');
+
 .playbar {
     :global {
         position: fixed;
@@ -74,12 +78,25 @@
         }
 
         .wrap {
+            display: flex;
             position: absolute;
             z-index: 1003;
             left: 50%;
             top: 6px;
             height: 47px;
             transform: translate3d(-50%, 0, 0);
+
+            .btns {
+                .btns;
+            }
+
+            .head {
+                .head;
+            }
+
+            .play {
+                .play;
+            }
         }
     }
 }

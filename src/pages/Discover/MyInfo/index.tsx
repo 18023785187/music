@@ -19,7 +19,6 @@ function MyInfo() {
 
         async function _getLoginStatus() {
             const statusRes = await getLoginStatus()
-            console.log(statusRes)
             try {
                 setProfile(statusRes.data)
 
