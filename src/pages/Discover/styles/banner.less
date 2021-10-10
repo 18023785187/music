@@ -55,20 +55,20 @@
 
                     .dots-item {
                         display: inline-block;
-                        width: 20px;
-                        height: 20px;
+                        width: 23.5px;
+                        height: 23.5px;
                         background-position: 3px -343px;
 
-                        &:hover{
+                        &:hover {
                             .dots-high;
                         }
                     }
 
-                    .dots-high(){
+                    .dots-high() {
                         background-position: -16px -343px;
                     }
 
-                    .dots-high{
+                    .dots-high {
                         .dots-high;
                     }
                 }
@@ -103,6 +103,27 @@
                         text-align: center;
                         color: #8d8d8d;
                     }
+                }
+
+                .shadow {
+                    z-index: 100;
+                    position: absolute;
+                    top: 0;
+                    left: -20px;
+                    width: 20px;
+                    height: 285px;
+                    background-position: -1px 0;
+                }
+
+                .shadowr {
+                    z-index: 100;
+                    position: absolute;
+                    top: 0;
+                    width: 20px;
+                    height: 285px;
+                    left: auto;
+                    right: -20px;
+                    background-position: -20px 0;
                 }
             }
 

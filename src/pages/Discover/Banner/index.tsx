@@ -118,10 +118,12 @@ function Banner() {
                         </div>
                     </div>
                     <div className='b-download'>
+                        <div className='shadow banner-shadow'></div>
                         <div className='img download'>
                             <Link className='download' to={NAVPATH.DOWNLOAD}>下载客户端</Link>
                             <p>PC 安卓 iPhone WP iPad Mac 六大客户端</p>
                         </div>
+                        <div className='shadowr banner-shadow'></div>
                     </div>
                     <div className='btn btn-left btn-img pointer' onClick={(e) => { e.stopPropagation(); imgRef.current!.style.transition = 'none 0s ease 0s'; changeIdx(false) }} onMouseMove={stop}></div>
                     <div className='btn btn-right btn-img pointer' onClick={(e) => { e.stopPropagation(); imgRef.current!.style.transition = 'none 0s ease 0s'; changeIdx() }} onMouseMove={stop}></div>

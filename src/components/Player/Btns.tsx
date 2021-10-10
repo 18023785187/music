@@ -91,7 +91,7 @@ function Btns() {
                     isPlay ? stop() : play()
                 }
             } else {
-                e.preventDefault()
+                // e.preventDefault()
             }
         }
 
