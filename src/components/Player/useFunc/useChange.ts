@@ -6,7 +6,7 @@ import setState from '../setState'
 function useChange(): (curTime: number) => void {
 
     return (curTime: number) => {
-        setState.setCurTime && setState.setCurTime(curTime)
+        setState.setCurTime && setState.setCurTime(curTime ?? 0)
     }
 }
 

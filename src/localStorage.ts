@@ -16,6 +16,8 @@ const PLAY_LOCK = 'play_lock'
 const PLAY_LIST = 'play_list'
 // 播放指针
 const PLAY_POS = 'play_pos'
+// 歌曲播放模式
+const PLAY_MODE = 'play_mode'
 
 export default LocalStorage
 export {
@@ -23,5 +25,6 @@ export {
     CATLIST,
     PLAY_LOCK,
     PLAY_LIST,
-    PLAY_POS
+    PLAY_POS,
+    PLAY_MODE
 }

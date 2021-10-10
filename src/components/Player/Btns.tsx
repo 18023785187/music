@@ -1,15 +1,18 @@
 /**
  * 播放切换按钮
  */
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { usePrev, useNext, usePlay, useStop } from './useFunc'
 import setState from './setState'
 import { addAudio } from './audio'
 
+/* 初始化音频 */
 addAudio()
 
 function Btns() {
     const [isPlay, setIsPlay] = useState<boolean>(false)
+    const flagRef = useRef<boolean>(true)
+    const playFlagRef = useRef<boolean>(true)
 
     setState.setIsPlay = setIsPlay
 
@@ -30,23 +33,35 @@ function Btns() {
     }, [isPlay, stop, play])
     /* 上一首 */
     const pre = useCallback(() => {
-        prev()
+        if (flagRef.current) {
+            flagRef.current = false
+
+            prev()
+
+            window.setTimeout(() => {
+                flagRef.current = true
+            }, 1000)
+        }
     }, [prev])
     /* 下一首 */
     const nxt = useCallback(() => {
-        next()
+        if (flagRef.current) {
+            flagRef.current = false
+
+            next()
+            window.setTimeout(() => {
+                flagRef.current = true
+            }, 1000)
+        }
     }, [next])
 
     useEffect(() => {
-
-        document.addEventListener('keydown', keyDown, true)
+        document.addEventListener('keydown', keyDown, false)
 
         function keyDown(e: KeyboardEvent) {
             const key: string = e.key
-            if (key === 'p' || key === 'P') {
-                /* 播放逻辑 */
-                play()
-            } else if (key === 'ArrowLeft' && e.ctrlKey) {
+
+            if (key === 'ArrowLeft' && e.ctrlKey) {
                 /* 上一首逻辑 */
                 pre()
             } else if (key === 'ArrowRight' && e.ctrlKey) {
@@ -59,7 +74,37 @@ function Btns() {
             document.removeEventListener('keydown', keyDown)
         }
 
-    }, [play, pre, nxt])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        document.addEventListener('keydown', keyDown, false)
+        document.addEventListener('keyup', keyUp, false)
+
+        function keyDown(e: KeyboardEvent) {
+            if (playFlagRef.current) {
+                playFlagRef.current = false
+
+                const key: string = e.key
+
+                if (key === 'p' || key === 'P') {
+                    /* 播放逻辑 */
+                    isPlay ? stop() : play()
+                }
+            } else {
+                e.preventDefault()
+            }
+        }
+
+        function keyUp() {
+            playFlagRef.current = true
+        }
+
+        return () => {
+            document.removeEventListener('keydown', keyDown)
+            document.removeEventListener('keyup', keyUp)
+        }
+
+    }, [isPlay, stop, play])
 
     return (
         <div className='btns'>

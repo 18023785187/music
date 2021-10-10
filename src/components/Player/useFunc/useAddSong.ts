@@ -9,9 +9,9 @@ function useAddSong(): (info: { [propName: string]: any }) => void {
         const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
 
         if (playlist.findIndex(song => song.al.id === info.al.id) !== -1) return
-        
+
         playlist.push(info)
-        
+
         wLocalStoreage.setItem(PLAY_LIST, JSON.stringify(playlist))
 
         setState.setPlaylist && setState.setPlaylist(playlist)

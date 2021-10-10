@@ -5,6 +5,8 @@ import React, { useState, useCallback, useEffect } from 'react'
 import Btns from './Btns'
 import Head from './Head'
 import Play from './Play'
+import Open from './Open'
+import Ctrl from './Ctrl'
 import setState from './setState'
 import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS } from '@/localStorage'
 import initLocalStoreageOfPlayer from './initLoalStoreageOfPlayer'
@@ -73,6 +75,10 @@ function Player() {
                 <Head id={playlist.length ? playlist[curPos]?.al?.id : undefined} imgUrl={playlist.length ? playlist[curPos]?.al?.picUrl : undefined} />
                 {/* 播放器 */}
                 <Play play={playlist[curPos] ? playlist[curPos] : {}} />
+                {/* 分享和收藏 */}
+                <Open />
+                {/* 控制器 */}
+                <Ctrl />
             </div>
         </div>
     )

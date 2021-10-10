@@ -1,7 +1,7 @@
 /**
  * 播放器
  */
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback, MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { SONG, MV, USER } from 'pages/path'
 import setState from './setState'
@@ -21,40 +21,32 @@ function Play(props: IProps) {
     const posElRef = useRef<HTMLDivElement>(null)
     const flagRef = useRef<boolean>(false)
     // 暴露出去的curTime
-    const [curTime, _setCurTime] = useState<number>(0)
+    const [curTime, setCurTime] = useState<number>(0)
 
-    setState.setCurTime = _setCurTime
+    setState.setCurTime = setCurTime
 
     const MouseDown = () => {
         flagRef.current = true
     }
 
-    useEffect(() => {
-        document.addEventListener('mousemove', MouseMove)
+    const MouseMove = useCallback((e: MouseEvent) => {
+        e.preventDefault()
 
-        function MouseMove(e: globalThis.MouseEvent) {
-            e.preventDefault()
+        if (flagRef.current === true) {
+            const pos = (e.pageX - posElRef.current!.getClientRects()[0].left) / WIDTH
 
-            if (flagRef.current === true) {
-                const pos = (e.pageX - posElRef.current!.getClientRects()[0].left) / WIDTH
-
-                _setCurTime(() => {
-                    if (pos <= 0) {
-                        changeAudio(0)
-                        return 0
-                    }
-                    if (pos >= 1) {
-                        changeAudio(dt / 1000 ?? 0)
-                        return 1
-                    }
-                    changeAudio(pos * (dt / 1000 ?? 0))
-                    return pos
-                })
-            }
-        }
-
-        return () => {
-            document.removeEventListener('mousemove', MouseMove)
+            setCurTime(() => {
+                if (pos <= 0) {
+                    changeAudio(0)
+                    return 0
+                }
+                if (pos >= 1) {
+                    changeAudio(dt / 1000 ?? 0)
+                    return 1
+                }
+                changeAudio(pos * (dt / 1000 ?? 0))
+                return pos
+            })
         }
     }, [dt])
 
@@ -71,7 +63,7 @@ function Play(props: IProps) {
     }, [])
 
     return (
-        <div className='play'>
+        <div className='play' onMouseMove={MouseMove}>
             <div className='words'>
                 {id ? <Link className='f-thide name hover' to={SONG + `?id=${id}`}>{name}</Link> : ''}
                 {mv ? <Link className='mv playbar-img' to={MV + `?id=${mv}`} title='MV'></Link> : ''}

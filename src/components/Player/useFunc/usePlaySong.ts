@@ -1,6 +1,10 @@
 // 播放歌曲
+import onPlay from './usePlay'
+import { addAudio, resetAudio } from '../audio'
 import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/localStorage'
 import setState from '../setState'
+
+const oPlay = onPlay()
 
 function usePlaySong(): (info: { [propName: string]: any }) => void {
     return (info: { [propName: string]: any }) => {
@@ -15,6 +19,11 @@ function usePlaySong(): (info: { [propName: string]: any }) => void {
 
             setState.setPlaylist && setState.setPlaylist(playlist)
             setState.setCurPos && setState.setCurPos(0)
+
+            addAudio(() => {
+                resetAudio()
+                oPlay()
+            })
             return
         }
 
@@ -23,6 +32,11 @@ function usePlaySong(): (info: { [propName: string]: any }) => void {
 
         setState.setPlaylist && setState.setPlaylist(playlist)
         setState.setCurPos && setState.setCurPos(curIdx)
+
+        addAudio(() => {
+            resetAudio()
+            oPlay()
+        })
     }
 }
 

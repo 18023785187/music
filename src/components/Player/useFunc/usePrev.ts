@@ -3,14 +3,18 @@
  */
 import { resetAudio, addAudio } from '../audio'
 import onPlay from './usePlay'
+import onStop from './useStop'
 import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/localStorage'
 import setState from '../setState'
 
 const oPlay = onPlay()
+const oStop = onStop()
 
 function usePrev(): () => void {
 
     return () => {
+        oStop()
+
         const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
         const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
 

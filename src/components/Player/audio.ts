@@ -19,7 +19,7 @@ const oStop = onStop()
 audio.ontimeupdate = function (e: any) {
     const { currentTime, duration } = e.target
 
-    flag && oChange(currentTime / duration)
+    flag && oChange(duration ? currentTime / duration : 0)
 }
 audio.onseeking = function () {
     window.clearTimeout(timer)
@@ -47,8 +47,8 @@ function addAudio(callback?: () => void) {
 
         getSongUrl(playlist[curPos].id).then(res => {
             try {
-                audio.src = res.data[0].url
-                urlMap.set(playlist[curPos].id, res.data[0].url)
+                audio.src = 'https://' + res.data[0].url.substring(7)
+                urlMap.set(playlist[curPos].id, 'https://' + res.data[0].url.substring(7))
 
                 callback && callback()
             } catch (e) {
