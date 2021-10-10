@@ -7,12 +7,16 @@ interface ISetState {
     setPlaylist?: React.Dispatch<React.SetStateAction<{
         [propName: string]: any;
     }[]>>,
-    setCurPos?: React.Dispatch<React.SetStateAction<number>>
+    setCurPos?: React.Dispatch<React.SetStateAction<number>>,
+    setCurTime?: React.Dispatch<React.SetStateAction<number>>,
+    setIsPlay?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const setState: ISetState = {
     setPlaylist: undefined,
-    setCurPos: undefined
+    setCurPos: undefined,
+    setCurTime: undefined,
+    setIsPlay: undefined
 }
 
 export default setState

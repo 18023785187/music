@@ -5,10 +5,16 @@ import useAddSong from './useAddSong'
 import usePlaySong from './usePlaySong'
 import usePrev from './usePrev'
 import useNext from './useNext'
+import useChange from './useChange'
+import usePlay from './usePlay'
+import useStop from './useStop'
 
 export {
     useAddSong,
     usePlaySong,
     usePrev,
-    useNext
+    useNext,
+    useChange,
+    usePlay,
+    useStop
 }

@@ -1,9 +1,11 @@
 /**
  * 播放器
  */
-import React, { useState, useRef, useEffect, MouseEvent } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { SONG, MV, USER } from 'pages/path'
+import setState from './setState'
+import { changeAudio } from './audio'
 import { formatDate } from 'utils'
 
 const WIDTH = 466
@@ -16,20 +18,16 @@ function Play(props: IProps) {
     const { play } = props
     const { dt, name, id, mv, ar } = play
     const { id: userId, name: userName } = (ar || [{}])[0]
-    const startPosRef = useRef<number>(0)
-    const endPosRef = useRef<number>(0)
+    const posElRef = useRef<HTMLDivElement>(null)
     const flagRef = useRef<boolean>(false)
-    const [curPos, setCurPos] = useState<number>(0)
+    // 暴露出去的curTime
+    const [curTime, _setCurTime] = useState<number>(0)
 
-    const MouseDown = (e: MouseEvent) => {
+    setState.setCurTime = _setCurTime
+
+    const MouseDown = () => {
         flagRef.current = true
-        startPosRef.current = e.pageX
     }
-
-    useEffect(() => {
-        
-        console.log(play)
-    },[play])
 
     useEffect(() => {
         document.addEventListener('mousemove', MouseMove)
@@ -38,11 +36,18 @@ function Play(props: IProps) {
             e.preventDefault()
 
             if (flagRef.current === true) {
-                const pos = (e.pageX - startPosRef.current) / WIDTH + endPosRef.current
+                const pos = (e.pageX - posElRef.current!.getClientRects()[0].left) / WIDTH
 
-                setCurPos(() => {
-                    if (pos <= 0) return 0
-                    if (pos >= 1) return 1
+                _setCurTime(() => {
+                    if (pos <= 0) {
+                        changeAudio(0)
+                        return 0
+                    }
+                    if (pos >= 1) {
+                        changeAudio(dt / 1000 ?? 0)
+                        return 1
+                    }
+                    changeAudio(pos * (dt / 1000 ?? 0))
                     return pos
                 })
             }
@@ -51,21 +56,19 @@ function Play(props: IProps) {
         return () => {
             document.removeEventListener('mousemove', MouseMove)
         }
-    }, [])
+    }, [dt])
 
     useEffect(() => {
         document.addEventListener('mouseup', MouseUp)
 
         function MouseUp() {
             flagRef.current = false
-            startPosRef.current = 0
-            endPosRef.current = curPos
         }
 
         return () => {
             document.removeEventListener('mouseup', MouseUp)
         }
-    }, [curPos])
+    }, [])
 
     return (
         <div className='play'>
@@ -75,17 +78,14 @@ function Play(props: IProps) {
                 {userId ? <Link className='by f-thide hover' to={USER.HOME + `?id=${userId}`} title={userName}>{userName}</Link> : ''}
             </div>
             <div className='m-pbar'>
-                <div className='barbg statbar'>
+                <div className='barbg statbar' ref={posElRef} onMouseDown={MouseDown}>
                     <div className="rdy statbar"></div>
-                    <div className="cur statbar" style={{ width: curPos * 100 + '%' }}>
-                        <span
-                            className="iconall"
-                            onMouseDown={MouseDown}
-                        ><i></i></span>
+                    <div className="cur statbar" style={{ width: curTime * 100 + '%' }}>
+                        <span className="iconall"><i></i></span>
                     </div>
                 </div>
                 <span className='time'>
-                    <em>{formatDate(new Date(curPos * (dt ?? 0)), 'mm:ss')}</em>
+                    <em>{formatDate(new Date(curTime * (dt ?? 0)), 'mm:ss')}</em>
                     &nbsp;/&nbsp;
                     {dt ? formatDate(new Date(dt), 'mm:ss') : '00:00'}
                 </span>

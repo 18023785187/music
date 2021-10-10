@@ -1,19 +1,33 @@
 /**
  * 播放切换按钮
  */
-import React, { useEffect, useCallback } from 'react'
-import { usePrev, useNext } from './useFunc'
+import React, { useState, useEffect, useCallback } from 'react'
+import { usePrev, useNext, usePlay, useStop } from './useFunc'
+import setState from './setState'
 import { addAudio } from './audio'
 
+addAudio()
 
 function Btns() {
+    const [isPlay, setIsPlay] = useState<boolean>(false)
+
+    setState.setIsPlay = setIsPlay
+
     const prev = usePrev()
     const next = useNext()
+    const stop = useStop()
+    const play = usePlay()
 
     /* 播放/停止 */
-    const play = useCallback(() => {
-        addAudio()
-    }, [])
+    const ply = useCallback(() => {
+
+        if (isPlay) {
+            stop()
+        } else {
+            play()
+        }
+
+    }, [isPlay, stop, play])
     /* 上一首 */
     const pre = useCallback(() => {
         prev()
@@ -50,7 +64,7 @@ function Btns() {
     return (
         <div className='btns'>
             <span className='prv playbar-img' title="上一首(ctrl+←)" onClick={pre}>上一首</span>
-            <span className='ply playbar-img' title="播放/暂停(p)" onClick={play}>播放/暂停</span>
+            <span className={`ply playbar-img ${isPlay ? 'pas' : ''}`} title="播放/暂停(p)" onClick={ply}>播放/暂停</span>
             <span className='nxt playbar-img' title="下一首(ctrl+→)" onClick={nxt}>下一首</span>
         </div>
     )
