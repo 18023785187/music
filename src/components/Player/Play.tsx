@@ -22,8 +22,11 @@ function Play(props: IProps) {
     const flagRef = useRef<boolean>(false)
     // 暴露出去的curTime
     const [curTime, setCurTime] = useState<number>(0)
+    // 暴露出去的缓冲时间
+    const [bufferTime, setBufferTime] = useState<number>(0)
 
     setState.setCurTime = setCurTime
+    setState.setBufferTime = setBufferTime
 
     const MouseDown = () => {
         flagRef.current = true
@@ -71,7 +74,7 @@ function Play(props: IProps) {
             </div>
             <div className='m-pbar'>
                 <div className='barbg statbar' ref={posElRef} onMouseDown={MouseDown}>
-                    <div className="rdy statbar"></div>
+                    <div className="rdy statbar" style={{ width: bufferTime * 100 + '%' }}></div>
                     <div className="cur statbar" style={{ width: curTime * 100 + '%' }}>
                         <span className="iconall"><i></i></span>
                     </div>

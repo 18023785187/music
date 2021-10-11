@@ -2,9 +2,10 @@
  * 音频
  */
 import onChange from './useFunc/useChange'
+import onButterChange from './useFunc/useBuffterChange'
 import onStop from './useFunc/useStop'
 import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_MODE } from '@/localStorage'
-import { getSongUrl } from 'network/song'
+import { getSongUrl, cancelGetSong } from 'network/song'
 import('./useFunc/usePlay').then(res => oPlay = res.default())
 import('./useFunc/useNext').then(res => oNext = res.default())
 import('./useFunc/usePlaySong').then(res => oPlaySong = res.default())
@@ -15,7 +16,10 @@ let timer: number
 const audio: HTMLAudioElement = new Audio()
 const urlMap: Map<string, string> = new Map()
 
+audio.preload = 'auto'
+
 const oChange = onChange()
+const oButterChange = onButterChange()
 const oStop = onStop()
 let oPlay = () => { }
 let oNext = () => { }
@@ -27,6 +31,8 @@ audio.ontimeupdate = function (e: any) {
     const { currentTime, duration } = e.target
 
     flag && oChange(duration ? currentTime / duration : 0)
+    oButterChange(duration ? bufferedAudio() / duration : 0)
+
 }
 // 用户改变时长时触发
 audio.onseeking = function () {
@@ -76,6 +82,7 @@ function addAudio(callback?: () => void) {
 
         callback && callback()
     } else {
+        cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
 
         getSongUrl(playlist[curPos].id).then(res => {
             try {
@@ -111,11 +118,23 @@ function changeAudio(curTime: number) {
     audio.currentTime = curTime
 }
 
+// 改变音量 0 ~ 1
+function changeAudioVolume(volume: number) {
+    audio.volume = volume
+}
+
+// 返回缓冲时间
+function bufferedAudio(): number {
+    const buffered = audio.buffered
+    return buffered.length ? buffered.end(0) : 0
+}
+
 export default audio
 export {
     addAudio,
     playAudio,
     stopAudio,
     resetAudio,
-    changeAudio
+    changeAudio,
+    changeAudioVolume
 }

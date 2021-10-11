@@ -29,7 +29,6 @@ function LeftList(props: IProps) {
     // 点击取消上次请求并刷新页面
     const cancelClick = useCallback(() => {
         cancel.cancelGetArtistList && cancel.cancelGetArtistList();
-        window.location.reload()
         window.scrollTo(0, 0)
     }, [])
 

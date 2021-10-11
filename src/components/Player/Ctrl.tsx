@@ -1,8 +1,12 @@
 /**
  * 控制器
  */
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useRef, useEffect, MouseEvent } from 'react'
 import wLocalStoreage, { PLAY_MODE } from '@/localStorage'
+import { changeAudioVolume } from './audio'
+
+const POS = 81
+const LINE = 93
 
 const titles = [
     {
@@ -22,8 +26,15 @@ const titles = [
 function Ctrl() {
     const [state, setState] = useState<number>(Number(wLocalStoreage.getItem(PLAY_MODE)) ?? 0)
     const [show, setShow] = useState<boolean>(false)
+    const [vShow, setVShow] = useState<boolean>(false)
+    const [pos, setPos] = useState<number>(0)
+    const [line, setLine] = useState<number>(LINE)
     const timerRef = useRef<number>()
+    const flagRef = useRef<boolean>(false)
+    const startPosRef = useRef<number>(0)
+    const endPosRef = useRef<number>(0)
 
+    // 改变播放模式
     const changeClick = useCallback(() => {
         window.clearTimeout(timerRef.current)
         const curMode: number = Number(wLocalStoreage.getItem(PLAY_MODE))
@@ -42,9 +53,83 @@ function Ctrl() {
         }, 2000)
     }, [])
 
+    // 显示音量调节器
+    const vShowClick = useCallback((e: MouseEvent) => {
+        e.stopPropagation()
+
+        vShow ? setVShow(false) : setVShow(true)
+    }, [vShow])
+
+    // 调节器被鼠标按下
+    const vMouseDown = (e: MouseEvent) => {
+        flagRef.current = true
+        startPosRef.current = e.pageY
+    }
+
+    const MouseMove = useCallback((e: MouseEvent) => {
+        e.preventDefault()
+
+        if (flagRef.current === true) {
+            // 移动的像素
+            const pos = e.pageY - startPosRef.current + endPosRef.current
+
+            if (pos <= 0) {
+                setPos(0)
+                setLine(LINE)
+                changeAudioVolume(1)
+            }
+            else if (pos >= POS) {
+                setPos(POS)
+                setLine(0)
+                changeAudioVolume(0)
+            }
+            else {
+                const line = POS - pos
+
+                setPos(pos)
+                setLine(line * (LINE / POS))
+                changeAudioVolume(1 - pos / POS)
+            }
+        }
+    }, [])
+
+    //
+    useEffect(() => {
+        document.addEventListener('mouseup', MouseUp)
+
+        function MouseUp() {
+            flagRef.current = false
+            startPosRef.current = 0
+            endPosRef.current = pos
+        }
+
+        return () => {
+            document.removeEventListener('mouseup', MouseUp)
+        }
+    }, [pos])
+
+    useEffect(() => {
+        document.addEventListener('click', vShowClick)
+
+        function vShowClick() {
+
+            setVShow(false)
+        }
+
+        return () => {
+            document.removeEventListener('click', vShowClick)
+        }
+    }, [])
+
     return (
         <div className='ctrl playbar-img'>
-            <i className='playbar-img icn-vol icn pointer'></i>
+            <div className='m-vol playbar-img' style={{ visibility: vShow ? 'visible' : 'hidden' }} onClick={(e) => e.stopPropagation()} onMouseMove={MouseMove}>
+                <div className='vbg'>
+                    <div className='curr playbar-img' style={{ height: line + 'px' }}></div>
+                    <span className='btn hover iconall' style={{ transform: `translate3d(0,${pos}px,0)` }} onMouseDown={vMouseDown}></span>
+                </div>
+            </div>
+            <i className={`playbar-img icn pointer ${pos !== 81 ? 'icn-vol' : 'icn-volno'}`} onClick={vShowClick}></i>
             <i className={`playbar-img icn pointer ${titles[state].className}`} title={titles[state].title} onClick={changeClick}>{titles[state].title}</i>
             <div className='tip-1 playbar-img' style={{ display: show ? 'block' : 'none' }}>{titles[state].title}</div>
         </div>

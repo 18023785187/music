@@ -9,6 +9,7 @@ interface ISetState {
     }[]>>,
     setCurPos?: React.Dispatch<React.SetStateAction<number>>,
     setCurTime?: React.Dispatch<React.SetStateAction<number>>,
+    setBufferTime?: React.Dispatch<React.SetStateAction<number>>,
     setIsPlay?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -16,6 +17,7 @@ const setState: ISetState = {
     setPlaylist: undefined,
     setCurPos: undefined,
     setCurTime: undefined,
+    setBufferTime: undefined,
     setIsPlay: undefined
 }
 
