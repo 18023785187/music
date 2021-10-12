@@ -2,6 +2,8 @@
  * 播放列表与歌词
  */
 import React, { useState, useRef, useEffect, memo } from 'react'
+import { useClearPlaylist } from '../useFunc'
+import List from './List'
 
 interface IProps {
     playlist: { [propName: string]: any }[],
@@ -10,7 +12,7 @@ interface IProps {
 
 function Playlist(props: IProps) {
     const { playlist, curPos } = props
-    const { al, name } = playlist[curPos]
+    const { al, name } = playlist[curPos] ?? { al: { picUrl: '' }, name: '' }
     const { picUrl } = al
 
     // 关闭弹窗
@@ -18,7 +20,10 @@ function Playlist(props: IProps) {
     // 添加提示
     const [addShow, setAddShow] = useState<boolean>(false)
     const timerRef = useRef<number>()
-    console.log(playlist[curPos])
+
+    //
+    const clearPlaylist = useClearPlaylist()
+
     //
     useEffect(() => {
         window.clearTimeout(timerRef.current)
@@ -31,7 +36,7 @@ function Playlist(props: IProps) {
     return (
         <>
             {/* 按钮 */}
-            <div className='playlist' onClick={() => setClose(false)}>
+            <div className='playlist' onClick={() => { close ? setClose(false) : setClose(true) }}>
                 <span className="tip playbar-img" style={{ display: addShow ? 'block' : 'none' }}>已添加到播放列表</span>
                 <i className='icn-list s-fc3 playbar-img pointer' title="播放列表">{playlist.length}</i>
             </div>
@@ -46,19 +51,20 @@ function Playlist(props: IProps) {
                             收藏全部
                         </i>
                         <span className="line"></span>
-                        <i className="clear pointer hover">
-                            <span className="ico icn-del playlist"></span>
+                        <i className="clear pointer hover" onClick={() => clearPlaylist()}>
+                            <span className="ico icn-del playlist_img"></span>
                             清除
                         </i>
                         <p className="lytit f-ff0 f-thide">{name}</p>
-                        <span className="close playlist pointer" onClick={() => setClose(true)}>关闭</span>
+                        <span className="close playlist_img pointer" onClick={() => setClose(true)}>关闭</span>
                     </div>
                 </div>
                 {/* 内容区，播放列表与歌词 */}
                 <div className='listbd playlist_bg'>
                     <img className='imgbg' src={picUrl} alt={name} />
+                    <div className='msk'></div>
                     {/* 歌曲列表 */}
-                    <div className='listbdc'></div>
+                    <List playlist={playlist} curPos={curPos} />
                     <div className='bline'></div>
                     {/* 疑问按钮 */}
                     <div className='ask'>

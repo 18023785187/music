@@ -8,6 +8,8 @@ import useNext from './useNext'
 import useChange from './useChange'
 import usePlay from './usePlay'
 import useStop from './useStop'
+import useClearPlaylist from './useClearPlaylist'
+import useDeteleSong from './useDeteleSong'
 
 export {
     useAddSong,
@@ -16,5 +18,7 @@ export {
     useNext,
     useChange,
     usePlay,
-    useStop
+    useStop,
+    useClearPlaylist,
+    useDeteleSong
 }

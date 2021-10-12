@@ -70,30 +70,33 @@ audio.onended = function () {
 
 // 切换音频
 function addAudio(callback?: () => void) {
+    cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
     oStop()
 
     const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
     if (!playlist || playlist.length === 0) return
     const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
 
-    if (urlMap.has(playlist[curPos].id)) {
+    if (playlist[curPos]) {
+        if (urlMap.has(playlist[curPos].id)) {
 
-        audio.src = urlMap.get(playlist[curPos].id) as string
+            audio.src = urlMap.get(playlist[curPos].id) as string
 
-        callback && callback()
-    } else {
-        cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
+            callback && callback()
+        } else {
+            cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
 
-        getSongUrl(playlist[curPos].id).then(res => {
-            try {
-                audio.src = 'https://' + res.data[0].url.substring(7)
-                urlMap.set(playlist[curPos].id, 'https://' + res.data[0].url.substring(7))
+            getSongUrl(playlist[curPos].id).then(res => {
+                try {
+                    audio.src = 'https://' + res.data[0].url.substring(7)
+                    urlMap.set(playlist[curPos].id, 'https://' + res.data[0].url.substring(7))
 
-                callback && callback()
-            } catch (e) {
+                    callback && callback()
+                } catch (e) {
 
-            }
-        })
+                }
+            })
+        }
     }
 }
 
@@ -115,7 +118,9 @@ function resetAudio() {
 
 // 改变audio播放位置
 function changeAudio(curTime: number) {
-    audio.currentTime = curTime
+    if (!Object.is(NaN, curTime)) {
+        audio.currentTime = curTime
+    }
 }
 
 // 改变音量 0 ~ 1
@@ -129,6 +134,11 @@ function bufferedAudio(): number {
     return buffered.length ? buffered.end(0) : 0
 }
 
+// 清除音轨
+function clearAudioUrl() {
+    audio.src = ''
+}
+
 export default audio
 export {
     addAudio,
@@ -136,5 +146,6 @@ export {
     stopAudio,
     resetAudio,
     changeAudio,
-    changeAudioVolume
+    changeAudioVolume,
+    clearAudioUrl
 }

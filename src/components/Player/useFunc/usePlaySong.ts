@@ -9,7 +9,7 @@ const oPlay = onPlay()
 function usePlaySong(): (info: { [propName: string]: any }) => void {
     return (info: { [propName: string]: any }) => {
         const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
-        const curIdx: number = playlist.findIndex(song => song.al.id === info.al.id)
+        const curIdx: number = playlist.findIndex(song => song.id === info.id)
 
         if (curIdx === -1) {
             playlist.unshift(info)

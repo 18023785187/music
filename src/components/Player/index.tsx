@@ -81,7 +81,7 @@ function Player() {
                 {/* 控制器 */}
                 <Ctrl />
                 {/* 播放列表 */}
-                <Playlist playlist={playlist} curPos={curPos} />
+                <Playlist playlist={playlist ?? []} curPos={curPos ?? 0} />
             </div>
         </div>
     )

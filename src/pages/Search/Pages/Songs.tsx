@@ -1,7 +1,7 @@
 /**
  * 歌曲页
  */
-import React, { useCallback, Fragment } from 'react'
+import React, { useState, useCallback, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { SONG, MV, ARTIST, ALBUM } from 'pages/path'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
@@ -14,6 +14,8 @@ interface IProps {
 
 function Songs(props: IProps) {
     const { data: songs } = props
+    const [play, setPlay] = useState<number>(-1)
+
     const addSong = useAddSong()
     const playSong = usePlaySong()
 
@@ -48,7 +50,7 @@ function Songs(props: IProps) {
                         <div key={id} className={`item h-flag ${index % 2 === 1 ? 'even' : ''}`}>
                             <div className='td'>
                                 <div className='hd'>
-                                    <i className='ply table-img' title='播放' onClick={() => playSongClick(item.id)}></i>
+                                    <i className={`ply table-img ${play === index ? 'ply-z-slt' : ''}`} title='播放' onClick={() => { playSongClick(item.id); setPlay(index) }}></i>
                                 </div>
                             </div>
                             <div className='td w0'>

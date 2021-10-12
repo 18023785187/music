@@ -177,6 +177,17 @@
             opacity: .2;
         }
 
+        .msk {
+            position: absolute;
+            left: 2px;
+            top: 0;
+            z-index: 2;
+            width: 558px;
+            height: 260px;
+            background: #121212;
+            opacity: .5;
+        }
+
         .listbdc {
             position: absolute;
             left: 2px;
@@ -185,6 +196,138 @@
             height: 260px;
             width: 553px;
             overflow: hidden;
+
+            ul {
+                .z-sel {
+                    color: #fff;
+                    background-color: rgba(0, 0, 0, 0.3);
+
+                    a {
+                        color: #fff;
+                    }
+
+                    .col-5 {
+                        color: #fff;
+                    }
+                }
+
+                li {
+                    display: flex;
+                    color: #ccc;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: rgba(0, 0, 0, 0.3);
+
+                        a {
+                            color: #fff;
+                        }
+
+                        .icns {
+                            visibility: visible;
+                        }
+                    }
+
+                    a {
+                        color: #ccc;
+                    }
+
+                    .col {
+                        padding-left: 10px;
+                        height: 28px;
+                        line-height: 28px;
+                        overflow: hidden;
+                        cursor: pointer;
+                    }
+
+                    .col-1 {
+                        width: 10px;
+                    }
+
+                    .col-2 {
+                        width: 256px;
+                    }
+
+                    .col-3 {
+                        width: 78px;
+                        position: relative;
+                    }
+
+                    .col-4 {
+                        width: 70px;
+                    }
+
+                    .col-5 {
+                        width: 35px;
+                        color: #666;
+                    }
+
+                    .col-6 {
+                        width: 37px;
+                        padding-left: 6px;
+                    }
+
+                    .playicn {
+                        margin-top: 8px;
+                        width: 10px;
+                        height: 13px;
+                        background-position: -182px 0;
+                    }
+
+                    .icns {
+                        visibility: hidden;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 100px;
+                        height: 23px;
+
+                        .ico {
+                            float: right;
+                            height: 16px;
+                            overflow: hidden;
+                            margin: 7px 0 0 10px;
+                            text-indent: -9999px;
+                        }
+
+                        .icn-del {
+                            width: 13px;
+                            background-position: -51px 0;
+
+                            &:hover {
+                                background-position: -51px -20px;
+                            }
+                        }
+
+                        .ico-dl {
+                            width: 14px;
+                            background-position: -57px -50px;
+
+                            &:hover {
+                                background-position: -80px -50px;
+                            }
+                        }
+
+                        .ico-share {
+                            width: 14px;
+                            background-position: 0 0;
+
+                            &:hover {
+                                background-position: 0 -20px;
+                            }
+                        }
+
+                        .ico-add {
+                            width: 16px;
+                            background-position: -24px 0;
+
+                            &:hover {
+                                background-position: -24px -20px;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         .bline {

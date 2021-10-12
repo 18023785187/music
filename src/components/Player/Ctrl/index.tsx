@@ -2,7 +2,7 @@
  * 控制器
  */
 import React, { useState, useCallback, useRef, useEffect, MouseEvent } from 'react'
-import wLocalStoreage, { PLAY_MODE } from '@/localStorage'
+import wLocalStoreage, { PLAY_MODE, PLAY_VOLUME } from '@/localStorage'
 import { changeAudioVolume } from '../audio'
 
 const POS = 81
@@ -24,11 +24,14 @@ const titles = [
 ]
 
 function Ctrl() {
+    const volume = Number(wLocalStoreage.getItem(PLAY_VOLUME))
+    changeAudioVolume(volume)
+
     const [state, setState] = useState<number>(Number(wLocalStoreage.getItem(PLAY_MODE)) ?? 0)
     const [show, setShow] = useState<boolean>(false)
     const [vShow, setVShow] = useState<boolean>(false)
-    const [pos, setPos] = useState<number>(0)
-    const [line, setLine] = useState<number>(LINE)
+    const [pos, setPos] = useState<number>((1 - volume) * POS)
+    const [line, setLine] = useState<number>(volume * LINE)
     const timerRef = useRef<number>()
     const flagRef = useRef<boolean>(false)
     const startPosRef = useRef<number>(0)
@@ -77,11 +80,13 @@ function Ctrl() {
                 setPos(0)
                 setLine(LINE)
                 changeAudioVolume(1)
+                wLocalStoreage.setItem(PLAY_VOLUME, (1).toString())
             }
             else if (pos >= POS) {
                 setPos(POS)
                 setLine(0)
                 changeAudioVolume(0)
+                wLocalStoreage.setItem(PLAY_VOLUME, (0).toString())
             }
             else {
                 const line = POS - pos
@@ -89,6 +94,7 @@ function Ctrl() {
                 setPos(pos)
                 setLine(line * (LINE / POS))
                 changeAudioVolume(1 - pos / POS)
+                wLocalStoreage.setItem(PLAY_VOLUME, (1 - pos / POS).toString())
             }
         }
     }, [])
@@ -123,6 +129,7 @@ function Ctrl() {
 
     return (
         <div className='ctrl playbar-img'>
+            {/* 音量调节器 */}
             <div className='m-vol playbar-img' style={{ visibility: vShow ? 'visible' : 'hidden' }} onClick={(e) => e.stopPropagation()} onMouseMove={MouseMove}>
                 <div className='vbg'>
                     <div className='curr playbar-img' style={{ height: line + 'px' }}></div>
@@ -131,6 +138,7 @@ function Ctrl() {
             </div>
             <i className={`playbar-img icn pointer ${pos !== 81 ? 'icn-vol' : 'icn-volno'}`} onClick={vShowClick}></i>
             <i className={`playbar-img icn pointer ${titles[state].className}`} title={titles[state].title} onClick={changeClick}>{titles[state].title}</i>
+            {/* 播放模式提示框 */}
             <div className='tip-1 playbar-img' style={{ display: show ? 'block' : 'none' }}>{titles[state].title}</div>
         </div>
     )

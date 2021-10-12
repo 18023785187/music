@@ -18,6 +18,8 @@ const PLAY_LIST = 'play_list'
 const PLAY_POS = 'play_pos'
 // 歌曲播放模式
 const PLAY_MODE = 'play_mode'
+// 歌曲播放音量
+const PLAY_VOLUME = 'play_volume'
 
 export default LocalStorage
 export {
@@ -26,5 +28,6 @@ export {
     PLAY_LOCK,
     PLAY_LIST,
     PLAY_POS,
-    PLAY_MODE
+    PLAY_MODE,
+    PLAY_VOLUME
 }
