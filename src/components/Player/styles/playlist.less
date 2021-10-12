@@ -6,6 +6,7 @@
 
     .tip {
         position: absolute;
+        z-index: 10;
         top: -51px;
         left: -65px;
         clear: both;
@@ -339,6 +340,21 @@
             height: 260px;
             background: #000;
             opacity: .5;
+
+            .scroll {
+                width: 100%;
+                height: 100%;
+
+                .scrol {
+                    width: 4px;
+                    border-radius: 5px;
+                    height: 100px;
+                    cursor: pointer;
+                    background: #868686;
+                    border: 1px solid #a6a6a6;
+                    opacity: .8;
+                }
+            }
         }
 
         .ask {
@@ -369,6 +385,20 @@
             height: 219px;
             width: 354px;
             overflow: hidden;
+
+            p {
+                color: #989898;
+                word-wrap: break-word;
+                text-align: center;
+                line-height: 32px;
+                height: auto !important;
+                height: 32px;
+                min-height: 32px;
+                -webkit-transition: color 0.7s linear;
+                -moz-transition: color 0.7s linear;
+                -o-transition: color 0.7s linear;
+                transition: color 0.7s linear;
+            }
         }
 
         .bline-1 {

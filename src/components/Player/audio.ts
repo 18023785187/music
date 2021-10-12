@@ -4,8 +4,9 @@
 import onChange from './useFunc/useChange'
 import onButterChange from './useFunc/useBuffterChange'
 import onStop from './useFunc/useStop'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_MODE } from '@/localStorage'
-import { getSongUrl, cancelGetSong } from 'network/song'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_MODE, PLAY_LYRIC } from '@/localStorage'
+import { getSongUrl, getLyric, cancelGetSong } from 'network/song'
+import setState from './setState'
 import('./useFunc/usePlay').then(res => oPlay = res.default())
 import('./useFunc/useNext').then(res => oNext = res.default())
 import('./useFunc/usePlaySong').then(res => oPlaySong = res.default())
@@ -97,6 +98,18 @@ function addAudio(callback?: () => void) {
                 }
             })
         }
+
+        // 发歌词请求
+        const lyriclist: { [propName: string]: any } = JSON.parse(wLocalStoreage.getItem(PLAY_LYRIC) as string)
+
+        getLyric(playlist[curPos].id).then((res: any) => {
+
+            if (res) {
+                lyriclist[playlist[curPos].id] = res
+                wLocalStoreage.setItem(PLAY_LYRIC, JSON.stringify(lyriclist))
+                setState.setLyricMap && setState.setLyricMap(lyriclist)
+            }
+        })
     }
 }
 

@@ -10,7 +10,11 @@ interface ISetState {
     setCurPos?: React.Dispatch<React.SetStateAction<number>>,
     setCurTime?: React.Dispatch<React.SetStateAction<number>>,
     setBufferTime?: React.Dispatch<React.SetStateAction<number>>,
-    setIsPlay?: React.Dispatch<React.SetStateAction<boolean>>
+    setIsPlay?: React.Dispatch<React.SetStateAction<boolean>>,
+    setAddShow?: React.Dispatch<React.SetStateAction<boolean>>,
+    setLyricMap?: React.Dispatch<React.SetStateAction<{
+        [propName: string]: any;
+    }>>,
 }
 
 const setState: ISetState = {
@@ -18,7 +22,9 @@ const setState: ISetState = {
     setCurPos: undefined,
     setCurTime: undefined,
     setBufferTime: undefined,
-    setIsPlay: undefined
+    setIsPlay: undefined,
+    setAddShow: undefined,
+    setLyricMap: undefined
 }
 
 export default setState

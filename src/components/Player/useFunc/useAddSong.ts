@@ -5,6 +5,7 @@ import wLocalStoreage, { PLAY_LIST } from '@/localStorage'
 function useAddSong(): (info: { [propName: string]: any }) => void {
 
     return (info: { [propName: string]: any }) => {
+        setState.setAddShow && setState.setAddShow(true)
 
         const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
 

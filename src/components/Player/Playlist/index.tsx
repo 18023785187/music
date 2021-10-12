@@ -4,6 +4,8 @@
 import React, { useState, useRef, useEffect, memo } from 'react'
 import { useClearPlaylist } from '../useFunc'
 import List from './List'
+import Lyric from './Lyric'
+import setState from '../setState'
 
 interface IProps {
     playlist: { [propName: string]: any }[],
@@ -21,6 +23,8 @@ function Playlist(props: IProps) {
     const [addShow, setAddShow] = useState<boolean>(false)
     const timerRef = useRef<number>()
 
+    setState.setAddShow = setAddShow
+
     //
     const clearPlaylist = useClearPlaylist()
 
@@ -31,7 +35,7 @@ function Playlist(props: IProps) {
         timerRef.current = window.setTimeout(() => {
             setAddShow(false)
         }, 2000)
-    }, [])
+    }, [addShow])
 
     return (
         <>
@@ -65,15 +69,13 @@ function Playlist(props: IProps) {
                     <div className='msk'></div>
                     {/* 歌曲列表 */}
                     <List playlist={playlist} curPos={curPos} />
-                    <div className='bline'></div>
                     {/* 疑问按钮 */}
                     <div className='ask'>
                         <i className='ico-ask playlist pointer'></i>
                     </div>
                     <div className='msk2'></div>
                     {/* 歌词位 */}
-                    <div className='listlyric'></div>
-                    <div className='bline bline-1'></div>
+                    <Lyric id={playlist[curPos]?.id ?? 0} />
                 </div>
             </div>
         </>

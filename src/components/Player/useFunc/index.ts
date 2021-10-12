@@ -9,7 +9,7 @@ import useChange from './useChange'
 import usePlay from './usePlay'
 import useStop from './useStop'
 import useClearPlaylist from './useClearPlaylist'
-import useDeteleSong from './useDeteleSong'
+import useDeteleSong from './useDeleteSong'
 
 export {
     useAddSong,

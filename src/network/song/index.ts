@@ -8,7 +8,8 @@ import queryStringConfig from '../query-string-config'
 interface IC {
     cancelGetSongDetail?: Canceler,
     cancelGetSongUrl?: Canceler,
-    cancelGetCheckMusic?: Canceler
+    cancelGetCheckMusic?: Canceler,
+    cancelGetLyric?: Canceler
 }
 
 const cancelGetSong: IC = {}
@@ -61,4 +62,20 @@ function getCheckMusic(id: number | string) {
     })
 }
 
-export { getSongDetail, getSongUrl, getCheckMusic, cancelGetSong }
+/**
+ * 获取歌词
+ */
+function getLyric(id: number | string) {
+    return request({
+        url: `/lyric`,
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelGetSong.cancelGetLyric = cancel
+        })
+    })
+}
+
+export { getSongDetail, getSongUrl, getCheckMusic, getLyric, cancelGetSong }

@@ -3,7 +3,7 @@
  */
 import setState from '../setState'
 import onPlaySong from './usePlaySong'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_LYRIC } from '@/localStorage'
 import { clearAudioUrl } from '../audio'
 
 const oPlaySong = onPlaySong()
@@ -17,10 +17,16 @@ function useDeteleSong(): (id: number) => void {
 
         if (index === -1) return
 
+        const lyriclist: { [propName: string]: any } = JSON.parse(wLocalStoreage.getItem(PLAY_LYRIC) as string)
+        const iid: number = playlist[index].id
+        delete lyriclist[iid]
+
+        wLocalStoreage.setItem(PLAY_LYRIC, JSON.stringify(lyriclist))
+        setState.setLyricMap && setState.setLyricMap(lyriclist)
+
         playlist.splice(index, 1)
 
         wLocalStoreage.setItem(PLAY_LIST, JSON.stringify(playlist))
-
         setState.setPlaylist && setState.setPlaylist(playlist)
 
         if (playlist.length) {
