@@ -4,8 +4,8 @@
 import React, { useState, useRef, useEffect, useCallback, MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { SONG, MV, USER } from 'pages/path'
-import setState from './setState'
-import { changeAudio } from './audio'
+import setState from '../setState'
+import { changeAudio } from '../audio'
 import { formatDate } from 'utils'
 
 const WIDTH = 466

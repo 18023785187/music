@@ -3,7 +3,7 @@
  */
 import React, { useState, useCallback, useRef, useEffect, MouseEvent } from 'react'
 import wLocalStoreage, { PLAY_MODE } from '@/localStorage'
-import { changeAudioVolume } from './audio'
+import { changeAudioVolume } from '../audio'
 
 const POS = 81
 const LINE = 93

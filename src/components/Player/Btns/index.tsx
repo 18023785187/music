@@ -2,9 +2,9 @@
  * 播放切换按钮
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { usePrev, useNext, usePlay, useStop } from './useFunc'
-import setState from './setState'
-import { addAudio } from './audio'
+import { usePrev, useNext, usePlay, useStop } from '../useFunc'
+import setState from '../setState'
+import { addAudio } from '../audio'
 
 /* 初始化音频 */
 addAudio()

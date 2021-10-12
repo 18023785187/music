@@ -7,6 +7,7 @@ import Head from './Head'
 import Play from './Play'
 import Open from './Open'
 import Ctrl from './Ctrl'
+import Playlist from './Playlist'
 import setState from './setState'
 import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS } from '@/localStorage'
 import initLocalStoreageOfPlayer from './initLoalStoreageOfPlayer'
@@ -79,6 +80,8 @@ function Player() {
                 <Open />
                 {/* 控制器 */}
                 <Ctrl />
+                {/* 播放列表 */}
+                <Playlist playlist={playlist} curPos={curPos} />
             </div>
         </div>
     )
