@@ -3,6 +3,7 @@
  */
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import Scroll from '../Scroll'
+import { IScrollRef } from '../typing'
 import wLocalStorage, { PLAY_LYRIC } from '@/localStorage'
 import setState from '../../setState'
 import audio from '../../audio'
@@ -30,6 +31,9 @@ function Lyric(props: IProps) {
 
     const lyricElRef = useRef<HTMLDivElement>(null)
     const lyricRef = useRef<number[]>([])
+    const setPRef = useRef<HTMLDivElement>(null)
+
+    const scrollRef = useRef<IScrollRef>(null)
 
     // console.log(b.split('\n'), t.split('\n'))
 
@@ -56,15 +60,35 @@ function Lyric(props: IProps) {
                 const curPos: number = binSearch(lyricRef.current, curTime)
 
                 if (curPos === 0) {
-                    console.log(lyricRef.current[curIdx])
+                    // console.log(lyricRef.current[curIdx])
                 } else {
-                    console.log(lyricRef.current[curPos])
-                    setCurIdx(curPos)
+                    // console.log(lyricRef.current[curPos])
+                    if (curPos !== curIdx) {
+                        setCurIdx(curPos)
+                        let lyricPos: number = 0
+                        let targetPos: number = 0
+
+                        for (let i = 0; i <= curPos; i++) {
+
+                            if (targetPos < 100) {
+                                targetPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
+                            } else {
+                                lyricPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
+                            }
+
+                        }
+
+                        if (lyricPos) {
+                            const curPos: number = (lyricPos / lyricElRef.current!.offsetHeight) * 100
+                            setPos(curPos)
+                            scrollRef.current?.transform(curPos)
+                        }
+                    }
                 }
 
                 window.setTimeout(() => {
                     flag = true
-                }, 500)
+                }, 300)
             }
 
             function binSearch(list: number[], target: number): number {
@@ -93,36 +117,55 @@ function Lyric(props: IProps) {
 
     const lyricEl = useMemo(() => {
         lyricRef.current = []
+        console.log(t,b)
+        // const curB = b.map((str, index) => {
 
-        return (t as string).split('\n').map((str, index) => {
-            let time: number = -1
+        //     let time: number = -1
 
-            str = str.replace(/\[[0-9](.*)?[0-9]\]/, (word: string, exp: string) => {
+        //     str = str.replace(/\[[0-9](.*)?[0-9]\]/, (word: string, exp: string) => {
 
-                time = dateFormTime(exp)
+        //         time = dateFormTime(exp)
 
-                return ''
+        //         return ''
+        //     })
+
+        //     time !== -1 && lyricRef.current.push(time)
+
+        //     return time !== -1 ? (
+        //         <p key={time + str} className={curIdx === index ? 'z-sel' : ''}>{str}</p>
+        //     ) : ''
+        // })
+
+        return <div ref={setPRef}>{
+            (t as string).split('\n').map((str, index) => {
+
+                let time: number = -1
+
+                str = str.replace(/\[[0-9](.*)?[0-9]\]/, (word: string, exp: string) => {
+
+                    time = dateFormTime(exp)
+
+                    return ''
+                })
+
+                time !== -1 && lyricRef.current.push(time)
+
+                return time !== -1 ? (
+                    <p key={time + str} className={curIdx === index ? 'z-sel' : ''}>{str}</p>
+                ) : ''
             })
-
-            time !== -1 && lyricRef.current.push(time)
-
-            return time !== -1 ? (
-                <p key={time + str} className={curIdx === index ? 'z-sel' : ''}>{str}</p>
-            ) : ''
-        })
-    }, [t, curIdx])
-
-    console.log(b)
+        }</div>
+    }, [t, b, curIdx])
 
     return (
         <>
             <div className='listlyric'>
-                <div ref={lyricElRef} style={{ transform: `translate3d(0,${-pos + '%'},0)` }}>
+                <div ref={lyricElRef} style={{ transform: `translate3d(0,${-pos + '%'},0)`, transition: 'all 1s' }}>
                     {lyricEl}
                 </div>
             </div>
             <div className='bline bline-1'>
-                <Scroll contentHeight={height} changePos={changePos} />
+                <Scroll ref={scrollRef} contentHeight={height} changePos={changePos} />
             </div>
         </>
     )

@@ -26,18 +26,19 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
 
     useImperativeHandle(ref, () => ({
         // 供外界控制滑动条，pos移动的百分比 0 ~ 100
-        transform: (pos: number) => {
+        transform: (p: number) => {
             const scrollH: number = scrollElRef.current?.offsetHeight ?? 0
+            const scrollRate = (scrollH * (scrollH / contentHeight) / scrollH) * 100
 
-            if (pos <= 0) {
+            if (p <= 0) {
                 setPos(0)
-                endPosRef.current = 0 * scrollH
-            } else if (pos >= 100 - (scrollH / contentHeight) * 100) {
-                setPos(100 - (scrollH / contentHeight) * 100)
-                endPosRef.current = (100 - (scrollH / contentHeight) * 100) * scrollH
+                endPosRef.current = 0
+            } else if (p >= 100 - scrollRate) {
+                setPos(((100 - scrollRate) * scrollH) / 100)
+                endPosRef.current = ((100 - scrollRate) * scrollH) / 100
             } else {
-                setPos(pos * scrollH)
-                endPosRef.current = pos * scrollH
+                setPos((p * scrollH) / 100)
+                endPosRef.current = (p * scrollH) / 100
             }
         }
     }))
