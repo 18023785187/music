@@ -5,12 +5,13 @@ import React, { useState, useRef, useEffect, useMemo, useCallback, MouseEvent, f
 import { IScrollRef } from '../typing'
 
 interface IProps {
-    contentHeight: number
-    changePos: (pos: number) => void
+    contentHeight: number,
+    changePos: (pos: number) => void,
+    flagCallback?: (flag: boolean) => void
 }
 
 const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
-    const { contentHeight, changePos } = props
+    const { contentHeight, changePos, flagCallback } = props
 
     const scrollElRef = useRef<HTMLDivElement>(null)
     const flagRef = useRef<boolean>(false)
@@ -22,7 +23,8 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
     const MouseDown = useCallback((e: MouseEvent) => {
         flagRef.current = true
         startPosRef.current = e.pageY
-    }, [])
+        flagCallback && flagCallback(true)
+    }, [flagCallback])
 
     useImperativeHandle(ref, () => ({
         // 供外界控制滑动条，pos移动的百分比 0 ~ 100
@@ -81,12 +83,13 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
             flagRef.current = false
             startPosRef.current = 0
             endPosRef.current = pos
+            flagCallback && flagCallback(false)
         }
 
         return () => {
             document.removeEventListener('mouseup', MouseUp)
         }
-    }, [pos])
+    }, [pos, flagCallback])
 
     const style = useMemo(() => {
         const scrollH: number = scrollElRef.current?.offsetHeight ?? 0
