@@ -62,4 +62,9 @@ function related(id: number | string) {
     })
 }
 
-export { getMvDetail, getMvUrl, related, cancelMv }
+export {
+    getMvDetail,
+    getMvUrl,
+    related,
+    cancelMv
+}

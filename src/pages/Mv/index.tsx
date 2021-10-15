@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
-import { getMvDetail } from '@/network/video'
+import { getMvDetail, cancelMv } from '@/network/video'
 import Left from './Left'
 import Right from './Right'
 import styles from './styles/index.module.less'
@@ -32,6 +32,10 @@ function Mv(props: IProps) {
 
             }
         })
+
+        return () => {
+            cancelMv.cancelGetMvDetail && cancelMv.cancelGetMvDetail()
+        }
     }, [parse])
 
     return (
