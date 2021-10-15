@@ -11,15 +11,22 @@ interface IProps {
 }
 
 const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
+    // 传入的内容总高，触发方法
     const { contentHeight, changePos, flagCallback } = props
 
+    // 向外暴露事件
     const scrollElRef = useRef<HTMLDivElement>(null)
+    // 启动阀
     const flagRef = useRef<boolean>(false)
 
+    // 改变滑动条位置
     const [pos, setPos] = useState<number>(0)
+    // 每次启动启动阀记录的位置
     const startPosRef = useRef<number>(0)
+    // 每次拖拽结束时记录的本次拖拽最终的位置
     const endPosRef = useRef<number>(0)
 
+    // 拖拽启动
     const MouseDown = useCallback((e: MouseEvent) => {
         flagRef.current = true
         startPosRef.current = e.pageY
@@ -45,6 +52,7 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
         }
     }))
 
+    // 拖拽时
     useEffect(() => {
         document.addEventListener('mousemove', mousemove)
 
@@ -75,7 +83,7 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
         }
     }, [contentHeight, changePos])
 
-    //
+    // 结束拖拽
     useEffect(() => {
         document.addEventListener('mouseup', MouseUp)
 
@@ -91,6 +99,7 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
         }
     }, [pos, flagCallback])
 
+    // 样式集合
     const style = useMemo(() => {
         const scrollH: number = scrollElRef.current?.offsetHeight ?? 0
 

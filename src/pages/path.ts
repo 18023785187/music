@@ -47,6 +47,8 @@ const SONG = '/song'
 
 // mv
 const MV = '/mv'
+// 视频
+const VIDEO = '/video'
 
 // 主播
 const DJRADIO = '/djradio'
@@ -67,6 +69,7 @@ export {
     ARTIST,
     SONG,
     MV,
+    VIDEO,
     DJRADIO,
     SEATCH,
     NOT_FOUND

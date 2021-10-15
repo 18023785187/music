@@ -10,7 +10,7 @@ import LazyLoad from '@/LazyLoad'
 import Comment from 'common/Comment'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import _getComment, { cancelGetComment } from 'network/comment'
-import { formatDate } from 'utils'
+import { formatDate, songFilter } from 'utils'
 
 interface IProps extends RouteComponentProps {
     defaultId: string
@@ -20,11 +20,23 @@ function Sing(props: IProps) {
     const { defaultId, location } = props
     const { search } = location
     const parse = useMemo(() => qs.parse(search.substring(1)), [search])
+    
     const [detail, setDetail] = useState<{ [propName: string]: any }>({})
     const [commentHot, setCommentHot] = useState<{ [propName: string]: any } | null>(null)
     const [comment, setComment] = useState<{ [propName: string]: any }>({})
+
     const addSong = useAddSong()
     const playSong = usePlaySong()
+
+    const addSongClick = useCallback((id: number | string) => {
+
+        songFilter(id, addSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
+    }, [addSong])
+
+    const playSongClick = useCallback((id: number | string) => {
+
+        songFilter(id, playSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
+    }, [playSong])
 
     useEffect(() => {
         let { id } = parse
@@ -145,7 +157,7 @@ function Sing(props: IProps) {
                                                         <Link to={`${SONG}?id=${id}`}>
                                                             <img className='rpic' data-src={`${picUrl}?param=50y50`} alt={name} width={50} height={50} />
                                                         </Link>
-                                                        <span className='ply' onClick={() => playSong(item)}></span>
+                                                        <span className='ply' onClick={() => playSongClick(item.id)}></span>
                                                         <div className='ttc'>
                                                             <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
                                                             {mv ? <span title="播放mv" className="mv table-img">MV</span> : ''}
@@ -155,7 +167,7 @@ function Sing(props: IProps) {
                                             ) : (
                                                 <td>
                                                     <div className='tt clearfix'>
-                                                        <span className='ply' onClick={() => playSong(item)}></span>
+                                                        <span className='ply' onClick={() => playSongClick(item.id)}></span>
                                                         <div className='ttc'>
                                                             <span className='txt'>
                                                                 <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
@@ -169,7 +181,7 @@ function Sing(props: IProps) {
                                         <td className='s-fc3'>
                                             <span className='u-dur'>{formatDate(new Date(dt), 'mm:ss')}</span>
                                             <div className='hshow'>
-                                                <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表" onClick={() => addSong(item)}></span>
+                                                <span className='pointer icon1 u-btn u-icn81' title="添加到播放列表" onClick={() => addSongClick(id)}></span>
                                                 <span className='pointer icon1 u-btn icn icn-fav' title="收藏"></span>
                                                 <span className='pointer icon1 u-btn icn icn-share' title="分享"></span>
                                                 <span className='pointer table-img u-btn icn icn-dl' title="下载"></span>

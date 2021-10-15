@@ -9,13 +9,15 @@ import Player from './components/Player';
 import Back from './components/Back'
 
 // 路由配置
-import { NAVPATH, ROOT_NAVPATH, NOT_FOUND, SEATCH } from 'pages/path'
+import { NAVPATH, ROOT_NAVPATH, NOT_FOUND, SEATCH, MV, VIDEO } from 'pages/path'
 const Discover = lazy(() => import('pages/Discover'))
 const DiscoverArtist = lazy(() => import('pages/DiscoverArtist'))
 const DiscoverPlaylist = lazy(() => import('pages/DiscoverPlaylist'))
 const DiscoverAlbum = lazy(() => import('pages/DiscoverAlbum'))
 const DiscoverToplist = lazy(() => import('pages/DiscoverToplist'))
 const Search = lazy(() => import('pages/Search'))
+const Mv = lazy(() => import('pages/Mv'))
+const Video = lazy(() => import('pages/Video'))
 const DownLoad = lazy(() => import('pages/DownLoad'))
 const NotFound = lazy(() => import('pages/NotFound'))
 
@@ -33,6 +35,8 @@ function App() {
           <Route path={ROOT_NAVPATH.ALBUM} component={DiscoverAlbum} />
           <Route path={ROOT_NAVPATH.TOPLIST} component={DiscoverToplist} />
           <Route path={SEATCH} component={Search} />
+          <Route path={MV} component={Mv} />
+          <Route path={VIDEO} component={Video} />
           <Route exact path={NOT_FOUND} component={NotFound} />
           <Route exact path={NAVPATH.DOWNLOAD} component={DownLoad} />
           <Redirect to={NOT_FOUND} />

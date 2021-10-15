@@ -5,8 +5,7 @@ import React, { useState, useCallback, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { SONG, MV, ARTIST, ALBUM } from 'pages/path'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
-import { getSongDetail } from 'network/song'
-import { formatDate } from 'utils'
+import { formatDate, songFilter } from 'utils'
 
 interface IProps {
     data: { [propsName: string]: any }
@@ -20,23 +19,13 @@ function Songs(props: IProps) {
     const playSong = usePlaySong()
 
     const addSongClick = useCallback((id: number | string) => {
-        getSongDetail(id).then((res: any) => {
-            try {
-                addSong(res.songs[0])
-            } catch (e) {
 
-            }
-        })
+        songFilter(id, addSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
     }, [addSong])
 
     const playSongClick = useCallback((id: number | string) => {
-        getSongDetail(id).then((res: any) => {
-            try {
-                playSong(res.songs[0])
-            } catch (e) {
 
-            }
-        })
+        songFilter(id, playSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
     }, [playSong])
 
     return (

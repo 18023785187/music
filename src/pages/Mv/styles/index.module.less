@@ -1,0 +1,58 @@
+// mv
+@import url('~assets/css/constant.less');
+
+.mv {
+    :global {
+        display: flex;
+        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+
+        .mv-left {
+            flex: 1;
+
+            .n-mv {
+                margin-top: -23px;
+
+                .title {
+                    display: flex;
+                    padding-top: 10px;
+                    margin-bottom: 8px;
+
+                    h2 {
+                        max-width: 100%;
+                        margin-top: -10px;
+                        margin-right: 8px;
+                        font-size: 24px;
+                        line-height: 32px;
+                        font-weight: normal;
+
+                        .tag {
+                            margin: -6px 5px auto auto;
+                        }
+                    }
+
+                    .name {
+                        margin: 4px 0 0 0;
+                        line-height: 17px;
+                    }
+                }
+            }
+
+            .btns {
+                margin: 12px 0 45px;
+            }
+        }
+
+        .m-mvintr {
+            margin-top: -4px;
+            padding-bottom: 34px;
+
+            p {
+                line-height: 18px;
+            }
+
+            .intr {
+                margin-top: 10px;
+            }
+        }
+    }
+}

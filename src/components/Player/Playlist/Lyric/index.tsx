@@ -25,30 +25,34 @@ function Lyric(props: IProps) {
     setState.setLyricMap = setLyricMap
 
     const [height, setHeight] = useState<number>(0)
+    // 歌词位置
     const [pos, setPos] = useState<number>(0)
-
+    // 当前目标歌词索引
     const [curIdx, setCurIdx] = useState<number>(0)
-
+    // css transition秒
     const [transition, setTransition] = useState<number>(1)
-
+    // 歌词的外壳元素
     const lyricElRef = useRef<HTMLDivElement>(null)
+    // 歌词高度数组
     const lyricRef = useRef<number[]>([])
+    // 歌词的包裹元素
     const setPRef = useRef<HTMLDivElement>(null)
 
     const scrollRef = useRef<IScrollRef>(null)
 
-    // console.log(b.split('\n'), t.split('\n'))
-
+    // 每次渲染都重新获取高度
     // eslint-disable-next-line
     useEffect(() => {
 
         setHeight(lyricElRef.current?.offsetHeight ?? 0)
     })
 
+    // 每次id改变就初始化歌词索引
     useEffect(() => {
         setCurIdx(0)
     }, [id])
 
+    // 监听audio的时长更新事件，进行歌词追踪
     useEffect(() => {
         let flag: boolean = true
 
@@ -70,11 +74,17 @@ function Lyric(props: IProps) {
                         let lyricPos: number = 0
                         let targetPos: number = 0
 
+                        // 在 transition 为 1 秒时才执行
                         if (transition) {
                             for (let i = 0; i <= curPos; i++) {
 
+                                // 在歌词偏移量达到100时才开始内容的偏移
                                 if (targetPos < 100) {
                                     targetPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
+
+                                    if (targetPos > 150) {
+                                        lyricPos += 50
+                                    }
                                 } else {
                                     lyricPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
                                 }
@@ -98,6 +108,7 @@ function Lyric(props: IProps) {
                 }, 300)
             }
 
+            // 二分查找目标歌词
             function binSearch(list: number[], target: number): number {
                 let l: number = 0
                 let r: number = list.length - 1
@@ -118,6 +129,7 @@ function Lyric(props: IProps) {
         }
     }, [curIdx, transition])
 
+    // 监听audio的播放结束事件，进行重置操作
     useEffect(() => {
         audio.addEventListener('ended', ended)
 
@@ -132,14 +144,15 @@ function Lyric(props: IProps) {
         }
     }, [])
 
+    // 传给Scroll组件的两个事件
     const changePos = useCallback((pos: number) => {
         setPos(pos * 100)
     }, [])
-
     const flagCallback = useCallback((flag: boolean) => {
         flag ? setTransition(0) : setTransition(1)
     }, [])
 
+    // 处理上下歌词
     const lyricEl = useMemo(() => {
         lyricRef.current = []
 

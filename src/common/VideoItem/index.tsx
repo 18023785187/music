@@ -3,7 +3,7 @@
  */
 import React, { useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { MV, ARTIST } from 'pages/path'
+import { MV, VIDEO, ARTIST } from 'pages/path'
 import LazyLoad from '@/LazyLoad'
 import { formatDate } from 'utils'
 import styles from './styles/index.module.less'
@@ -30,12 +30,12 @@ function Video(props: IProps) {
                     {playTime >= 100000 ? (playTime / 10000).toFixed(1).toString() + '万' : playTime}
                 </p>
                 <p className='bl u-msk u-msk-2'>{formatDate(new Date(durationms), 'mm:ss')}</p>
-                <Link className='link' to={MV + `?id=${vid}`}></Link>
+                <Link className='link' to={(type ? VIDEO : MV) + `?id=${vid}`}></Link>
             </div>
             {/* 标题 */}
             <h4 className='title f-thide'>
                 {type === 0 ? <i className='icon2 tag u-icn2-smvtag'></i> : ''}
-                <Link className='hover s-fc0' to={MV + `?id=${vid}`} title={title}>{title}</Link>
+                <Link className='hover s-fc0' to={(type ? VIDEO : MV) + `?id=${vid}`} title={title}>{title}</Link>
             </h4>
             {/* 作者 */}
             <h5 className='name f-thide' title={creator.map((item: any) => item.userName).join(' / ')}>
