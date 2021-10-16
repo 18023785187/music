@@ -14,6 +14,11 @@ interface IVideoPlayerProps {
     }[]
 }
 
+interface ICtrlRef {
+    flagCallback: (flag: boolean) => void
+}
+
 export type {
-    IVideoPlayerProps
+    IVideoPlayerProps,
+    ICtrlRef
 }

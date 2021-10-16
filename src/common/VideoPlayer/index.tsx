@@ -1,9 +1,9 @@
 /**
  * 视频播放器
  */
-import React, { useRef, useEffect } from 'react'
+import React, { useState, useEffect, useRef, memo, useCallback, MouseEvent } from 'react'
 import { getMvUrl, cancelMv } from 'network/video'
-import { IVideoPlayerProps } from './typing'
+import { IVideoPlayerProps, ICtrlRef } from './typing'
 import Ctrl from './Ctrl'
 import styles from './styles/index.module.less'
 
@@ -16,26 +16,52 @@ function VideoPlayer(props: IVideoPlayerProps) {
     const { isMv, id, duration, name, artistName, brs } = props
     console.log(isMv, id, duration, name, artistName, brs)
 
-    const videoElRef = useRef<HTMLVideoElement>(null)
+    const [url, setUrl] = useState<string>('')
+    const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null)
+
+    // 显示播放键
+    const [show, setShow] = useState<boolean>(false)
+
+    const ctrlRef = useRef<ICtrlRef>(null)
 
     useEffect(() => {
         id && getMvUrl(id).then(res => {
-            console.log(res)
+            try {
+                setUrl('https://' + res.data.url.substring(7))
+            } catch (e) {
+
+            }
         })
 
         return () => {
             cancelMv.cancelGetMvUrl && cancelMv.cancelGetMvUrl()
         }
-    }, [props])
+    }, [props, id])
+
+    const stopClick = useCallback(() => {
+
+        ctrlRef.current?.flagCallback(false);
+        setShow(true)
+    }, [])
+
+    const playClick = useCallback((e: MouseEvent) => {
+        e.stopPropagation()
+
+        ctrlRef.current?.flagCallback(true);
+        setShow(false)
+    }, [])
 
     return (
         <div className={styles['video-player']}>
             <div className='player'>
-                <video ref={videoElRef} className='media' src=""></video>
+                <video ref={(e) => setVideoEl(e)} className='media' src={url} autoPlay />
+                <div className='ffull' style={{ opacity: show ? '1' : '0' }} onClick={stopClick}>
+                    <i className='icn pointer' onClick={playClick}></i>
+                </div>
             </div>
-            <Ctrl />
+            <Ctrl ref={ctrlRef} duration={duration} videoEl={videoEl} callback={(flag: boolean) => setShow(flag)} />
         </div>
     )
 }
 
-export default VideoPlayer
+export default memo(VideoPlayer)

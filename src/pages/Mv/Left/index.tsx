@@ -1,7 +1,7 @@
 /**
  * 左边
  */
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTIST } from 'pages/path'
 import VideoPlayer from 'common/VideoPlayer'
@@ -118,4 +118,4 @@ function Left(props: IProps) {
     )
 }
 
-export default Left
+export default memo(Left)

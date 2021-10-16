@@ -64,10 +64,10 @@ function Ctrl() {
     }, [vShow])
 
     // 调节器被鼠标按下
-    const vMouseDown = (e: MouseEvent) => {
+    const vMouseDown = useCallback((e: MouseEvent) => {
         flagRef.current = true
         startPosRef.current = e.pageY
-    }
+    }, [])
 
     const MouseMove = useCallback((e: MouseEvent) => {
         e.preventDefault()

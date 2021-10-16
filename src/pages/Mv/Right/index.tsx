@@ -1,7 +1,7 @@
 /**
  * mv右边
  */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
 import MvAbout from 'common/MvAbout'
 import { related, cancelMv } from 'network/video'
@@ -96,4 +96,4 @@ function Right(props: IProps) {
     )
 }
 
-export default Right
+export default memo(Right)
