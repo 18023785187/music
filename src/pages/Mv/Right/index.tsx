@@ -58,7 +58,6 @@ function Right(props: IProps) {
                         mvs.map(mv => {
                             const { type, title, coverUrl, durationms, vid, creator, playTime } = mv
                             const { userId, userName } = creator[0]
-                            console.log(mv)
 
                             return (
                                 <li key={vid}>

@@ -4,6 +4,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTIST } from 'pages/path'
+import VideoPlayer from 'common/VideoPlayer'
+import { IVideoPlayerProps } from 'common/VideoPlayer/typing'
 import Comment from 'common/Comment'
 import _getComment, { cancelGetComment } from 'network/comment'
 
@@ -13,7 +15,9 @@ interface IProps {
 
 function Left(props: IProps) {
     const { data } = props
-    const { name, artistName, artistId, id } = data
+    const { name, artistName, artistId, id, subCount, shareCount } = data
+
+    const [playerData, setPlayerData] = useState<IVideoPlayerProps>()
 
     const [commentHot, setCommentHot] = useState<{ [propName: string]: any } | null>(null)
     const [comment, setComment] = useState<{ [propName: string]: any }>({})
@@ -21,7 +25,6 @@ function Left(props: IProps) {
     useEffect(() => {
 
         if (id) {
-            console.log(id)
             getCommentHot()
             getComment()
         }
@@ -50,6 +53,20 @@ function Left(props: IProps) {
             cancelGetComment.cancelGetComment && cancelGetComment.cancelGetComment()
         }
     }, [id])
+
+    useEffect(() => {
+        const { nType, id, duration, name, artistName, brs } = data
+
+        const playerData: IVideoPlayerProps = {
+            isMv: !nType,
+            id,
+            duration,
+            name,
+            artistName,
+            brs
+        }
+        setPlayerData(playerData)
+    }, [data])
 
     // 发最新评论请求的方法，需要传给Comment组件
     const getComment = useCallback((page: string | number = 0) => {
@@ -80,10 +97,19 @@ function Left(props: IProps) {
                             <Link className='s-fc7 hover' to={ARTIST + `?id=${artistId}`}>{artistName}</Link>
                         </span>
                     </div>
+                    {/* 视频组件 */}
+                    <div className='mv'>
+                        <VideoPlayer {...playerData} />
+                    </div>
                 </div>
-                {/* 点赞区 */}
+                {/* 数量区 */}
                 <div className='btns'>
-
+                    <i className='btn u-btni u-btni-fav u-btn-3 btn-img'>
+                        <i className='btn-img'>({subCount > 100000 ? (subCount / 10000).toFixed(1) + '万' : subCount})</i>
+                    </i>
+                    <i className='u-btni btn u-btni-share btn-img u-btn-3'>
+                        <i className='btn-img'>({shareCount > 100000 ? (shareCount / 10000).toFixed(1) + '万' : shareCount})</i>
+                    </i>
                 </div>
                 {/* 评论 */}
                 <Comment commentHot={commentHot} comment={comment} callback={getComment} />

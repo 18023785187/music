@@ -26,7 +26,6 @@ function Mv(props: IProps) {
 
         getMvDetail(id as string).then(res => {
             try {
-                console.log(res.data)
                 setData(res.data)
             } catch (e) {
 

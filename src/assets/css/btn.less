@@ -101,6 +101,14 @@
     line-height: 30px;
     min-width: 23px;
     cursor: pointer;
+
+    i {
+        float: left;
+        height: 31px;
+        line-height: 30px;
+        min-width: 23px;
+        cursor: pointer;
+    }
 }
 
 .u-btn2 {
@@ -223,4 +231,51 @@
     background-position: 0 -64px;
     text-align: center;
     line-height: 26px;
+}
+
+.u-btni-share,
+.u-btni-fav,
+.u-btni-cmmt,
+.u-btni-dl {
+    background-position: right -1020px;
+}
+
+.u-btni-share:hover,
+.u-btni-fav:hover,
+.u-btni-cmmt:hover,
+.u-btni-dl:hover {
+    background-position: right -1106px;
+}
+
+.u-btni-share i,
+.u-btni-fav i,
+.u-btni-cmmt i,
+.u-btni-dl i,
+.u-btni-unfav i {
+    padding-right: 2px;
+    padding-left: 28px;
+}
+
+.u-btni-share {
+    i {
+        background-position: 0 -1225px;
+    }
+
+    &:hover {
+        i {
+            background-position: 0 -1268px;
+        }
+    }
+}
+
+.u-btni-fav {
+    i {
+        background-position: 0 -977px;
+    }
+
+    &:hover {
+        i {
+            background-position: 0 -1063px;
+        }
+    }
 }
