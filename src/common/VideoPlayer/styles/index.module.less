@@ -74,6 +74,101 @@
                 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAABPCAMAAAD2ruSkAAAAVFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACn9Kj9AAAAHHRSTlMAAkIeBiRLSSk/OTEWBA4uRhELGAk2RCE7GzQTaLGHOAAAAFRJREFUCNdFwocNgDAAA7CyN3TP//+kQRG1LMSn6/i6eBzZWtYa7/pGVSssBc+TjRGpTjgMHAJOU7uu7fPwcXDO6BzuO8eI29b2PXuPUvKytPP8fwGF0geQtf5jJAAAAABJRU5ErkJggg==) repeat-x;
             }
 
+            .progresswrap {
+                flex: 1;
+                position: relative;
+                height: 34px;
+                padding: 15px 10px 0;
+                overflow: hidden;
+            }
+
+            .progress {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                border-radius: 2px;
+                background-color: rgba(255, 255, 255, 0.2);
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+                .j-ht {
+                    position: absolute;
+                    top: -27px;
+                    min-width: 44px;
+
+                    .hovertime {
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        padding: 5px;
+                        background: rgba(0, 0, 0, 0.7);
+                    }
+
+                    .arrow {
+                        display: block;
+                        position: absolute;
+                        top: auto;
+                        bottom: -10px;
+                        left: 0;
+                        right: auto;
+                        width: 100%;
+                        height: 7px;
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHAgMAAABB3ES3AAAADFBMVEUCAgI+Pj5HcEw4ODgkC8kmAAAABHRSTlO0awDA/mVZJgAAACRJREFUCB1jOMDAzCxwgodJh0GTiZthCRPT4QlMjLscmBgkGQBKkgUi8CVBlQAAAABJRU5ErkJggg==) no-repeat;
+                        background-position: center top;
+                        cursor: default;
+                    }
+                }
+
+                .out {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    border-radius: 2px;
+
+                    .in {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 100%;
+
+                        .dot {
+                            position: absolute;
+                            top: -10px;
+                            right: -12px;
+                            display: block;
+                            width: 24px;
+                            height: 24px;
+                            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAATlBMVEUAAABWVlYAAAAAAAAAAAAAAACsrKxHcEwAAAAAAAAAAAD+/v7Ozs4AAAD7+/vw8PDw8PD8/Pz7+/vLy8v////AMjy4JSW/MTvsusLsucFa/UGuAAAAFHRSTlMBPQ4jFwl7AAIGJ/unHPbe4Pb0o5pnj40AAACeSURBVBjTbZGLDsMgCEVRwRbta13t4/9/dKDtXDJvouSeYHgIXRb0WXC7gpiZSK6CoTCLLgSHtlA5wIRmWGKcB4PESiSPRr9uWasfSXKh6xn99pVH7jsAtmaqcDKWQYrgsP3oLakC3aLmTOnUODuFFKKatO9JYwyU4euGR4XsZjXXka76vFWo2VKz+TLmnTs9Y9aFLHUh7dW1l/z3HR9NnRFrL1EwZQAAAABJRU5ErkJggg==) no-repeat center;
+
+                            &:hover {
+                                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAV1BMVEX///////////////////////////////9HcEz////////////////////////////////////////////////////////////////AMjy4JSXsucHsusKXbNtFAAAAGHRSTlMCOhAmCgcrAQAEExsXQB71fk8x3vuk5qEGpvUVAAAAyUlEQVQoz3WS2Q4CIQxFW2CK7LPGQf3/77RUoz7Y+wDJOSlLAS4S7wEgBB68fxF44zA5yRTeagjBJuaUcjaiXoK5M7la4tjKSgwIj8muWDi42hTFsGBeCZdj2/ftWJAqGxYeJpMI53ZK2oyUzMSYC7LF+fxkRpu5BLigrkv7iraslUsAXLR4nD+5oo1uiExlG+DR+2PMW6HMIrhEZR+g3259zHuhxCcW0f6I71L33u8/S+mba8dVL6i2RG2i3nb1ofSn1T/D3+/zBOwsGYb1+26WAAAAAElFTkSuQmCC);
+                            }
+                        }
+                    }
+                }
+
+                .out-1 {
+                    background-color: #b2072a;
+                    z-index: 2;
+                }
+            }
+
+            .progress-1 {
+                top: -4px;
+            }
+
+            .progress-2 {
+                top: 35px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+            }
+
             .wrap {
                 display: flex;
                 position: absolute;
@@ -127,71 +222,6 @@
                             line-height: 34px;
                             color: rgba(255, 255, 255, 0.5);
                             position: static;
-                        }
-                    }
-
-                    .progresswrap {
-                        flex: 1;
-                        position: relative;
-                        height: 34px;
-                        padding: 15px 10px 0;
-                        overflow: hidden;
-
-                        .progress {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 4px;
-                            border-radius: 2px;
-                            background-color: rgba(255, 255, 255, 0.2);
-                            cursor: pointer;
-                            -webkit-user-select: none;
-                            -moz-user-select: none;
-                            -ms-user-select: none;
-                            user-select: none;
-
-                            .out {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                height: 100%;
-                                border-radius: 2px;
-
-                                .in {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    right: 0;
-                                    height: 100%;
-
-                                    .dot {
-                                        position: absolute;
-                                        top: -10px;
-                                        right: -12px;
-                                        display: block;
-                                        width: 24px;
-                                        height: 24px;
-                                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAATlBMVEUAAABWVlYAAAAAAAAAAAAAAACsrKxHcEwAAAAAAAAAAAD+/v7Ozs4AAAD7+/vw8PDw8PD8/Pz7+/vLy8v////AMjy4JSW/MTvsusLsucFa/UGuAAAAFHRSTlMBPQ4jFwl7AAIGJ/unHPbe4Pb0o5pnj40AAACeSURBVBjTbZGLDsMgCEVRwRbta13t4/9/dKDtXDJvouSeYHgIXRb0WXC7gpiZSK6CoTCLLgSHtlA5wIRmWGKcB4PESiSPRr9uWasfSXKh6xn99pVH7jsAtmaqcDKWQYrgsP3oLakC3aLmTOnUODuFFKKatO9JYwyU4euGR4XsZjXXka76vFWo2VKz+TLmnTs9Y9aFLHUh7dW1l/z3HR9NnRFrL1EwZQAAAABJRU5ErkJggg==) no-repeat center;
-
-                                        &:hover {
-                                            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAV1BMVEX///////////////////////////////9HcEz////////////////////////////////////////////////////////////////AMjy4JSXsucHsusKXbNtFAAAAGHRSTlMCOhAmCgcrAQAEExsXQB71fk8x3vuk5qEGpvUVAAAAyUlEQVQoz3WS2Q4CIQxFW2CK7LPGQf3/77RUoz7Y+wDJOSlLAS4S7wEgBB68fxF44zA5yRTeagjBJuaUcjaiXoK5M7la4tjKSgwIj8muWDi42hTFsGBeCZdj2/ftWJAqGxYeJpMI53ZK2oyUzMSYC7LF+fxkRpu5BLigrkv7iraslUsAXLR4nD+5oo1uiExlG+DR+2PMW6HMIrhEZR+g3259zHuhxCcW0f6I71L33u8/S+mba8dVL6i2RG2i3nb1ofSn1T/D3+/zBOwsGYb1+26WAAAAAElFTkSuQmCC);
-                                        }
-                                    }
-                                }
-                            }
-
-                            .out-1 {
-                                background-color: #b2072a;
-                                z-index: 2;
-                            }
-                        }
-
-                        .progress-2 {
-                            top: 35px;
-                            left: 10px;
-                            right: 10px;
-                            width: auto;
                         }
                     }
                 }

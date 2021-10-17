@@ -23,6 +23,9 @@ const PLAY_VOLUME = 'play_volume'
 // 歌词
 const PLAY_LYRIC = 'play_lyric'
 
+// 视频音量
+const VIDEO_VOLUME = 'video_volume'
+
 export default LocalStorage
 export {
     COUNTRIES_CODE_LIST,
@@ -32,5 +35,6 @@ export {
     PLAY_POS,
     PLAY_MODE,
     PLAY_VOLUME,
-    PLAY_LYRIC
+    PLAY_LYRIC,
+    VIDEO_VOLUME
 }

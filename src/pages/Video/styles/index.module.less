@@ -1,8 +1,121 @@
 // 视频页
+@import url('~assets/css/constant.less');
 
 .video {
 
     :global {
-        
+        display: flex;
+        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+
+        .mv-left {
+            flex: 1;
+            overflow: hidden;
+
+            .n-mv {
+                margin-top: -23px;
+
+                .title {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    margin-bottom: 8px;
+
+                    h2 {
+                        max-width: 100%;
+                        margin-top: -10px;
+                        margin-right: 8px;
+                        font-size: 24px;
+                        line-height: 32px;
+                        font-weight: normal;
+                    }
+
+                    .name {
+                        display: inline-block;
+                        margin: 4px 0 0 0;
+                        line-height: 17px;
+                    }
+                }
+
+                .mv {
+                    width: 640px;
+                    height: 360px;
+                    background-color: #2e2e2e;
+                    font-size: 0;
+                    line-height: 0;
+                }
+            }
+
+            .btns {
+                margin: 12px 0 45px;
+
+                .btn {
+                    margin-right: 10px;
+                }
+
+                .u-btni {
+                    padding: 0 5px 0 0;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        .m-mvintr {
+            margin-top: -4px;
+            padding-bottom: 34px;
+
+            p {
+                line-height: 18px;
+            }
+
+            .intr {
+                margin-top: 10px;
+            }
+        }
+
+        .n-mvlist {
+            margin-bottom: 20px;
+
+            li {
+                display: flex;
+                width: 200px;
+                margin-bottom: 15px;
+
+                .u-cover-8 {
+                    flex: 0 0 96px;
+                    margin-right: 9px;
+
+                    .ci {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        padding-right: 5px;
+                        height: 20px;
+                        line-height: 20px;
+                        color: #fff;
+                        box-sizing: border-box;
+                        text-align: right;
+                        text-shadow: -2px 1px rgb(0 0 0 / 40%);
+                    }
+
+                    .u-icn2-mv {
+                        margin: -2px 2px 0 0;
+                    }
+
+                }
+
+                .cnt {
+                    flex: 1;
+                    overflow: hidden;
+
+                    .tit {
+                        line-height: 21px;
+
+                        .tag {
+                            margin: -1px 4px auto auto;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ import queryStringConfig from '../query-string-config'
 interface IC {
     cancelGetMvDetail?: Canceler,
     cancelGetMvUrl?: Canceler,
+    cancelGetVideoDetail?: Canceler,
+    cancelGetVideoUrl?: Canceler,
     cancelRelated?: Canceler
 }
 
@@ -47,6 +49,38 @@ function getMvUrl(id: number | string) {
 }
 
 /**
+ * 获取视频详情
+ */
+function getVideoDetail(id: number | string) {
+    return request({
+        url: `/video/detail`,
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelMv.cancelGetVideoDetail = cancel
+        })
+    })
+}
+
+/**
+ * 获取视频地址
+ */
+function getVideoUrl(id: number | string) {
+    return request({
+        url: `/video/url`,
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelMv.cancelGetVideoUrl = cancel
+        })
+    })
+}
+
+/**
  * 获取推荐视频或MV
  */
 function related(id: number | string) {
@@ -65,6 +99,8 @@ function related(id: number | string) {
 export {
     getMvDetail,
     getMvUrl,
+    getVideoDetail,
+    getVideoUrl,
     related,
     cancelMv
 }

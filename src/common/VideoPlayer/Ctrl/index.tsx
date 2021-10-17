@@ -22,6 +22,21 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     // 进度条元素
     const progressElRef = useRef<HTMLDivElement>(null)
 
+    // 提示器显示
+    const [show, setShow] = useState<boolean>(false)
+    // 提示时间
+    const [hintTime, setHintTime] = useState<number>(0)
+    // 位移
+    const [hintPos, setHintPos] = useState<number>(0)
+    // 箭头位移
+    const [arrowPos, setArrowPos] = useState<number>(0)
+    // 提示器元素
+    const hintElRef = useRef<HTMLSpanElement>(null)
+
+    // 显示控制器
+    const [ctrlShow, setCtrlShow] = useState<boolean>(false)
+    const [ctrlShowD, setCtrlShowD] = useState<boolean>(false)
+
     const flagRef = useRef<boolean>(false)
     const startPosRef = useRef<number>(0)
     const endPosRef = useRef<number>(0)
@@ -32,8 +47,21 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
             callback(flag)
             setFlag(flag)
             flag ? videoEl!.play() : videoEl!.pause()
+        },
+        ctrlShowFlag(flag: boolean) {
+            setCtrlShow(flag)
         }
     }))
+
+    useEffect(() => {
+        if (!ctrlShow) {
+            window.setTimeout(() => {
+                setCtrlShowD(false)
+            }, 200)
+        } else {
+            setCtrlShowD(true)
+        }
+    }, [ctrlShow])
 
     // 点击暂止和播放
     const flagClick = useCallback(() => {
@@ -135,6 +163,34 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         }
     }, [curPos])
 
+    const showMouseMove = useCallback((e: MouseEvent) => {
+        setShow(true)
+
+        const hintElW = hintElRef.current?.offsetWidth ?? 0
+
+        const countW = progressElRef.current?.offsetWidth ?? Infinity
+        const pos = e.pageX - progressElRef.current!.getClientRects()[0].left
+
+        const time = (pos / countW) * (duration ?? 0)
+
+        setHintTime(time)
+
+        if (pos <= hintElW / 2) {
+            setArrowPos(pos - hintElW / 2 + 4)
+            setHintPos(0)
+        } else if (pos >= countW - hintElW / 2) {
+            setArrowPos(pos - countW + hintElW / 2 - 4)
+            setHintPos(countW - hintElW)
+        } else {
+            setArrowPos(0)
+            setHintPos(pos - hintElW / 2)
+        }
+    }, [duration])
+
+    const showMouseOut = useCallback(() => {
+        setShow(false)
+    }, [])
+
     // 点击进度瞬移
     const progressClick = useCallback((e: MouseEvent) => {
         e.preventDefault()
@@ -144,6 +200,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         const time = pos * (duration ?? 0)
 
         setCurPos(pos * 100)
+
         setCurTime(time)
         endPosRef.current = pos * 100
 
@@ -151,7 +208,12 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     }, [duration, videoEl])
 
     return (
-        <div className='controls'>
+        <div className='controls' style={{ transform: ctrlShow ? '' : 'translate3d(0,100%,0)' }}>
+            {/* 进度条 */}
+            <div className='progress progress-1' style={{ display: ctrlShowD ? 'none' : 'block' }}>
+                <div className='j-out1 out out-1' style={{ width: curPos + '%' }}></div>
+                <div className='j-out2 out out-2'></div>
+            </div>
             <div className='wrap'>
                 <div className='foh'>
                     {/* 播放按钮 */}
@@ -161,11 +223,16 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
                     </div>
                     {/* 进度条 */}
                     <div className='progresswrap'>
-                        <div className='progress progress-2' ref={progressElRef} onClick={progressClick}>
+                        <div className='progress progress-2' ref={progressElRef} onClick={progressClick} onMouseMove={showMouseMove} onMouseOut={showMouseOut}>
+                            {/* 提示器 */}
+                            <div className='j-ht' style={{ opacity: show ? '1' : '0', transform: `translate3d(${hintPos}px,0,0)` }}>
+                                <span className='hovertime' ref={hintElRef}>{formatDate(new Date(hintTime), 'mm:ss')}</span>
+                                <span className='arrow' style={{ left: arrowPos + 'px' }}></span>
+                            </div>
                             {/* 当前时间 */}
                             <div className='out out-1' style={{ width: curPos + '%' }}>
                                 <div className='in'>
-                                    <span className='dot' onMouseDown={MouseDown}></span>
+                                    <span className='dot' onMouseDown={MouseDown} onMouseOut={showMouseOut}></span>
                                 </div>
                             </div>
                         </div>

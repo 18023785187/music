@@ -1,11 +1,14 @@
 /**
  * 视频播放器
  */
-import React, { useState, useEffect, useRef, memo, useCallback, MouseEvent } from 'react'
-import { getMvUrl, cancelMv } from 'network/video'
+import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
+import { getMvUrl, getVideoUrl, cancelMv } from 'network/video'
 import { IVideoPlayerProps, ICtrlRef } from './typing'
+import initLocalStoreage from './initLocalStoreage'
 import Ctrl from './Ctrl'
 import styles from './styles/index.module.less'
+
+initLocalStoreage()
 
 /**
  * 根据isMv判断是否是mv决定使用哪个获取地址请求，
@@ -23,40 +26,64 @@ function VideoPlayer(props: IVideoPlayerProps) {
     const [show, setShow] = useState<boolean>(false)
 
     const ctrlRef = useRef<ICtrlRef>(null)
+    const flagRef = useRef<number>()
 
     useEffect(() => {
-        id && getMvUrl(id).then(res => {
-            try {
-                setUrl('https://' + res.data.url.substring(7))
-            } catch (e) {
 
-            }
-        })
+        if (isMv) {
+            id && getMvUrl(id).then(res => {
+                try {
+                    setUrl('https://' + res.data.url.substring(7))
+                } catch (e) {
+
+                }
+            })
+        } else {
+            id && getVideoUrl(id).then((res: any) => {
+                try {
+                    setUrl('https://' + res.urls[0].url.substring(7))
+                } catch (e) {
+
+                }
+            })
+        }
 
         return () => {
             cancelMv.cancelGetMvUrl && cancelMv.cancelGetMvUrl()
+            cancelMv.cancelGetVideoUrl && cancelMv.cancelGetVideoUrl()
         }
-    }, [props, id])
+    }, [props, id, isMv])
 
-    const stopClick = useCallback(() => {
+    const flagClick = useCallback(() => {
 
-        ctrlRef.current?.flagCallback(false);
-        setShow(true)
+        if (show) {
+            ctrlRef.current?.flagCallback(true);
+            setShow(false)
+        } else {
+            ctrlRef.current?.flagCallback(false);
+            setShow(true)
+        }
+    }, [show])
+
+    const MouseMove = useCallback(() => {
+        window.clearTimeout(flagRef.current)
+
+        ctrlRef.current?.ctrlShowFlag(true)
     }, [])
 
-    const playClick = useCallback((e: MouseEvent) => {
-        e.stopPropagation()
+    const MouseOut = useCallback(() => {
 
-        ctrlRef.current?.flagCallback(true);
-        setShow(false)
+        flagRef.current = window.setTimeout(() => {
+            ctrlRef.current?.ctrlShowFlag(false)
+        }, 3000)
     }, [])
 
     return (
-        <div className={styles['video-player']}>
-            <div className='player'>
-                <video ref={(e) => setVideoEl(e)} className='media' src={url} autoPlay />
-                <div className='ffull' style={{ opacity: show ? '1' : '0' }} onClick={stopClick}>
-                    <i className='icn pointer' onClick={playClick}></i>
+        <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
+            <div className='player' onClick={flagClick}>
+                <video ref={(e) => setVideoEl(e)} className='media' src={url} autoPlay controls={false} />
+                <div className='ffull' style={{ visibility: show ? 'visible' : 'hidden' }}>
+                    <i className='icn pointer'></i>
                 </div>
             </div>
             <Ctrl ref={ctrlRef} duration={duration} videoEl={videoEl} callback={(flag: boolean) => setShow(flag)} />

@@ -15,7 +15,8 @@ interface IVideoPlayerProps {
 }
 
 interface ICtrlRef {
-    flagCallback: (flag: boolean) => void
+    flagCallback: (flag: boolean) => void,
+    ctrlShowFlag: (flag: boolean) => void
 }
 
 export type {
