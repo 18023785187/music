@@ -56,11 +56,12 @@ function Left(props: IProps) {
     }, [id])
 
     useEffect(() => {
-        const { id, duration, name, artistName, brs } = data
+        const { id, cover, duration, name, artistName, brs } = data
 
         const playerData: IVideoPlayerProps = {
             isMv: checkNum(id),
             id,
+            cover,
             duration,
             name,
             artistName,

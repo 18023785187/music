@@ -5,6 +5,7 @@
 interface IVideoPlayerProps {
     isMv?: boolean,
     id?: number | string,
+    cover?: string,
     duration?: number,
     name?: string,
     artistName?: string,

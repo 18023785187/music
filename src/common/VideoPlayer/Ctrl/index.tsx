@@ -36,6 +36,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     // 显示控制器
     const [ctrlShow, setCtrlShow] = useState<boolean>(false)
     const [ctrlShowD, setCtrlShowD] = useState<boolean>(false)
+    const ctrlFlagTimer = useRef<number>()
 
     const flagRef = useRef<boolean>(false)
     const startPosRef = useRef<number>(0)
@@ -54,8 +55,10 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     }))
 
     useEffect(() => {
+        window.clearTimeout(ctrlFlagTimer.current)
+
         if (!ctrlShow) {
-            window.setTimeout(() => {
+            ctrlFlagTimer.current = window.setTimeout(() => {
                 setCtrlShowD(false)
             }, 200)
         } else {

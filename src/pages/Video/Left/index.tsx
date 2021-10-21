@@ -57,7 +57,7 @@ function Left(props: IProps) {
     }, [vid])
 
     useEffect(() => {
-        const { vid, durationms, title, resolutions } = data
+        const { vid, coverUrl, durationms, title, resolutions } = data
         const brs = resolutions ? resolutions.map((item: any) => ({
             size: item.size,
             br: item.resolution
@@ -66,6 +66,7 @@ function Left(props: IProps) {
         const playerData: IVideoPlayerProps = {
             isMv: checkNum(vid),
             id: vid,
+            cover: coverUrl,
             duration: durationms,
             name: title,
             artistName: nickname,

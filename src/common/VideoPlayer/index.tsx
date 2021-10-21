@@ -16,8 +16,8 @@ initLocalStoreage()
  */
 
 function VideoPlayer(props: IVideoPlayerProps) {
-    const { isMv, id, duration, name, artistName, brs } = props
-    console.log(isMv, id, duration, name, artistName, brs)
+    //const { isMv, id, duration, name, artistName, brs, cover } = props
+    const { isMv, id, duration, cover } = props
 
     const [url, setUrl] = useState<string>('')
     const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null)
@@ -78,10 +78,23 @@ function VideoPlayer(props: IVideoPlayerProps) {
         }, 3000)
     }, [])
 
+    // video结束事件
+    const pause = useCallback(() => {
+        ctrlRef.current?.flagCallback(false)
+        setShow(true)
+    }, [])
+
     return (
         <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
             <div className='player' onClick={flagClick}>
-                <video ref={(e) => setVideoEl(e)} className='media' src={url} autoPlay controls={false} />
+                <video
+                    ref={(e) => setVideoEl(e)}
+                    className='media' src={url}
+                    autoPlay
+                    controls={false}
+                    poster={cover}
+                    onPause={pause}
+                />
                 <div className='ffull' style={{ visibility: show ? 'visible' : 'hidden' }}>
                     <i className='icn pointer'></i>
                 </div>
