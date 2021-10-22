@@ -4,6 +4,8 @@
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
 import { getMvUrl, getVideoUrl, cancelMv } from 'network/video'
 import { IVideoPlayerProps, ICtrlRef } from './typing'
+import PubSub, { PUBSUB } from '@/PubSub'
+import { useStop } from 'components/Player/useFunc'
 import initLocalStoreage from './initLocalStoreage'
 import Ctrl from './Ctrl'
 import styles from './styles/index.module.less'
@@ -27,6 +29,17 @@ function VideoPlayer(props: IVideoPlayerProps) {
 
     const ctrlRef = useRef<ICtrlRef>(null)
     const flagRef = useRef<number>()
+
+    const onStop = useStop()
+
+    useEffect(() => {
+        PubSub.publish(PUBSUB.PLAYER_SHOW, false)
+        onStop()
+
+        return () => {
+            PubSub.publish(PUBSUB.PLAYER_SHOW, true)
+        }
+    })
 
     useEffect(() => {
 
@@ -78,22 +91,16 @@ function VideoPlayer(props: IVideoPlayerProps) {
         }, 3000)
     }, [])
 
-    // video结束事件
-    const pause = useCallback(() => {
-        ctrlRef.current?.flagCallback(false)
-        setShow(true)
-    }, [])
-
     return (
         <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
             <div className='player' onClick={flagClick}>
                 <video
+                    key='video'
                     ref={(e) => setVideoEl(e)}
                     className='media' src={url}
                     autoPlay
                     controls={false}
                     poster={cover}
-                    onPause={pause}
                 />
                 <div className='ffull' style={{ visibility: show ? 'visible' : 'hidden' }}>
                     <i className='icn pointer'></i>

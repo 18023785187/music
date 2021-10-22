@@ -42,7 +42,8 @@ function Left(props: IProps) {
         }
 
         async function getComment() {
-            const res: any = await _getComment(vid, 5, 3, 1, 20)
+
+            const res: any = await _getComment(vid, 5, 1, 1, 20)
 
             try {
                 setComment(res.data)
@@ -78,9 +79,8 @@ function Left(props: IProps) {
     // 发最新评论请求的方法，需要传给Comment组件
     const getComment = useCallback((page: string | number = 0) => {
         cancelGetComment.cancelGetComment && cancelGetComment.cancelGetComment()
-        const { cursor } = comment
 
-        _getComment(vid, 5, 3, Number(page) + 1, 20, cursor).then(res => {
+        _getComment(vid, 5, 1, Number(page) + 1, 20).then(res => {
             try {
                 setComment(res.data)
             } catch (e) {
@@ -88,7 +88,7 @@ function Left(props: IProps) {
             }
         })
 
-    }, [comment, vid])
+    }, [vid])
 
     return (
         <div className='mv-left'>

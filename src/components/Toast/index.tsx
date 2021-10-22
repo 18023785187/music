@@ -16,7 +16,7 @@ function Toast() {
 
     // 订阅PUBSUB.TOAST_SHOW事件，用于显示提示框
     useEffect(() => {
-        PubSub.subscribe(PUBSUB.TOAST_SHOW, (_: PUBSUB.TOAST_SHOW, data: toastData) => {
+        const token = PubSub.subscribe(PUBSUB.TOAST_SHOW, (_: PUBSUB.TOAST_SHOW, data: toastData) => {
             let { txt: curTxt, timeout: curTimeout } = data
 
             setTxt(curTxt)
@@ -26,6 +26,10 @@ function Toast() {
             }
             timeout = curTimeout
         })
+
+        return () => {
+            PubSub.unsubscribe(token)
+        }
     }, [])
 
     useEffect(() => {

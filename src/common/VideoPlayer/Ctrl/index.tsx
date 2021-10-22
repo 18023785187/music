@@ -37,6 +37,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     const [ctrlShow, setCtrlShow] = useState<boolean>(false)
     const [ctrlShowD, setCtrlShowD] = useState<boolean>(false)
     const ctrlFlagTimer = useRef<number>()
+    const ctrlDFlagTimer = useRef<number>()
 
     const flagRef = useRef<boolean>(false)
     const startPosRef = useRef<number>(0)
@@ -85,24 +86,26 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
 
         function play() {
             setFlag(true)
+            callback(false)
         }
 
         return () => {
             videoEl?.removeEventListener('play', play)
         }
-    }, [videoEl])
+    }, [videoEl, callback])
     // 暂停事件
     useEffect(() => {
         videoEl?.addEventListener('pause', pause)
 
         function pause() {
             setFlag(false)
+            callback(true)
         }
 
         return () => {
             videoEl?.removeEventListener('pause', pause)
         }
-    }, [videoEl])
+    }, [videoEl, callback])
     // 更新当前时长事件
     useEffect(() => {
         videoEl?.addEventListener('timeupdate', timeupdate)
@@ -132,15 +135,25 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         document.addEventListener('mousemove', MouseMove)
 
         function MouseMove(e: globalThis.MouseEvent) {
-            e.preventDefault()
+            // e.preventDefault()
 
             if (flagRef.current) {
+                setCtrlShow(true)
+
                 const countW = progressElRef.current?.offsetWidth ?? 0
                 const pos = e.pageX - startPosRef.current + (endPosRef.current * countW / 100)
                 const time = Math.floor((pos / countW) * (duration ?? 0))
 
-                setCurPos((pos / countW) * 100)
-                setCurTime(time)
+                if (pos <= 0) {
+                    setCurPos(0)
+                    setCurTime(0)
+                } else if (pos >= countW) {
+                    setCurPos(100)
+                    setCurTime(duration ?? 0)
+                } else {
+                    setCurPos((pos / countW) * 100)
+                    setCurTime(time)
+                }
 
                 videoEl && (videoEl.currentTime = time / 1000)
             }
@@ -156,9 +169,16 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         document.addEventListener('mouseup', MouseUp)
 
         function MouseUp() {
+            window.clearTimeout(ctrlDFlagTimer.current)
+
             flagRef.current = false
             startPosRef.current = 0
             endPosRef.current = curPos
+
+            ctrlDFlagTimer.current = window.setTimeout(() => {
+
+                setCtrlShow(false)
+            }, 3000)
         }
 
         return () => {
@@ -183,7 +203,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
             setHintPos(0)
         } else if (pos >= countW - hintElW / 2) {
             setArrowPos(pos - countW + hintElW / 2 - 4)
-            setHintPos(countW - hintElW)
+            setHintPos(countW - hintElW / 2)
         } else {
             setArrowPos(0)
             setHintPos(pos - hintElW / 2)

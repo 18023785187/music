@@ -5,7 +5,7 @@ import React, { useState, useEffect, useMemo, useCallback, Fragment } from 'reac
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
-import { SONG, ARTIST } from 'pages/path'
+import { SONG, ARTIST, MV } from 'pages/path'
 import LazyLoad from '@/LazyLoad'
 import Comment from 'common/Comment'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
@@ -20,7 +20,7 @@ function Sing(props: IProps) {
     const { defaultId, location } = props
     const { search } = location
     const parse = useMemo(() => qs.parse(search.substring(1)), [search])
-    
+
     const [detail, setDetail] = useState<{ [propName: string]: any }>({})
     const [commentHot, setCommentHot] = useState<{ [propName: string]: any } | null>(null)
     const [comment, setComment] = useState<{ [propName: string]: any }>({})
@@ -160,7 +160,7 @@ function Sing(props: IProps) {
                                                         <span className='ply' onClick={() => playSongClick(item.id)}></span>
                                                         <div className='ttc'>
                                                             <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
-                                                            {mv ? <span title="播放mv" className="mv table-img">MV</span> : ''}
+                                                            {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv table-img">MV</Link> : ''}
                                                         </div>
                                                     </div>
                                                 </td>
@@ -171,7 +171,7 @@ function Sing(props: IProps) {
                                                         <div className='ttc'>
                                                             <span className='txt'>
                                                                 <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
-                                                                {mv ? <span title="播放mv" className="mv mvm table-img">MV</span> : ''}
+                                                                {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv table-img">MV</Link> : ''}
                                                             </span>
                                                         </div>
                                                     </div>

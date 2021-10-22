@@ -39,6 +39,7 @@ function Top(props: IProps) {
 
     // 搜索框输入
     const searchChange = useCallback((e: FormEvent<HTMLInputElement>) => {
+
         if ((e.target as HTMLInputElement).value !== '') {
             setSearchShow(true)
         } else {
@@ -48,6 +49,8 @@ function Top(props: IProps) {
     }, [])
 
     const searchKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+        e.stopPropagation()
+
         if ((e.key === "Enter") && searchValue !== '') {
             cancelSearch.cancelSearchSuggest && cancelSearch.cancelSearchSuggest();
 

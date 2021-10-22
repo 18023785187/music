@@ -36,6 +36,8 @@ function Input(props: IProps) {
     }, [history, searchValue])
 
     const searchKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+        e.stopPropagation()
+
         if (e.key === "Enter") {
             emit()
         }

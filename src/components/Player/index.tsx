@@ -11,6 +11,7 @@ import Playlist from './Playlist'
 import setState from './setState'
 import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS } from '@/localStorage'
 import initLocalStoreageOfPlayer from './initLoalStoreageOfPlayer'
+import PubSub, { PUBSUB } from '@/PubSub'
 import styles from './styles/index.module.less'
 
 initLocalStoreageOfPlayer()
@@ -25,6 +26,8 @@ function Player() {
     const [curPos, setCurPos] = useState<number>(Number(wLocalStoreage.getItem(PLAY_POS)))
     const [lock, setLock] = useState<boolean>(Boolean(Number(wLocalStoreage.getItem(PLAY_LOCK))))
     const [isDown, setIsDown] = useState<boolean>(false)
+
+    const [show, setShow] = useState<boolean>(true)
 
     // 收集setState（外部调用）
     setState.setPlaylist = setPlaylist
@@ -55,8 +58,24 @@ function Player() {
         }
     }, [isDownMouseOut])
 
+    // 订阅show
+    useEffect(() => {
+        const token = PubSub.subscribe(PUBSUB.PLAYER_SHOW, (_: PUBSUB, isShow: boolean) => {
+
+            setShow(isShow)
+        })
+
+        return () => {
+            PubSub.unsubscribe(token)
+        }
+    }, [])
+
     return (
-        <div className={`${styles['playbar']} ${isDown ? styles['down'] : ''}`} style={{ transition: isDown ? transition['out'] : transition['in'] }} onMouseMove={isDownMouseMove} onMouseOut={isDownMouseOut}>
+        <div
+            className={`${styles['playbar']} ${isDown ? styles['down'] : ''}`}
+            style={{ transition: isDown ? transition['out'] : transition['in'], display: show ? 'block' : 'none' }}
+            onMouseMove={isDownMouseMove}
+            onMouseOut={isDownMouseOut}>
             {/* 右侧锁样式 */}
             <div className="updn">
                 <div className="left playbar-img">

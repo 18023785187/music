@@ -9,9 +9,13 @@ function Temp() {
 
     useEffect(() => {
         // 暴露订阅器用于弹出登录窗体
-        PubSub.subscribe(CLOSE.LOGIN, (_: CLOSE.LOGIN, close: loginWindowClose) => {
+        const token = PubSub.subscribe(CLOSE.LOGIN, (_: CLOSE.LOGIN, close: loginWindowClose) => {
             setClose(close)
         })
+
+        return () => {
+            PubSub.unsubscribe(token)
+        }
     }, [])
 
     return (
