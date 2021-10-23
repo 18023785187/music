@@ -11,6 +11,8 @@
         默认启动的是https服务，如果需要使用http服务那么需要把 yarn start 改为 yarn start-http
         接口地址在 src/network/constant.ts -> BASE_URL
 
+    在控制台调用window.testPerformance方法可以打印当前性能状况
+
 # 进度
     已完成大部分功能，还需要完善登录后的功能、视频播放器的一部分功能、歌手主页、个人主页、歌曲详情页、点赞、转发等功能
 

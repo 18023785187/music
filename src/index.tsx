@@ -12,6 +12,9 @@ import { testPerformance } from 'utils'
 import 'assets/css/normalize.css'
 import 'assets/css/base.less'
 
+// 向window对象注入性能检测方法
+window.testPerformance = testPerformance
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

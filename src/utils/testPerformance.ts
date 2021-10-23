@@ -47,7 +47,8 @@ function testPerformance() {
      DOM渲染时间: ${domReadyTime}s,                                                                                                                                                                                    
      onload时间: ${onloadTime}s,                                                                                                                                                              
      当前占用js堆栈内存: ${usedJSHeapSize}                                                                                                                                                           
-     总js堆栈内存: ${totalJSHeapSize}                                                                                                                                              `
+     总js堆栈内存: ${totalJSHeapSize},                                                                                                                                      
+     js堆栈内存占用率: ${Math.round((usedJSHeapSize / totalJSHeapSize) * 100)}%                                                                                                                                              `
         ,
         // 样式
         `
