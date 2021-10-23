@@ -1,7 +1,7 @@
 /**
  * 歌词页
  */
-import React, { useState, useRef, useEffect, useCallback, useMemo, Fragment } from 'react'
+import React, { useState, useRef, useEffect,useLayoutEffect, useCallback, useMemo } from 'react'
 import Scroll from '../Scroll'
 import { IScrollRef } from '../typing'
 import wLocalStorage, { PLAY_LYRIC } from '@/localStorage'
@@ -42,7 +42,7 @@ function Lyric(props: IProps) {
 
     // 每次渲染都重新获取高度
     // eslint-disable-next-line
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         setHeight(lyricElRef.current?.offsetHeight ?? 0)
     })
@@ -53,7 +53,7 @@ function Lyric(props: IProps) {
     }, [id])
 
     // 监听audio的时长更新事件，进行歌词追踪
-    useEffect(() => {
+    useLayoutEffect(() => {
         let flag: boolean = true
 
         audio.addEventListener('timeupdate', timeupdate)

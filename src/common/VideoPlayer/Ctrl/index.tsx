@@ -1,7 +1,7 @@
 /**
  * 控制器
  */
-import React, { useState, useCallback, useEffect, useRef, MouseEvent, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, useCallback, useEffect,useLayoutEffect, useRef, MouseEvent, forwardRef, useImperativeHandle } from 'react'
 import { ICtrlRef } from '../typing'
 import { formatDate } from 'utils'
 
@@ -107,7 +107,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         }
     }, [videoEl, callback])
     // 更新当前时长事件
-    useEffect(() => {
+    useLayoutEffect(() => {
         videoEl?.addEventListener('timeupdate', timeupdate)
 
         function timeupdate() {
@@ -115,7 +115,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
                 const pos: number = videoEl ? videoEl.currentTime * 1000 : 0
                 setCurTime(pos)
 
-                setCurPos(duration ? (pos / duration) * 100 : 0)
+                pos >= (duration ?? 0) ? setCurPos(100) : setCurPos(duration ? (pos / duration) * 100 : 0)
             }
         }
 
@@ -131,7 +131,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
     }, [])
 
     //
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.addEventListener('mousemove', MouseMove)
 
         function MouseMove(e: globalThis.MouseEvent) {
@@ -203,7 +203,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
             setHintPos(0)
         } else if (pos >= countW - hintElW / 2) {
             setArrowPos(pos - countW + hintElW / 2 - 4)
-            setHintPos(countW - hintElW / 2)
+            setHintPos(countW - hintElW)
         } else {
             setArrowPos(0)
             setHintPos(pos - hintElW / 2)

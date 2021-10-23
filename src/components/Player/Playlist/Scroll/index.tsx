@@ -1,7 +1,7 @@
 /**
  * 滚动条
  */
-import React, { useState, useRef, useEffect, useMemo, useCallback, MouseEvent, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect, useMemo, useCallback, MouseEvent, forwardRef, useImperativeHandle } from 'react'
 import { IScrollRef } from '../typing'
 
 interface IProps {
@@ -53,7 +53,7 @@ const Scroll = forwardRef<IScrollRef, IProps>((props: IProps, ref) => {
     }))
 
     // 拖拽时
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.addEventListener('mousemove', mousemove)
 
         function mousemove(e: globalThis.MouseEvent) {

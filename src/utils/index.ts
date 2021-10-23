@@ -8,6 +8,7 @@ import preload from './preload'
 import formatDate from "./formatDate";
 import songFilter from './songFilter'
 import checkNum from './checkNum'
+import testPerformance from "./testPerformance";
 
 export {
     timestamp,
@@ -15,5 +16,6 @@ export {
     preload,
     formatDate,
     songFilter,
-    checkNum
+    checkNum,
+    testPerformance
 }
