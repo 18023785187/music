@@ -12,7 +12,7 @@
         接口地址在 src/network/constant.ts -> BASE_URL
 
     在控制台调用window.testPerformance方法可以打印当前性能状况(效果如下)
-<img src='https://z3.ax1x.com/2021/10/23/52B8fS.png' width='337' height='205' />
+<img src='https://z3.ax1x.com/2021/10/25/54w7lT.png' width='581' height='235' />
 
 # 进度
     已完成大部分功能，还需要完善登录后的功能、视频播放器的一部分功能、歌手主页、个人主页、歌曲详情页、点赞、转发等功能
