@@ -2,6 +2,7 @@
  * 视频播放器
  */
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react'
+import Context from './context'
 import { getMvUrl, getVideoUrl, cancelMv } from 'network/video'
 import { IVideoPlayerProps, ICtrlRef } from './typing'
 import PubSub, { PUBSUB } from '@/PubSub'
@@ -92,22 +93,24 @@ function VideoPlayer(props: IVideoPlayerProps) {
     }, [])
 
     return (
-        <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
-            <div className='player' onClick={flagClick}>
-                <video
-                    key='video'
-                    ref={(e) => setVideoEl(e)}
-                    className='media' src={url}
-                    autoPlay
-                    controls={false}
-                    poster={cover}
-                />
-                <div className='ffull' style={{ visibility: show ? 'visible' : 'hidden' }}>
-                    <i className='icn pointer'></i>
+        <Context.Provider value={props}>
+            <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
+                <div className='player' onClick={flagClick}>
+                    <video
+                        key='video'
+                        ref={(e) => setVideoEl(e)}
+                        className='media' src={url}
+                        autoPlay
+                        controls={false}
+                        poster={cover}
+                    />
+                    <div className='ffull' style={{ visibility: show ? 'visible' : 'hidden' }}>
+                        <i className='icn pointer'></i>
+                    </div>
                 </div>
+                <Ctrl ref={ctrlRef} duration={duration} videoEl={videoEl} callback={(flag: boolean) => setShow(flag)} />
             </div>
-            <Ctrl ref={ctrlRef} duration={duration} videoEl={videoEl} callback={(flag: boolean) => setShow(flag)} />
-        </div>
+        </Context.Provider>
     )
 }
 

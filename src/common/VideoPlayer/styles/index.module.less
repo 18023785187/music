@@ -262,6 +262,12 @@
                         margin-top: 9px;
                         z-index: 3;
 
+                        &:hover {
+                            .options {
+                                display: block;
+                            }
+                        }
+
                         &::before,
                         &::after {
                             content: '';
@@ -279,6 +285,58 @@
 
                         &::after {
                             right: 0;
+                        }
+
+                        .current {
+                            line-height: 17px;
+                            text-align: center;
+                            color: rgba(255, 255, 255, 0.5);
+                            cursor: default;
+                        }
+
+                        .options {
+                            display: none;
+                            position: absolute;
+                            top: -13px;
+                            left: -8px;
+                            width: 66px;
+                            text-align: center;
+                            box-sizing: border-box;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                            background: rgba(0, 0, 0, 0.7);
+                            -ms-transform: translateY(-100%);
+                            transform: translateY(-100%);
+
+                            &:hover {
+                                display: block;
+                            }
+
+                            .itm {
+                                position: relative;
+                                height: 26px;
+                                padding: 0;
+                                line-height: 26px;
+                                border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+                                &:hover {
+                                    border-top-color: transparent;
+                                    background: rgba(255, 255, 255, 0.2);
+                                }
+                            }
+
+                            .arrow {
+                                display: block;
+                                position: absolute;
+                                top: auto;
+                                bottom: -7px;
+                                left: 0;
+                                right: auto;
+                                width: 100%;
+                                height: 7px;
+                                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHAgMAAABB3ES3AAAADFBMVEUCAgI+Pj5HcEw4ODgkC8kmAAAABHRSTlO0awDA/mVZJgAAACRJREFUCB1jOMDAzCxwgodJh0GTiZthCRPT4QlMjLscmBgkGQBKkgUi8CVBlQAAAABJRU5ErkJggg==) no-repeat;
+                                background-position: center top;
+                                cursor: default;
+                            }
                         }
                     }
 

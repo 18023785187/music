@@ -4,6 +4,7 @@
 import React, { useState, useCallback, useEffect,useLayoutEffect, useRef, MouseEvent, forwardRef, useImperativeHandle } from 'react'
 import { ICtrlRef } from '../typing'
 import { formatDate } from 'utils'
+import ResolutionRatio from './ResolutionRatio'
 
 interface IProps {
     duration?: number,
@@ -267,7 +268,8 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
                     <div className='volume'>
                         <i className='mute pointer'></i>
                     </div>
-                    <div className='brs'></div>
+                    {/* 分辩率 */}
+                    <ResolutionRatio />
                     <i className='full pointer'></i>
                 </div>
             </div>
