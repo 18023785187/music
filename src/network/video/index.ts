@@ -35,11 +35,12 @@ function getMvDetail(mvid: number | string) {
 /**
  * 获取mv的url
  */
-function getMvUrl(id: number | string) {
+function getMvUrl(id: number | string, r: number = 1080) {
     return request({
         url: `/mv/url`,
         ...queryStringConfig({
-            id
+            id,
+            r
         }),
         cancelToken: new axios.CancelToken(function (cancel) {
             //cancel参数是一个函数，调用该函数取消请求

@@ -3,6 +3,7 @@
  */
 
 interface IVideoPlayerProps {
+    setBr?: (br: number) => void,
     isMv?: boolean,
     id?: number | string,
     cover?: string,

@@ -92,8 +92,24 @@ function VideoPlayer(props: IVideoPlayerProps) {
         }, 3000)
     }, [])
 
+    /**
+     * 调整分辨率
+     */
+    const setBr = useCallback((br: number) => {
+        // 由于接口原因，目前只有mv能换分辨率
+        if (isMv) {
+            id && getMvUrl(id, br).then(res => {
+                try {
+                    setUrl('https://' + res.data.url.substring(7))
+                } catch (e) {
+
+                }
+            })
+        }
+    }, [id, isMv])
+
     return (
-        <Context.Provider value={props}>
+        <Context.Provider value={{ setBr, ...props }}>
             <div className={styles['video-player']} onMouseMove={MouseMove} onMouseOut={MouseOut}>
                 <div className='player' onClick={flagClick}>
                     <video

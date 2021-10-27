@@ -1,22 +1,31 @@
 /**
  * 分辨率
  */
-import React, { useContext, memo } from 'react'
+import React, { useState, useContext, useMemo, useCallback, memo } from 'react'
 import Context from '../context'
 import transformCode from '../transformCode'
 
 function ResolutionRatio() {
-    const { brs } = useContext(Context)
+    const [idx, setIdx] = useState<number>(0)
+    const { setBr, brs } = useContext(Context)
 
-    const brArrs = brs?.map(br => br.br).sort((a, b) => b - a)
+    const brArrs = useMemo(() => brs?.map(br => br.br).sort((a, b) => b - a), [brs])
+
+    const setBrClick = useCallback((index: number) => {
+        setIdx(index);
+        setBr && setBr(brArrs?.[index] ?? 1080)
+    }, [setBr, brArrs])
 
     return (
         <div className='brs'>
-            <div className='current'>{transformCode(brArrs?.[0] ?? 1080)}</div>
+            <div className='current'>{transformCode(brArrs?.[idx] ?? 1080)}</div>
             <ul className='options'>
                 {
-                    brArrs?.map(br => (
-                        <li className='itm pointer' key={br}>{transformCode(br)}</li>
+                    brArrs?.map((br, index) => (
+                        <li className={`itm pointer ${index === idx ? 'z-sel' : ''}`} key={br} onClick={() => setBrClick(index)}>
+                            <span className='label'>{transformCode(br)}</span>
+                            {index === idx ? <span className='hook'></span> : ''}
+                        </li>
                     ))
                 }
                 <li className='arrow'></li>
