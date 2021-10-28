@@ -29,10 +29,10 @@ function MyInfo() {
                     setVip(vipRes.data)
                     setLevel(levelRes.data)
                 } catch (e) {
-                    console.log(e)
+                    // console.log(e)
                 }
             } catch (e) {
-                console.log(e)
+                // console.log(e)
                 // _getLoginStatus()
             }
         }

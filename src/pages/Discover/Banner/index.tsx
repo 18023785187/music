@@ -4,10 +4,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import _getBanner, { cancelgetBanner } from 'network/discover/banner'
-import { NAVPATH, ALBUM } from 'pages/path'
+import { NAVPATH } from 'pages/path'
 import { preload } from 'utils'
+import fiflterType from './fiflterType'
 
-type bannerInfo = { url: string, id: string, scm: string }
+type bannerInfo = {
+    imgUrl: string,
+    targetId: number,
+    scm: string,
+    targetType: number,
+    url: string
+}
 
 function Banner() {
     // 轮播图
@@ -28,7 +35,15 @@ function Banner() {
         function getBanner() {
             _getBanner().then((res: any) => {
                 try {
-                    const b = res.banners.map((item: any) => ({ url: item.imageUrl, id: item.encodeId, scm: item.scm }))
+                    const b = res.banners.map((item: any) =>
+                    ({
+                        imgUrl: item.imageUrl,
+                        targetId: item.targetId,
+                        scm: item.scm,
+                        targetType: item.targetType,
+                        url: item.url
+                    }))
+
                     b.forEach((item: bannerInfo) => {
                         preload(item.url)
                     })
@@ -46,7 +61,7 @@ function Banner() {
     }, [])
 
     useEffect(() => {
-        if(banners.length){
+        if (banners.length) {
             run()
         }
 
@@ -97,12 +112,20 @@ function Banner() {
 
     return (
         <div className='banner' onMouseMove={stop} onMouseOut={run}>
-            <div className='banner-bg' style={{ background: `url(${banners[idx]?.url}) no-repeat` }}>
+            <div className='banner-bg' style={{ background: `url(${banners[idx]?.imgUrl}) no-repeat` }}>
                 <div className='w banner-box'>
                     <div className='banner-content'>
-                        <Link to={ALBUM + '/' + banners[idx]?.id}>
-                            <img ref={imgRef} src={banners[idx]?.url} alt={banners[idx]?.id} width={730} height={285} />
-                        </Link>
+                        {
+                            !banners[idx]?.url ? (
+                                <Link to={fiflterType(banners[idx]?.targetType) + '/?id=' + banners[idx]?.targetId}>
+                                    <img ref={imgRef} src={banners[idx]?.imgUrl} alt={banners[idx]?.targetId.toString()} width={730} height={285} />
+                                </Link>
+                            ) : (
+                                <a href={banners[idx]?.url} target='_blank' rel="noreferrer">
+                                    <img ref={imgRef} src={banners[idx]?.imgUrl} alt={banners[idx]?.targetId.toString()} width={730} height={285} />
+                                </a>
+                            )
+                        }
                         <div className='dots'>
                             {/* 轮播点 */}
                             {
