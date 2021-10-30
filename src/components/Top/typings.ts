@@ -63,6 +63,17 @@ const rootNav: { name: string, path: ROOT_NAVPATH }[] = [
     }
 ]
 
+// 初始化登录数据
+interface IInitData {
+    profile: { [propsName: string]: any },
+    code: number,
+    account: { [propsName: string]: any }
+}
+
+export type {
+    IInitData
+}
+
 export {
     NAVPATH,
     ROOT_NAVPATH,

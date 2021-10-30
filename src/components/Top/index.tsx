@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useCallback, useRef, FormEvent, KeyboardEvent } from 'react'
 import { Link, NavLink, withRouter, RouteComponentProps } from 'react-router-dom'
 import { nav, rootNav, NAVPATH, ROOT_NAVPATH } from './typings'
-import PubSub, { CLOSE } from '@/PubSub'
+import User from './User'
 import SearchSuggest from 'common/SearchSuggest'
 import styles from './styles/index.module.less'
 import { cancelSearch } from 'network/search'
@@ -23,11 +23,6 @@ function Top(props: IProps) {
     // 搜索框输入文本
     const [searchValue, setSearchValue] = useState<string>('')
     const inputRef = useRef<HTMLInputElement>(null)
-
-    // 显示登录弹窗
-    const showLoginClick = useCallback(() => {
-        PubSub.publish(CLOSE.LOGIN, false)
-    }, [])
 
     const navPathList: NAVPATH[] = useMemo(() => {
         return Object.values(NAVPATH).filter(path => path !== NAVPATH.ROOT && path !== NAVPATH.NULL)
@@ -99,10 +94,7 @@ function Top(props: IProps) {
                         </ul>
                     </div>
                     <div className='top-right'>
-                        <div className='top-login'>
-                            <span className='login pointer hover' onClick={showLoginClick}>登录</span>
-                            {/* 这里还需要写个人信息框 */}
-                        </div>
+                        <User />
                         <a className='topvd' href="https://music.163.com/#/login?targetUrl=%2Fcreatorcenter" target="_blank" rel="noreferrer">创作者中心</a>
                         <div className='top-search'>
                             <div className='top-search-bg top'>

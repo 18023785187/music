@@ -8,6 +8,7 @@ import { timestamp } from 'utils'
 
 interface IC {
     cancelGetUserDetail?: Canceler,
+    cancelGetUserStatus?: Canceler,
     cancelGetUserAccount?: Canceler,
     cancelGetUserSubcount?: Canceler,
     cancelGetUserLevel?: Canceler,
@@ -30,6 +31,22 @@ function getUserDetail(uid: number) {
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
             cancel.cancelGetUserDetail = _cancel
+        })
+    })
+}
+
+/**
+ * 获取登录状态
+ */
+function getUserStatus() {
+    return request({
+        url: `/login/status`,
+        ...queryStringConfig({
+            timestamp: timestamp()
+        }),
+        cancelToken: new axios.CancelToken(function (_cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancel.cancelGetUserStatus = _cancel
         })
     })
 }
@@ -122,6 +139,7 @@ function dailySignin(type: number = 1) {
 
 export {
     getUserDetail,
+    getUserStatus,
     getUserAccount,
     getUserSubcount,
     getUserLevel,
