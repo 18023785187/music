@@ -30,7 +30,14 @@ enum ROOT_ARTIST {
 // 用户
 enum USER {
     HOME = 'user/home',
-    LEVEL = 'user/level'
+    LEVEL = 'user/level',
+    MUMBER = 'user/mumber',
+    UPDATE = 'user/update'
+}
+
+// 个人信息
+enum MSG {
+    AT = 'mas/at'
 }
 
 // 专辑
@@ -64,6 +71,7 @@ export {
     ROOT_NAVPATH,
     ROOT_ARTIST,
     USER,
+    MSG,
     ALBUM,
     PLAY_LIST,
     ARTIST,

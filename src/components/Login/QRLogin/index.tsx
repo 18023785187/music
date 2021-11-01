@@ -78,7 +78,6 @@ function QRLogin(props: IProps) {
 
                 const stauts: any = await checkQRCodeStatus(qrKey as string)
                 if (!stauts) return
-                console.log(stauts)
                 // 超出60秒停止轮询，并弹出刷新框
                 if (Date.now() - timestamp >= 60000) {
                     setRefresh(true)

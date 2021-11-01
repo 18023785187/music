@@ -5,6 +5,12 @@
     margin: 19px 0 0 20px;
     padding: 0 22px 0 0;
 
+    &:hover {
+        .m-tlist {
+            display: block;
+        }
+    }
+
     // 未登录
     .login {
         display: block;
@@ -29,6 +35,7 @@
 
     // 列表
     .m-tlist {
+        display: none;
         position: absolute;
         top: 38px;
         right: -43px;
@@ -38,11 +45,15 @@
         box-shadow: 0 8px 24px 0 rgb(0 0 0 / 50%);
         border-radius: 4px;
 
+        &:hover {
+            display: block;
+        }
+
         li {
             box-sizing: border-box;
             width: 100%;
 
-            span {
+            a, span {
                 display: flex;
                 align-items: center;
                 position: relative;

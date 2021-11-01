@@ -46,7 +46,7 @@ function Item(props: IProps) {
                     <span title={ar.map((item: any) => item.name).join('/')}>
                         {
                             ar.map((item: any, index: number) => <Fragment key={item.id + id}>
-                                <Link className='hover' to={ARTIST}>{item.name}</Link>{ar.length - 1 !== index ? '/' : ''}
+                                <Link className='hover' to={ARTIST + `?id=${item.id}`}>{item.name}</Link>{ar.length - 1 !== index ? '/' : ''}
                             </Fragment>)
                         }
                     </span>
