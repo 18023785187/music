@@ -17,7 +17,7 @@ interface IC {
     cancelDailySignin?: Canceler
 }
 
-const cancel: IC = {}
+const cancelUser: IC = {}
 
 /**
  * 获取用户详情，登录后调用
@@ -30,7 +30,7 @@ function getUserDetail(uid: number) {
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserDetail = _cancel
+            cancelUser.cancelGetUserDetail = _cancel
         })
     })
 }
@@ -46,7 +46,7 @@ function getUserStatus() {
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserStatus = _cancel
+            cancelUser.cancelGetUserStatus = _cancel
         })
     })
 }
@@ -59,7 +59,7 @@ function getUserAccount() {
         url: `/user/account`,
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserAccount = _cancel
+            cancelUser.cancelGetUserAccount = _cancel
         })
     })
 }
@@ -75,7 +75,7 @@ function getUserSubcount() {
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserSubcount = _cancel
+            cancelUser.cancelGetUserSubcount = _cancel
         })
     })
 }
@@ -88,7 +88,7 @@ function getUserLevel() {
         url: `/user/level`,
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserLevel = _cancel
+            cancelUser.cancelGetUserLevel = _cancel
         })
     })
 }
@@ -104,7 +104,7 @@ function getUserBinding(uid: number) {
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserBinding = _cancel
+            cancelUser.cancelGetUserBinding = _cancel
         })
     })
 }
@@ -117,7 +117,7 @@ function getUserVip() {
         url: `/vip/info`,
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetUserVip = _cancel
+            cancelUser.cancelGetUserVip = _cancel
         })
     })
 }
@@ -132,7 +132,7 @@ function dailySignin(type: number = 1) {
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelDailySignin = _cancel
+            cancelUser.cancelDailySignin = _cancel
         })
     })
 }
@@ -146,5 +146,5 @@ export {
     getUserBinding,
     getUserVip,
     dailySignin,
-    cancel
+    cancelUser
 }

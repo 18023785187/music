@@ -7,7 +7,7 @@ import { ROOT_NAVPATH } from '@/pages/path'
 import { useSelector, useDispatch } from 'react-redux'
 import { IRootReducer } from 'store'
 import { playlistAcion } from 'store/acions'
-import _getPlaylistDetail from 'network/playlist/getPlaylistDetail'
+import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
 import Item from './Item'
 
 import LazyLoad from '@/LazyLoad'
@@ -40,6 +40,10 @@ function List(props: IProps) {
                     // console.log(e)
                 }
             })
+        }
+
+        return () => {
+            cancelGetPlaylistDetail.cancelGetPlaylistDetail && cancelGetPlaylistDetail.cancelGetPlaylistDetail()
         }
     }, [id, dispatch])
 

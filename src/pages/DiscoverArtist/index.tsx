@@ -35,6 +35,8 @@ function DiscoverArtist(props: IProps) {
         initial: string | number = -1,
         title: string
     ) => {
+        cancel.cancelGetArtistList && cancel.cancelGetArtistList()
+
         getArtistList(
             limit,
             type,
@@ -45,7 +47,7 @@ function DiscoverArtist(props: IProps) {
             try {
                 setArtists(res.artists)
             } catch (e) {
-                console.log(e)
+                // console.log(e)
             }
         })
     }, [])

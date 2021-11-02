@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import PubSub, { CLOSE } from '@/PubSub'
 import LazyLoad from '@/LazyLoad'
 import { getLoginStatus, cancel } from 'network/login/manage-login'
-import { getUserLevel, getUserVip } from 'network/user/getUserInfo'
+import { getUserLevel, getUserVip, cancelUser } from 'network/user/getUserInfo'
 import { USER } from 'pages/path'
 
 function MyInfo() {
@@ -39,6 +39,8 @@ function MyInfo() {
 
         return (() => {
             cancel.cancelGetLoginStatus && cancel.cancelGetLoginStatus()
+            cancelUser.cancelGetUserVip && cancelUser.cancelGetUserVip()
+            cancelUser.cancelGetUserLevel && cancelUser.cancelGetUserLevel()
         })
     }, [])
 

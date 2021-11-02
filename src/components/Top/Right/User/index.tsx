@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react'
 import Login from './Login'
 import LUser from './User'
-import { getUserStatus, cancel } from 'network/user/getUserInfo'
-import { IInitData } from '../typings'
+import { getUserStatus, cancelUser } from 'network/user/getUserInfo'
+import { IInitData } from '../../typings'
 
 const initData: IInitData = {
     profile: {},
@@ -25,7 +25,7 @@ function User() {
         })
 
         return () => {
-            cancel.cancelGetUserStatus && cancel.cancelGetUserStatus()
+            cancelUser.cancelGetUserStatus && cancelUser.cancelGetUserStatus()
         }
     }, [])
 

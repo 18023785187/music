@@ -1,0 +1,72 @@
+// 右边
+@import url('./user.less');
+
+.right() {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .top-search {
+        position: relative;
+        width: 158px;
+        height: 32px;
+
+        .top-search-bg {
+            width: 158px;
+            height: 32px;
+            margin-top: 19px;
+            background-position: 0 -99px;
+            background-color: #fff;
+            border-radius: 32px;
+
+            .input {
+                position: relative;
+
+                input {
+                    width: 70%;
+                    line-height: @font-size;
+                    margin: 0;
+                    padding: 0;
+                    background: transparent;
+                    border: 0;
+                    margin: 8px 0 0 30px;
+                }
+
+                .ph {
+                    position: absolute;
+                    top: 9px;
+                    left: 30px;
+                    color: #9b9b9b;
+                    cursor: text;
+                }
+            }
+        }
+
+        .u-lstlay {
+            top: 59px;
+            width: 240px;
+        }
+    }
+
+    .topvd {
+        display: inline-block;
+        width: 90px;
+        height: 32px;
+        margin: 19px 0 0 12px;
+        box-sizing: border-box;
+        padding-left: 16px;
+        border: 1px solid #4F4F4F;
+        line-height: 33px;
+        color: #ccc;
+        border-radius: 20px;
+
+        &:hover {
+            color: #fff;
+            border: 1px solid #ccc;
+        }
+    }
+
+    .top-login {
+        .user;
+    }
+}

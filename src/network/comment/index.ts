@@ -46,7 +46,7 @@ function getComment(
             sortType,
             pageNo,
             pageSize,
-            cursor,
+            cursor: cursor ? cursor : 0,
             timestamp: timestamp()
         }),
         cancelToken: new axios.CancelToken(function (cancel) {

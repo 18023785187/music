@@ -5,7 +5,7 @@ import React, { useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { USER, MSG } from 'pages/path'
 import { logout } from 'network/login/manage-login'
-import { IInitData } from '../../typings'
+import { IInitData } from '../../../typings'
 
 interface IProps extends IInitData { }
 

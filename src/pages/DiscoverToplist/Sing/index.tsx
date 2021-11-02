@@ -4,12 +4,12 @@
 import React, { useState, useEffect, useMemo, useCallback, Fragment } from 'react'
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
-import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
 import { SONG, ARTIST, MV } from 'pages/path'
 import LazyLoad from '@/LazyLoad'
 import Comment from 'common/Comment'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import _getComment, { cancelGetComment } from 'network/comment'
+import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
 import { formatDate, songFilter } from 'utils'
 
 interface IProps extends RouteComponentProps {
@@ -100,7 +100,7 @@ function Sing(props: IProps) {
         cancelGetComment.cancelGetComment && cancelGetComment.cancelGetComment()
         let { id } = parse
         if (!id) id = defaultId
-        const { cursor } = comment
+        const { cursor } = comment ?? {}
 
         _getComment(id as string, 2, 3, Number(page) + 1, 20, cursor).then(res => {
             try {
