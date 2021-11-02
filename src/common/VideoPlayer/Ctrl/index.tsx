@@ -177,13 +177,13 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
             endPosRef.current = curPos
 
             ctrlDFlagTimer.current = window.setTimeout(() => {
-
                 setCtrlShow(false)
             }, 3000)
         }
 
         return () => {
             document.removeEventListener('mouseup', MouseUp)
+            window.clearTimeout(ctrlDFlagTimer.current)
         }
     }, [curPos])
 

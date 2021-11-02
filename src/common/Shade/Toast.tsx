@@ -2,7 +2,7 @@
  * 弹窗的弹出提示框
  */
 import React, { useState, useEffect, memo } from 'react'
-import PubSub, { PUBSUB, loginToastData } from '@/PubSub'
+import PubSub, { PUBSUB, loginToastData } from '@/utils/PubSub'
 
 let timer: number
 

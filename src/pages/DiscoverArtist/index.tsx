@@ -11,9 +11,7 @@ import getArtistList, { cancel } from 'network/artist/getArtistList'
 import { ROOT_ARTIST, ALBUM, ARTIST } from 'pages/path'
 import styles from './styles/index.module.less'
 
-interface IProps extends RouteComponentProps {
-
-}
+interface IProps extends RouteComponentProps {}
 
 function DiscoverArtist(props: IProps) {
     const { location } = props

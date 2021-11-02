@@ -1,7 +1,7 @@
 /**
  * 初始化持久存储操作集合
  */
-import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS, PLAY_MODE, PLAY_VOLUME, PLAY_LYRIC } from '@/localStorage'
+import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS, PLAY_MODE, PLAY_VOLUME, PLAY_LYRIC } from '@/utils/localStorage'
 
 function initLocalStoreageOfPlayer(): void {
     if (wLocalStoreage.getItem(PLAY_LOCK) === undefined || wLocalStoreage.getItem(PLAY_LOCK) === null) {

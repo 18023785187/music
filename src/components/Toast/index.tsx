@@ -2,7 +2,7 @@
  * 提示框组件
  */
 import React, { useState, useEffect, useMemo, memo } from 'react'
-import PubSub, { PUBSUB, toastData } from '@/PubSub'
+import PubSub, { PUBSUB, toastData } from '@/utils/PubSub'
 import styles from './styles/index.module.less'
 
 let timer: number

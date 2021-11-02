@@ -4,7 +4,7 @@
 import { resetAudio, addAudio } from '../audio'
 import onPlay from './usePlay'
 import onStop from './useStop'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/utils/localStorage'
 import setState from '../setState'
 
 const oPlay = onPlay()

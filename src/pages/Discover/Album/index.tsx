@@ -9,7 +9,7 @@ import Slide from 'common/Slide'
 import { ROOT_NAVPATH, ALBUM, ARTIST } from 'pages/path'
 import { ISlideRef } from 'common/Slide/typings'
 import _newest, { cancelNewest } from 'network/discover/newest'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 
 function Album() {
     const slideRef = useRef<ISlideRef>(null)

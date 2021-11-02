@@ -4,7 +4,7 @@
 import React, { useState, useContext, MouseEvent, useCallback } from 'react'
 import Context from '../Context'
 import { STATUS, ISetStateProps } from '../typing'
-import PubSub, { PUBSUB } from '@/PubSub'
+import PubSub, { PUBSUB } from '@/utils/PubSub'
 
 function MainLogin() {
     const { setStateCallback, showComponent } = useContext(Context) as ISetStateProps;

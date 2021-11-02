@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { PLAY_LIST, USER } from 'pages/path'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import { getSongDetail } from 'network/song'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 
 interface IProps {
     data: { [propsName: string]: any }

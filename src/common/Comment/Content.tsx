@@ -1,7 +1,7 @@
 /**
  * 评论内容区
  */
-import React from 'react'
+import React, { memo } from 'react'
 import ContentItem from './ContentItem'
 
 interface IProps {
@@ -22,4 +22,4 @@ function Content(props: IProps) {
     )
 }
 
-export default Content
+export default memo(Content)

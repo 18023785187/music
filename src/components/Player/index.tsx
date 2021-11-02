@@ -9,9 +9,9 @@ import Open from './Open'
 import Ctrl from './Ctrl'
 import Playlist from './Playlist'
 import setState from './setState'
-import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS } from '@/localStorage'
+import wLocalStoreage, { PLAY_LOCK, PLAY_LIST, PLAY_POS } from '@/utils/localStorage'
 import initLocalStoreageOfPlayer from './initLoalStoreageOfPlayer'
-import PubSub, { PUBSUB } from '@/PubSub'
+import PubSub, { PUBSUB } from '@/utils/PubSub'
 import styles from './styles/index.module.less'
 
 initLocalStoreageOfPlayer()

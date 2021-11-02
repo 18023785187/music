@@ -2,7 +2,7 @@
  * 歌曲过滤器
  */
 import { getSongDetail, getCheckMusic } from 'network/song'
-import PubSub, { PUBSUB } from '@/PubSub'
+import PubSub, { PUBSUB } from '@/utils/PubSub'
 
 function songFilter(id: number | string, handler: Function, message: string) {
     getCheckMusic(id).then((res: any) => {

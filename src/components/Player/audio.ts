@@ -4,7 +4,7 @@
 import onChange from './useFunc/useChange'
 import onButterChange from './useFunc/useBuffterChange'
 import onStop from './useFunc/useStop'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_MODE, PLAY_LYRIC } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_MODE, PLAY_LYRIC } from '@/utils/localStorage'
 import { getSongUrl, getLyric, cancelGetSong } from 'network/song'
 import setState from './setState'
 import('./useFunc/usePlay').then(res => oPlay = res.default())

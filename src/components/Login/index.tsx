@@ -1,7 +1,7 @@
 // 登录窗口入口
 import React, { useState, useEffect, Fragment } from 'react'
 import Login from './Login'
-import PubSub, { CLOSE, loginWindowClose } from '@/PubSub'
+import PubSub, { CLOSE, loginWindowClose } from '@/utils/PubSub'
 
 function Temp() {
     // 关闭窗体用

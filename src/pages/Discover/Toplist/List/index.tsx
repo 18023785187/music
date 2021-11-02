@@ -10,7 +10,7 @@ import { playlistAcion } from 'store/acions'
 import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
 import Item from './Item'
 
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 
 interface IProps {
     id: number,

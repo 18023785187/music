@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react'
 import { DJRADIO, USER } from 'pages/path'
 import { Link } from 'react-router-dom'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 
 interface IProps {
     data: { [propName: string]: any }

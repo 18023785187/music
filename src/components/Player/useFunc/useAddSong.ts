@@ -1,6 +1,6 @@
 // 向列表添加歌曲
 import setState from '../setState'
-import wLocalStoreage, { PLAY_LIST } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST } from '@/utils/localStorage'
 
 function useAddSong(): (info: { [propName: string]: any }) => void {
 

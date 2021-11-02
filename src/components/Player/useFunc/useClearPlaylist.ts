@@ -1,7 +1,7 @@
 /**
  * 清空歌曲列表
  */
-import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_LYRIC } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_LYRIC } from '@/utils/localStorage'
 import setState from '../setState'
 import onChange from './useChange'
 import onStop from './useStop'

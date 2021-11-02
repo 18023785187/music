@@ -1,7 +1,7 @@
 /**
  * 初始化持久存储对象
  */
-import wLocalStoreage, { VIDEO_VOLUME } from '@/localStorage'
+import wLocalStoreage, { VIDEO_VOLUME } from '@/utils/localStorage'
 
 function initLocalStoreage(): void {
     if (wLocalStoreage.getItem(VIDEO_VOLUME) === undefined || wLocalStoreage.getItem(VIDEO_VOLUME) === null) {

@@ -1,7 +1,7 @@
 // 播放歌曲
 import onPlay from './usePlay'
 import { addAudio, resetAudio } from '../audio'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS } from '@/utils/localStorage'
 import setState from '../setState'
 
 const oPlay = onPlay()

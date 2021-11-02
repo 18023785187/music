@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { USER } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import { formatDate } from 'utils'
 
 interface IProps {

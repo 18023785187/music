@@ -2,7 +2,7 @@
  * 未登录状态
  */
 import React, { useCallback } from 'react'
-import PubSub, { CLOSE } from '@/PubSub'
+import PubSub, { CLOSE } from '@/utils/PubSub'
 
 function Login() {
     // 显示登录弹窗

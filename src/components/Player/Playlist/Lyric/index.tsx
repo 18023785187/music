@@ -4,7 +4,7 @@
 import React, { useState, useRef, useEffect,useLayoutEffect, useCallback, useMemo } from 'react'
 import Scroll from '../Scroll'
 import { IScrollRef } from '../typing'
-import wLocalStorage, { PLAY_LYRIC } from '@/localStorage'
+import wLocalStorage, { PLAY_LYRIC } from '@/utils/localStorage'
 import setState from '../../setState'
 import audio from '../../audio'
 import dateFormTime from './dateFormTime'

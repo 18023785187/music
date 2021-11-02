@@ -9,6 +9,8 @@ import formatDate from "./formatDate";
 import songFilter from './songFilter'
 import checkNum from './checkNum'
 import testPerformance from "./testPerformance";
+import LazyLoad from "./LazyLoad";
+import PubSub from "./PubSub";
 
 export {
     timestamp,
@@ -17,5 +19,7 @@ export {
     formatDate,
     songFilter,
     checkNum,
-    testPerformance
+    testPerformance,
+    LazyLoad,
+    PubSub
 }

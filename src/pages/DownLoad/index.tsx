@@ -10,7 +10,7 @@ import p3music from 'assets/img/download/p3music.jpg'
 import p4music from 'assets/img/download/p4music.jpg'
 import p5music from 'assets/img/download/p5music.jpg'
 import downloadQr from 'assets/img/download/download.png'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import styles from './styles/index.module.less'
 
 function DownLoad() {

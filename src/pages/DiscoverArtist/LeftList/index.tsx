@@ -24,6 +24,9 @@ function LeftList(props: IProps) {
     useEffect(() => {
         curLink[0] && getArtistListCallback(...curLink[0].params, parse.initial ? parse.initial as string : -1, curLink[0].name)
 
+        return () => {
+            cancel.cancelGetArtistList && cancel.cancelGetArtistList();
+        }
     }, [curLink, getArtistListCallback, parse])
 
     // 点击取消上次请求并刷新页面

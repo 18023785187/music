@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTIST } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import styles from './styles/index.module.less'
 
 interface IProps {

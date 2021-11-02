@@ -5,7 +5,7 @@ import React, { useEffect, memo, useCallback, useMemo } from 'react'
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import { ROOT_NAVPATH } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 
 interface IProps extends RouteComponentProps {
     toplistData: { [propName: string]: any }[]

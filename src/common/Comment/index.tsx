@@ -1,7 +1,7 @@
 /**
  * 评论组件
  */
-import React from 'react'
+import React, { memo } from 'react'
 import UserComment from './UserComment'
 import Content from './Content'
 import Page from '../Page'
@@ -41,4 +41,4 @@ function Comment(props: IProps) {
     )
 }
 
-export default Comment
+export default memo(Comment)

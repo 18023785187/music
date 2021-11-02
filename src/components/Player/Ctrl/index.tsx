@@ -2,7 +2,7 @@
  * 控制器
  */
 import React, { useState, useCallback, useRef, useEffect, MouseEvent } from 'react'
-import wLocalStoreage, { PLAY_MODE, PLAY_VOLUME } from '@/localStorage'
+import wLocalStoreage, { PLAY_MODE, PLAY_VOLUME } from '@/utils/localStorage'
 import { changeAudioVolume } from '../audio'
 
 const POS = 81

@@ -6,8 +6,8 @@ import Footer from '../Footer'
 import Context from '../Context'
 import { getCountriesCodeList, captchaSent, captchaVerify, cellphone } from 'network/login/phone'
 import { STATUS, ISetStateProps } from '../typing'
-import wLocalStorage, { COUNTRIES_CODE_LIST } from '@/localStorage'
-import PubSub, { PUBSUB } from '@/PubSub'
+import wLocalStorage, { COUNTRIES_CODE_LIST } from '@/utils/localStorage'
+import PubSub, { PUBSUB } from '@/utils/PubSub'
 
 const phoneExp: RegExp = /^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[01356789]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|6[567]\d{2}|4[579]\d{2})\d{6}$/
 enum ERROR_STYLE {

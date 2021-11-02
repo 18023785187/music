@@ -4,7 +4,7 @@
 import React, { useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { MV, VIDEO, ARTIST } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import { formatDate } from 'utils'
 import styles from './styles/index.module.less'
 

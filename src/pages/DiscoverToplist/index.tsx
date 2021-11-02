@@ -5,16 +5,14 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { IRootReducer } from 'store'
 import { toplistAcion } from 'store/acions'
-import SessionStorage, { TOPLIST } from '@/sessionStorage'
+import SessionStorage, { TOPLIST } from '@/utils/sessionStorage'
 import _getToplist, { cancelGetToplist } from 'network/toplist/toplist'
 import Left from './Left'
 import Header from './Header'
 import Sing from './Sing'
 import styles from './styles/index.module.less'
 
-interface IProps {
-
-}
+interface IProps {}
 
 function DiscoverToplist(props: IProps) {
     const toplistData: { [propName: string]: any }[] = useSelector((state: IRootReducer) => state.toplistReducer.toplist);

@@ -8,5 +8,5 @@ export default new LazyLoad({
     preload: 1.2,
     loading: temp,
     error: temp,
-    eventListener: ['scroll', 'resize', 'click']
+    eventListener: ['scroll', 'resize']
 })

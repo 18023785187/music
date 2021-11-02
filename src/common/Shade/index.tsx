@@ -5,7 +5,7 @@
 import React, { useRef, useEffect, useCallback, memo } from 'react'
 import Title from './Title'
 import Toast from './Toast'
-import PubSub, { CLOSE } from '@/PubSub'
+import PubSub, { CLOSE } from '@/utils/PubSub'
 import styles from './styles/index.module.less'
 
 interface IProps {

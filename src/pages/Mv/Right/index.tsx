@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import MvAbout from 'common/MvAbout'
 import { related, cancelMv } from 'network/video'
 import { MV, VIDEO, ARTIST, USER } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import { formatDate } from 'utils'
 
 interface IProps {

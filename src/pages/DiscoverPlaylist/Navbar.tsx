@@ -6,7 +6,7 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import { ROOT_NAVPATH } from 'pages/path'
 import _getPlaylistCatlist from 'network/playlist/getPlaylistCatlist'
-import wLocalStoreage, { CATLIST } from '@/localStorage'
+import wLocalStoreage, { CATLIST } from '@/utils/localStorage'
 
 interface IProps extends RouteComponentProps {
 

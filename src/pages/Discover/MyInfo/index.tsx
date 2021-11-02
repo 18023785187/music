@@ -3,8 +3,8 @@
  */
 import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import PubSub, { CLOSE } from '@/PubSub'
-import LazyLoad from '@/LazyLoad'
+import PubSub, { CLOSE } from '@/utils/PubSub'
+import LazyLoad from '@/utils/LazyLoad'
 import { getLoginStatus, cancel } from 'network/login/manage-login'
 import { getUserLevel, getUserVip, cancelUser } from 'network/user/getUserInfo'
 import { USER } from 'pages/path'
@@ -64,12 +64,12 @@ function MyInfo() {
             return (
                 <div className='info2 v-hd2 s-bg-5'>
                     <div className='user-info'>
-                        <Link className='img' to={`${USER}/${userId}`}>
+                        <Link className='img' to={`${USER.HOME}?id=${userId}`}>
                             <img data-src={avatarUrl + '?param=80y80'} alt="用户头像" width={80} height={80} />
                         </Link>
                         <div className='info'>
                             <h4 style={{ overflow: 'hidden' }}>
-                                <Link className='f-thide nm' to={`${USER}/${userId}`}>{nickname}</Link>
+                                <Link className='f-thide nm' to={`${USER.HOME}?id=${userId}`}>{nickname}</Link>
                                 <span className='vip-level' style={{ backgroundImage: `url(${redVipDynamicIconUrl})` }}></span>
                             </h4>
                             <p>

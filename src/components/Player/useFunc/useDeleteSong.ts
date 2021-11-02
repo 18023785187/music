@@ -3,7 +3,7 @@
  */
 import setState from '../setState'
 import onPlaySong from './usePlaySong'
-import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_LYRIC } from '@/localStorage'
+import wLocalStoreage, { PLAY_LIST, PLAY_POS, PLAY_LYRIC } from '@/utils/localStorage'
 import { clearAudioUrl } from '../audio'
 
 const oPlaySong = onPlaySong()

@@ -8,7 +8,7 @@ import Phone from './Phone'
 import Enroll from './Enroll'
 import Context from './Context'
 import { STATUS } from './typing'
-import PubSub, { PUBSUB, CLOSE } from '@/PubSub'
+import PubSub, { PUBSUB, CLOSE } from '@/utils/PubSub'
 import styles from './styles/index.module.less'
 
 function Login() {

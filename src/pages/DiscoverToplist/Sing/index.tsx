@@ -5,7 +5,7 @@ import React, { useState, useEffect, useMemo, useCallback, Fragment } from 'reac
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import { SONG, ARTIST, MV } from 'pages/path'
-import LazyLoad from '@/LazyLoad'
+import LazyLoad from '@/utils/LazyLoad'
 import Comment from 'common/Comment'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import _getComment, { cancelGetComment } from 'network/comment'
@@ -68,13 +68,13 @@ function Sing(props: IProps) {
         if (!id) id = defaultId
 
         getCommentHot()
-        getComment()
 
         async function getCommentHot() {
             const res: any = await _getComment(id as string)
 
             try {
                 setCommentHot(res.data)
+                getComment()
             } catch (e) {
 
             }
