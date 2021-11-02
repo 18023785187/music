@@ -9,7 +9,8 @@ interface IC {
     cancelGetSongDetail?: Canceler,
     cancelGetSongUrl?: Canceler,
     cancelGetCheckMusic?: Canceler,
-    cancelGetLyric?: Canceler
+    cancelGetLyric?: Canceler,
+    cancelGetSimiSong?: Canceler
 }
 
 const cancelGetSong: IC = {}
@@ -78,4 +79,27 @@ function getLyric(id: number | string) {
     })
 }
 
-export { getSongDetail, getSongUrl, getCheckMusic, getLyric, cancelGetSong }
+/**
+ * 获取相似歌曲
+ */
+function getSimiSong(id: number | string) {
+    return request({
+        url: `/simi/song`,
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelGetSong.cancelGetSimiSong = cancel
+        })
+    })
+}
+
+export {
+    getSongDetail,
+    getSongUrl,
+    getCheckMusic,
+    getLyric,
+    getSimiSong,
+    cancelGetSong
+}

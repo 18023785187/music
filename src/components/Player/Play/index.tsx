@@ -1,9 +1,9 @@
 /**
  * 播放器
  */
-import React, { useState, useRef, useEffect, useCallback, MouseEvent } from 'react'
+import React, { useState, useRef, useEffect, useCallback, MouseEvent, useMemo, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { SONG, MV, USER } from 'pages/path'
+import { SONG, MV, ARTIST } from 'pages/path'
 import setState from '../setState'
 import { changeAudio } from '../audio'
 import { formatDate } from 'utils'
@@ -17,7 +17,6 @@ interface IProps {
 function Play(props: IProps) {
     const { play } = props
     const { dt, name, id, mv, ar } = play
-    const { id: userId, name: userName } = (ar || [{}])[0]
     const posElRef = useRef<HTMLDivElement>(null)
     const flagRef = useRef<boolean>(false)
     // 暴露出去的curTime
@@ -65,12 +64,32 @@ function Play(props: IProps) {
         }
     }, [])
 
+    // 歌手列表展示
+    const Ar = useMemo(() => {
+        return <span className='by' title={ar.map((a: any) => a.name).join('/')}>
+            {
+                ar.map((a: any, i: number) => {
+                    const { id, name } = a
+
+                    return i !== ar.length - 1 ? (
+                        <Fragment key={id}>
+                            <Link className='f-thide hover' to={ARTIST + `?id=${id}`}>{name}</Link>
+                            /
+                        </Fragment>
+                    ) : (
+                        <Link key={id} className='f-thide hover' to={ARTIST + `?id=${id}`}>{name}</Link>
+                    )
+                })
+            }
+        </span>
+    }, [ar])
+
     return (
         <div className='play' onMouseMove={MouseMove}>
             <div className='words'>
                 {id ? <Link className='f-thide name hover' to={SONG + `?id=${id}`}>{name}</Link> : ''}
                 {mv ? <Link className='mv playbar-img' to={MV + `?id=${mv}`} title='MV'></Link> : ''}
-                {userId ? <Link className='by f-thide hover' to={USER.HOME + `?id=${userId}`} title={userName}>{userName}</Link> : ''}
+                {Ar}
             </div>
             <div className='m-pbar'>
                 <div className='barbg statbar' ref={posElRef} onMouseDown={MouseDown}>

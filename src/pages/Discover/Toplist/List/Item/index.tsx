@@ -41,7 +41,7 @@ function Item(props: IProps) {
     return (
         <li>
             <span className={`no ${index <= 3 ? 'no-top' : ''}`}>{index}</span>
-            <Link className='hover f-thide' to={`${SONG}/${id}`} title={name}>{name}</Link>
+            <Link className='hover f-thide' to={`${SONG}?id=${id}`} title={name}>{name}</Link>
 
             <div className='oper'>
                 <i className='v-hd2 pointer s-bg-11' title='播放' onClick={() => playSongClick(item.id)}></i>

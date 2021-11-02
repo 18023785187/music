@@ -17,7 +17,7 @@ function Item(props: any) {
         <div className='recommend-item'>
             <div className='cover'>
                 <img data-src={coverImgUrl ? coverImgUrl + '?param=140y140' : picUrl + '?param=140y140'} alt={name} width={140} height={140} />
-                <Link className='coverall u-cover-1' title={name} to={`${PLAY_LIST}/${id}`}></Link>
+                <Link className='coverall u-cover-1' title={name} to={`${PLAY_LIST}?id=${id}`}></Link>
                 <div className='bottom coverall'>
                     <span className='icon-play iconall pointer' title='播放'></span>
                     <span className='icon-headset iconall'></span>
@@ -25,7 +25,7 @@ function Item(props: any) {
                 </div>
             </div>
             <p className='dec'>
-                <Link className='hover' title={name} to={''}>{name}</Link>
+                <Link className='hover' title={name} to={`${PLAY_LIST}?id=${id}`}>{name}</Link>
             </p>
         </div>
     )

@@ -3,10 +3,10 @@
  */
 import React, { useState, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
-import MvAbout from 'common/MvAbout'
+import About from 'common/About'
 import { related, cancelMv } from 'network/video'
 import { MV, VIDEO, ARTIST, USER } from 'pages/path'
-import LazyLoad from '@/utils/LazyLoad'
+import LazyLoad from 'utils/LazyLoad'
 import { formatDate, checkNum } from 'utils'
 
 interface IProps {
@@ -89,8 +89,8 @@ function Right(props: IProps) {
                         })
                     }
                 </ul>
-                {/*  */}
-                <MvAbout />
+                {/* 关于 */}
+                <About />
             </div>
         </div>
     )

@@ -18,9 +18,9 @@ function Lyric(props: IProps) {
     const [lyricMap, setLyricMap] = useState<{ [propName: string]: any }>(JSON.parse(wLocalStorage.getItem(PLAY_LYRIC) as string))
     const { tlyric, lrc } = lyricMap[id] ?? ({ tlyric: { lyric: '' }, lrc: { lyric: '' } })
     // 外语版的翻译，如果是国语则为空
-    const { lyric: b } = tlyric
+    const { lyric: b } = tlyric ?? { lyric: '' }
     // 歌词
-    const { lyric: t } = lrc
+    const { lyric: t } = lrc ?? { lyric: '' }
 
     setState.setLyricMap = setLyricMap
 

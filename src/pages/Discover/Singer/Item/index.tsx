@@ -14,7 +14,7 @@ function Item(props: IProps) {
     const { id, name, picUrl, alias } = item
 
     return (
-        <Link to={`${USER.HOME}/${id}`}>
+        <Link to={`${USER.HOME}?id=${id}`}>
             <div className='head'>
                 <img data-src={picUrl + '?param=62y62'} alt={name} width={62} height={62} />
             </div>

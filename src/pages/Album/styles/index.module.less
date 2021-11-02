@@ -1,1 +1,20 @@
 // 专辑页
+@import url('~assets/css/constant.less');
+@import url('./left.less');
+@import url('./right.less');
+
+.album {
+    :global {
+        display: flex;
+        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+
+        .album-left {
+            flex: 1;
+            .left;
+        }
+
+        .album-right {
+            .right;
+        }
+    }
+}

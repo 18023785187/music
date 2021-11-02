@@ -66,7 +66,7 @@ function List(props: IProps) {
             <dt className='top'>
                 <div className='cover'>
                     <img className='j-img' data-src={imgUrl + '?param=100y100'} alt={name} width={100} height={100} />
-                    <Link className='coverall msk-coverall' to={`${ROOT_NAVPATH.TOPLIST}/${id}`} title={name}></Link>
+                    <Link className='coverall msk-coverall' to={`${ROOT_NAVPATH.TOPLIST}?id=${id}`} title={name}></Link>
                 </div>
                 <div className='tit'>
                     <Link className='hover' to={`${ROOT_NAVPATH.TOPLIST}?id=${id}`} title={name}>

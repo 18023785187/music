@@ -67,14 +67,14 @@ function Album() {
                                                         <li className='v-hd2' key={id}>
                                                             <div className='cover'>
                                                                 <img data-src={picUrl + '?param=100y100'} alt={name} width={100} height={100} />
-                                                                <Link className='hover coverall' title={name} to={`${ALBUM}/${id}`}></Link>
+                                                                <Link className='hover coverall' title={name} to={`${ALBUM}?id=${id}`}></Link>
                                                                 <i className='play iconall pointer' title='播放'></i>
                                                             </div>
                                                             <p className='f-thide'>
-                                                                <Link className='hover' title={name} to={`${ALBUM}/${id}`}>{name}</Link>
+                                                                <Link className='hover' title={name} to={`${ALBUM}?id=${id}`}>{name}</Link>
                                                             </p>
                                                             <p className='f-thide' title={artist.name}>
-                                                                <Link className='hover' to={`${ARTIST}/${artist.id}`}>{artist.name}</Link>
+                                                                <Link className='hover' to={`${ARTIST}?id=${artist.id}`}>{artist.name}</Link>
                                                             </p>
                                                         </li>
                                                     )

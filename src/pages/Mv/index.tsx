@@ -9,9 +9,7 @@ import Left from './Left'
 import Right from './Right'
 import styles from './styles/index.module.less'
 
-interface IProps extends RouteComponentProps {
-
-}
+interface IProps extends RouteComponentProps {}
 
 function Mv(props: IProps) {
     const { location } = props

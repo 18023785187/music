@@ -8,10 +8,10 @@ import LeftList from './LeftList'
 import ArtistItem from 'common/ArtistItem'
 import { blk, initial } from './constant'
 import getArtistList, { cancel } from 'network/artist/getArtistList'
-import { ROOT_ARTIST, ALBUM, ARTIST } from 'pages/path'
+import { ROOT_ARTIST, USER, ARTIST } from 'pages/path'
 import styles from './styles/index.module.less'
 
-interface IProps extends RouteComponentProps {}
+interface IProps extends RouteComponentProps { }
 
 function DiscoverArtist(props: IProps) {
     const { location } = props
@@ -111,9 +111,9 @@ function DiscoverArtist(props: IProps) {
                                     artists
                                         .filter((_, index) => index > 9)
                                         .map(artist => <li className='sml' key={artist.id}>
-                                            <Link className='hover f-thide nm' to={`${ALBUM}/${artist.id}`} title={`${artist.name}的音乐`}>{artist.name}</Link>
+                                            <Link className='hover f-thide nm' to={`${ARTIST}?id=${artist.id}`} title={`${artist.name}的音乐`}>{artist.name}</Link>
                                             {
-                                                artist.accountId ? <Link className='i' to={`${ARTIST}/${artist.accountId}`} title={artist.name + '的个人主页'}>
+                                                artist.accountId ? <Link className='i' to={`/${USER.HOME}?id=${artist.accountId}`} title={artist.name + '的个人主页'}>
                                                     <i className='icon1 u-icn5'></i>
                                                 </Link> : <></>
                                             }

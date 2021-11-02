@@ -3,7 +3,7 @@
  */
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ARTIST } from 'pages/path'
+import { ARTIST, USER } from 'pages/path'
 import LazyLoad from '@/utils/LazyLoad'
 import styles from './styles/index.module.less'
 
@@ -23,12 +23,12 @@ function ArtistItem(props: IProps) {
         <li className={styles.artist}>
             <div className='cover'>
                 <img data-src={picUrl + '?param=130y130'} alt={name} />
-                <Link className='coverall u-cover-5' to={`${ARTIST}/${id}`} title={name + '的音乐'}></Link>
+                <Link className='coverall u-cover-5' to={`${ARTIST}?id=${id}`} title={name + '的音乐'}></Link>
             </div>
             <p>
-                <Link className='hover f-thide' to={`${ARTIST}/${id}`} title={name + '的音乐'}>{name}</Link>
+                <Link className='hover f-thide' to={`${ARTIST}?id=${id}`} title={name + '的音乐'}>{name}</Link>
                 {
-                    accountId ? <Link to={`${ARTIST}/${accountId}`} title={name + '的个人主页'}>
+                    accountId ? <Link to={`/${USER.HOME}?id=${accountId}`} title={name + '的个人主页'}>
                         <i className='icon1 u-icn5'></i>
                     </Link> : <></>
                 }

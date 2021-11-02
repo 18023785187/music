@@ -1,1 +1,20 @@
 // 歌曲页
+@import url('~assets/css/constant.less');
+@import url('./left.less');
+@import url('./right.less');
+
+.song {
+    :global {
+        display: flex;
+        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+
+        .song-left {
+            flex: 1;
+            .left;
+        }
+
+        .song-right {
+            .right;
+        }
+    }
+}
