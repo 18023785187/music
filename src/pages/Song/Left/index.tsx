@@ -2,6 +2,7 @@
  * 左边
  */
 import React, { useState, useEffect, useCallback, memo } from 'react'
+import Content from './Content'
 import Comment from 'common/Comment'
 import _getComment, { cancelGetComment } from 'network/comment'
 
@@ -66,6 +67,8 @@ function Left(props: IProps) {
     return (
         <div className='song-left'>
             <div className='g-wrap6'>
+                {/* 内容展示区 */}
+                <Content id={id} />
                 {/* 评论 */}
                 <Comment commentHot={commentHot} comment={comment} callback={getComment} />
             </div>

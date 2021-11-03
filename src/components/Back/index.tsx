@@ -10,13 +10,19 @@ function Back() {
 
     useEffect(() => {
         // 监听窗口滚动
-        document.addEventListener('scroll', () => {
+        document.addEventListener('scroll', scrollTo)
+
+        function scrollTo() {
             if (window.pageYOffset === 0) {
                 setShow(false)
             } else {
                 setShow(true)
             }
-        })
+        }
+
+        return () => {
+            document.removeEventListener('scroll', scrollTo)
+        }
     }, [])
 
     const display = useMemo(() => ({
