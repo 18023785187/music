@@ -66,9 +66,9 @@ function Play(props: IProps) {
 
     // 歌手列表展示
     const Ar = useMemo(() => {
-        return <span className='by' title={ar.map((a: any) => a.name).join('/')}>
+        return <span className='by' title={ar ? ar.map((a: any) => a.name).join('/') : ''}>
             {
-                ar.map((a: any, i: number) => {
+                ar && ar.map((a: any, i: number) => {
                     const { id, name } = a
 
                     return i !== ar.length - 1 ? (
