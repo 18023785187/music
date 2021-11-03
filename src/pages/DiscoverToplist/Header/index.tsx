@@ -77,7 +77,7 @@ function Header(props: IProps) {
                     <span className='s-fc3 sep'>最近更新：{formatDate(new Date(updateTime), 'MM月dd日')}</span>
                     <span className='s-fc4'>（{updateFrequency}）</span>
                 </div>
-                <Buttons dynamic={dynamic} />
+                <Buttons dynamic={dynamic} playFunc={() => {}} addFunc={() => {}} />
             </div>
         </>
     )

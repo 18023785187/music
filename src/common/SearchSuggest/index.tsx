@@ -75,7 +75,7 @@ function SearchSuggest(props: IProps) {
 
                                     return (
                                         <li key={id} className='f-thide'>
-                                            <span className='item s-fc0 f-thide pointer' onMouseDown={() => history.push('/' + data.order[index] + `?id=${id}`)}>
+                                            <span className='item s-fc0 f-thide pointer' onMouseDown={() => history.push('/' + data.order[index].slice(0, -1) + `?id=${id}`)}>
                                                 <span dangerouslySetInnerHTML={{ __html: name.replace(new RegExp(value, 'g'), `<span class='s-fc7'>${value}</span>`) }}></span>
                                                 {userName ? <span dangerouslySetInnerHTML={{ __html: `-${userName.replace(new RegExp(value, 'g'), `<span class='s-fc7'>${value}</span>`)}` }}></span> : ''}
                                             </span>

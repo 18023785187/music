@@ -4,7 +4,6 @@
 import axios, { Canceler } from 'axios'
 import request from '../request'
 import queryStringConfig from '../query-string-config'
-import { timestamp } from 'utils'
 
 interface IC {
     cancelGetComment?: Canceler
@@ -46,8 +45,7 @@ function getComment(
             sortType,
             pageNo,
             pageSize,
-            cursor: cursor ? cursor : 0,
-            timestamp: timestamp()
+            cursor: cursor ? cursor : 0
         }),
         cancelToken: new axios.CancelToken(function (cancel) {
             //cancel参数是一个函数，调用该函数取消请求

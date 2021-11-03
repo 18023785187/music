@@ -1,28 +1,61 @@
 // 内容展示区
 
 .content() {
-    display: flex;
-    margin-top: -10px;
+    .content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -10px;
 
-    .cvrwrap {
-        position: relative;
-        width: 206px;
+        .cvrwrap {
+            position: relative;
+            width: 206px;
 
-        .out {
-            display: flex;
-            margin: 20px 0 0 46px;
+            .out {
+                display: flex;
+                margin: 20px 0 0 46px;
 
-            .des {
-                text-decoration: underline;
+                .des {
+                    text-decoration: underline;
+                    margin: 0;
+                }
             }
+        }
+
+        .cnt {
+            width: 414px;
+
+            .hd {
+                display: flex;
+                align-items: center;
+
+                .lab {
+                    margin-right: 10px;
+                }
+
+                .tit {
+                    position: relative;
+                    top: -3px;
+                    font-size: 24px;
+
+                    em {
+                        margin-right: 14px;
+                    }
+
+                    * {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        .des {
+            margin: 10px 0;
         }
     }
 
-    .cnt {
-        width: 414px;
+    .lrc-user {
+        text-align: right;
+        margin-top: 48px;
+        line-height: 30px;
     }
-
-    // .des {
-    //     margin: 10px 0;
-    // }
 }

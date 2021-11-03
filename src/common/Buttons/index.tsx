@@ -5,21 +5,23 @@ import React from 'react'
 import styles from './styles/index.module.less'
 
 interface IProps {
-    dynamic: { [propName: string]: any }
+    dynamic: { [propName: string]: any },
+    playFunc: () => void,
+    addFunc: () => void
 }
 
 function Buttons(props: IProps) {
-    const { dynamic } = props
+    const { dynamic, playFunc, addFunc } = props
 
     return (
         <div className={styles['btns']}>
-            <i className='u-btn2 btn-img u-btn2-2 play' title="播放">
+            <i className='u-btn2 btn-img u-btn2-2 play' title="播放" onClick={playFunc}>
                 <i className='btn-img u-btn2'>
                     <em className="ply btn-img"></em>
                     播放
                 </i>
             </i>
-            <i className='btn-img u-btni btn-add' title="添加到播放列表"></i>
+            <i className='btn-img u-btni btn-add' title="添加到播放列表" onClick={addFunc}></i>
             <i className='btn-img u-btni btni u-btn-3'>
                 <i className='btn-fav btn-img'>{dynamic.bookedCount ? `(${dynamic.bookedCount})` : '收藏'}</i>
             </i>
