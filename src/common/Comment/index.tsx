@@ -29,12 +29,16 @@ function Comment(props: IProps) {
             </div>
             {/* 发表评论框 */}
             <UserComment />
-            {/* 精彩评论 */}
-            {commentHot ? <Content title={'精彩评论'} comments={commentHot?.comments} /> : ''}
-            <br />
-            <br />
-            {/* 最新评论 */}
-            <Content title={`最新评论(${comment?.totalCount})`} comments={comment?.comments} />
+            {
+                comment?.totalCount ? (<>
+                    {/* 精彩评论 */}
+                    {commentHot ? <Content title={'精彩评论'} comments={commentHot?.comments} /> : <></>}
+                    <br />
+                    <br />
+                    {/* 最新评论 */}
+                    <Content title={`最新评论(${comment?.totalCount})`} comments={comment?.comments} />
+                </>) : <></>
+            }
             {/* 页码 */}
             <Page count={comment?.totalCount} limit={20} initPage={0} callback={callback} />
         </div>

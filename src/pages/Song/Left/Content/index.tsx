@@ -9,6 +9,7 @@ import { songFilter } from 'utils'
 import { getSongDetail, cancelGetSong } from 'network/song'
 import wLocalStorage, { PLAY_LIST } from 'utils/localStorage'
 import Buttons from 'common/Buttons'
+import Lyric from './Lyric'
 
 interface IProps {
     id: string
@@ -103,6 +104,7 @@ function Content(props: IProps) {
                     </p>
                     <p className='des s-fc4'>所属专辑：<Link className='s-fc7 hover' to={ALBUM + `?id=${aid}`}>{aname}</Link></p>
                     <Buttons dynamic={{}} playFunc={() => { playSongClick(id) }} addFunc={() => { addSongClick(id) }} />
+                    <Lyric id={id} />
                 </div>
             </div>
             {/* 底部 */}
