@@ -24,6 +24,7 @@ function Search(props: IProps) {
 
     useEffect(() => {
         const { s, type, offset } = parse
+
         search(s as string, type as string, offset as string ?? 0).then((res: any) => {
             try {
                 setData(res.result)
@@ -44,35 +45,35 @@ function Search(props: IProps) {
         switch (type) {
             case '1':
                 text = '首单曲'
-                count = data.songCount
+                count = data.songCount ?? 0
                 break;
             case '100':
                 text = '个歌手'
-                count = data.artistCount
+                count = data.artistCount ?? 0
                 break;
             case '10':
                 text = '张专辑'
-                count = data.albumCount
+                count = data.albumCount ?? 0
                 break;
             case '1014':
                 text = '个视频'
-                count = data.videoCount
+                count = data.videoCount ?? 0
                 break;
             case '1006':
                 text = '个歌词'
-                count = data.songCount
+                count = data.songCount ?? 0
                 break;
             case '1000':
                 text = '个歌单'
-                count = data.playlistCount
+                count = data.playlistCount ?? 0
                 break;
             case '1009':
                 text = '个节目'
-                count = data.djRadiosCount
+                count = data.djRadiosCount ?? 0
                 break;
             case '1002':
                 text = '个用户'
-                count = data.userprofileCount
+                count = data.userprofileCount ?? 0
                 break;
             default:
                 break;

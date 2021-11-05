@@ -31,7 +31,7 @@ function Songs(props: IProps) {
     return (
         <div className='songs'>
             {
-                songs.songs && songs.songs.map((item: any, index: number) => {
+                songs?.songs && songs.songs.map((item: any, index: number) => {
                     const { id, name, mvid, artists, duration, album } = item
                     const { name: albumName, id: albumId } = album
 

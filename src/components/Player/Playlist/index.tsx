@@ -71,7 +71,7 @@ function Playlist(props: IProps) {
                     <List playlist={playlist} curPos={curPos} />
                     {/* 疑问按钮 */}
                     <div className='ask'>
-                        <i className='ico-ask playlist pointer'></i>
+                        <i className='ico-ask playlist playlist_img pointer'></i>
                     </div>
                     <div className='msk2'></div>
                     {/* 歌词位 */}
