@@ -1,7 +1,7 @@
 /**
  * 专辑页
  */
-import React, { useMemo } from 'react'
+import React, { useMemo, memo } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import Left from './Left'
@@ -25,4 +25,4 @@ function Album(props: IProps) {
     )
 }
 
-export default Album
+export default memo(Album)

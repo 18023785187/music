@@ -1,7 +1,7 @@
 /**
  *  歌曲单
  */
-import React, { useState, useEffect, useMemo, useCallback, Fragment } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, Fragment, memo } from 'react'
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
 import qs from 'qs'
 import { SONG, ARTIST, MV } from 'pages/path'
@@ -218,4 +218,4 @@ function Sing(props: IProps) {
     )
 }
 
-export default withRouter(Sing)
+export default memo(withRouter(Sing))
