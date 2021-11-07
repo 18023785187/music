@@ -4,7 +4,6 @@
 import axios, { Canceler } from 'axios'
 import request from '../request'
 import queryStringConfig from '../query-string-config'
-import { timestamp } from 'utils'
 
 interface IC {
     cancelGetPlaylist?: Canceler
@@ -24,7 +23,6 @@ function getPlaylist(cat: string = '全部', offset: number | string = 0) {
     return request({
         url: `/top/playlist`,
         ...queryStringConfig({
-            timestamp: timestamp(),
             cat,
             offset: 35 * (typeof offset === 'number' ? offset : parseInt(offset)),
             limit: 35,

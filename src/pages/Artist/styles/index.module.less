@@ -1,0 +1,20 @@
+// 歌手详情页
+@import url('~assets/css/constant.less');
+@import url('./left.less');
+@import url('./right.less');
+
+.artist {
+    :global {
+        display: flex;
+        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+
+        .artist-left {
+            flex: 1;
+            .left;
+        }
+
+        .artist-right {
+            .right;
+        }
+    }
+}
