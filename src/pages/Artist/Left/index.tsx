@@ -2,17 +2,19 @@
  * 左边
  */
 import React, { useState, useEffect, memo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import { USER } from 'pages/path'
 import { getArtistDetail, cancelArtist } from 'network/artist'
-import LazyLoad from 'utils/LazyLoad'
+import { artists } from '../constant'
+import { LazyLoad } from 'utils'
 
-interface IProps {
+interface IProps extends RouteComponentProps {
     id: string
 }
 
 function Left(props: IProps) {
-    const { id } = props
+    const { id, location } = props
+    const { pathname } = location
 
     // 歌手详请集合
     const [artistDetail, setArtistDetail] = useState<{ [propName: string]: any }>({})
@@ -45,9 +47,23 @@ function Left(props: IProps) {
                     {user ? <Link className='btn-rz f-tid iconall pointer' to={USER.HOME + `?id=${user.userId}`}>Ta的个人主页</Link> : <></>}
                     <i className='btnfav f-tid iconall pointer'></i>
                 </div>
+                {/* 导航 */}
+                <ul className='m-tabs tab'>
+                    {
+                        artists.map(((artist, index) => {
+                            const { title, path } = artist
+
+                            return <li className={`${pathname === path ? 'high' : ''} ${index === 0 ? 'fst' : ''}`} key={path}>
+                                <Link className='tab' to={path + `?id=${id}`}>
+                                    <em className='tab'>{title}</em>
+                                </Link>
+                            </li>
+                        }))
+                    }
+                </ul>
             </div>
         </div>
     )
 }
 
-export default memo(Left)
+export default memo(withRouter(Left))

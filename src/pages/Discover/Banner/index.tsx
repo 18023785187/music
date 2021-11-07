@@ -40,12 +40,11 @@ function Banner() {
                         imgUrl: item.imageUrl,
                         targetId: item.targetId,
                         scm: item.scm,
-                        targetType: item.targetType,
-                        url: item.url
+                        targetType: item.targetType
                     }))
 
                     b.forEach((item: bannerInfo) => {
-                        preload(item.url)
+                        preload(item.imgUrl)
                     })
                     setBanners(b)
                 } catch (e) {

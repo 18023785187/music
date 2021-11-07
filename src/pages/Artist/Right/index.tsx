@@ -37,12 +37,12 @@ function Right(props: IProps) {
     // 相似歌手展示列表
     const Artists = useMemo(() => {
         return artists.map((artist: { [propName: string]: any }) => {
-            const { name, id, picUrl } = artist
+            const { name, id, img1v1Url } = artist
 
             return <li key={id}>
                 <div className='hd'>
                     <Link to={ARTIST + `?id=${id}`} title={name}>
-                        <img data-src={picUrl + '?param=50y50'} alt={name} width={50} height={50} />
+                        <img data-src={img1v1Url + '?param=50y50'} alt={name} width={50} height={50} />
                     </Link>
                 </div>
                 <p>

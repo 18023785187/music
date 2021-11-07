@@ -9,7 +9,6 @@ import { IRootReducer } from 'store'
 import { playlistAcion } from 'store/acions'
 import _getPlaylistDetail, { cancelGetPlaylistDetail } from 'network/playlist/getPlaylistDetail'
 import Item from './Item'
-
 import LazyLoad from '@/utils/LazyLoad'
 
 interface IProps {

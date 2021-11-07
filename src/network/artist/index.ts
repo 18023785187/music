@@ -7,7 +7,10 @@ import queryStringConfig from '../query-string-config'
 
 interface IC {
     cancelGetArtistDetail?: Canceler,
-    cancelGetSimiArtist?: Canceler
+    cancelGetSimiArtist?: Canceler,
+    cancelGetArtists?: Canceler,
+    cancelGetArtistMv?: Canceler,
+    cancelGetArtistAlbum?: Canceler
 }
 
 const cancelArtist: IC = {}
@@ -44,8 +47,61 @@ function getSimiArtist(id: string | number) {
     })
 }
 
+/**
+ *  获取歌手单曲
+ */
+function getArtists(id: string | number) {
+    return request({
+        url: '/artists',
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (_cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelArtist.cancelGetArtists = _cancel
+        })
+    })
+}
+
+/**
+ *  获取歌手mv
+ */
+function getArtistMv(id: string | number) {
+    return request({
+        url: '/artist/mv',
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (_cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelArtist.cancelGetArtistMv = _cancel
+        })
+    })
+}
+
+/**
+ *  获取歌手专辑
+ */
+function getArtistAlbum(id: string | number, offset: string | number) {
+    return request({
+        url: '/artist/album',
+        ...queryStringConfig({
+            id,
+            offset: 12 * (typeof offset === 'number' ? offset : parseInt(offset)),
+            limit: 12,
+        }),
+        cancelToken: new axios.CancelToken(function (_cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelArtist.cancelGetArtistAlbum = _cancel
+        })
+    })
+}
+
 export {
     getArtistDetail,
     getSimiArtist,
+    getArtists,
+    getArtistMv,
+    getArtistAlbum,
     cancelArtist
 }

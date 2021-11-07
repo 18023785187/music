@@ -66,6 +66,14 @@ const SEATCH = '/search'
 // 404
 const NOT_FOUND = '/not_found'
 
+// 歌手页引申的子导航
+enum ARTISTS {
+    ARTIST = '/artist',
+    ALBUM = '/artist/album',
+    MV = '/artist/mv',
+    DESC = '/artist/desc'
+}
+
 export {
     NAVPATH,
     ROOT_NAVPATH,
@@ -80,5 +88,6 @@ export {
     VIDEO,
     DJRADIO,
     SEATCH,
-    NOT_FOUND
+    NOT_FOUND,
+    ARTISTS
 }

@@ -40,3 +40,73 @@
         text-decoration: underline;
     }
 }
+
+.m-tabs {
+    display: flex;
+    height: 39px;
+    border: 1px solid #ccc;
+    border-width: 0 1px;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+
+    li {
+        position: relative;
+        left: -1px;
+        height: 39px;
+        font-size: 14px;
+
+        &:hover {
+
+            a,
+            span {
+                background-position: -5px -45px;
+
+                em {
+                    background-position: right -45px;
+                }
+            }
+        }
+
+        a,
+        span {
+            display: block;
+            padding-left: 2px;
+
+            em {
+                display: block;
+                width: 134px;
+                height: 37px;
+                padding: 2px 2px 0 0;
+                line-height: 37px;
+                cursor: pointer;
+                text-align: center;
+            }
+        }
+    }
+
+    .fst {
+        &:hover {
+
+            a,
+            span {
+                background-position: left -45px;
+
+                em {
+                    background-position: right -45px;
+                }
+            }
+        }
+    }
+
+    .high {
+
+        a,
+        span {
+            background-position: left -90px !important;
+
+            em {
+                background-position: right -90px !important;
+            }
+        }
+    }
+}
