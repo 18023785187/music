@@ -10,7 +10,8 @@ interface IC {
     cancelGetSimiArtist?: Canceler,
     cancelGetArtists?: Canceler,
     cancelGetArtistMv?: Canceler,
-    cancelGetArtistAlbum?: Canceler
+    cancelGetArtistAlbum?: Canceler,
+    cancelGetArtistDesc?: Canceler
 }
 
 const cancelArtist: IC = {}
@@ -97,11 +98,28 @@ function getArtistAlbum(id: string | number, offset: string | number) {
     })
 }
 
+/**
+ *  获取歌手描述
+ */
+ function getArtistDesc(id: string | Number) {
+    return request({
+        url: '/artist/desc',
+        ...queryStringConfig({
+            id
+        }),
+        cancelToken: new axios.CancelToken(function (_cancel) {
+            //cancel参数是一个函数，调用该函数取消请求
+            cancelArtist.cancelGetArtistDesc = _cancel
+        })
+    })
+}
+
 export {
     getArtistDetail,
     getSimiArtist,
     getArtists,
     getArtistMv,
     getArtistAlbum,
+    getArtistDesc,
     cancelArtist
 }

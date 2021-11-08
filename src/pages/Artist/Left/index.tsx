@@ -3,10 +3,11 @@
  */
 import React, { useState, useEffect, memo } from 'react'
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
-import { USER } from 'pages/path'
+import { ARTISTS, USER } from 'pages/path'
 import { getArtistDetail, cancelArtist } from 'network/artist'
 import { artists } from '../constant'
 import { LazyLoad } from 'utils'
+import Content from './Content'
 
 interface IProps extends RouteComponentProps {
     id: string
@@ -20,7 +21,7 @@ function Left(props: IProps) {
     const [artistDetail, setArtistDetail] = useState<{ [propName: string]: any }>({})
     // 歌手详情
     const { artist, user } = artistDetail
-    const { name, cover } = artist ?? {}
+    const { name, cover, briefDesc } = artist ?? {}
 
     useEffect(() => {
         getArtistDetail(id).then(res => {
@@ -61,6 +62,8 @@ function Left(props: IProps) {
                         }))
                     }
                 </ul>
+                {/* 歌手资料展示 */}
+                <Content id={id} name={name} briefDesc={briefDesc} path={pathname as ARTISTS} />
             </div>
         </div>
     )

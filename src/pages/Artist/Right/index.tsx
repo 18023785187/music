@@ -57,8 +57,12 @@ function Right(props: IProps) {
             <div className='g-sd4'>
                 <div className='g-wrap7'>
                     {/* 相似歌手 */}
-                    <h3 className='u-hd3'>相似歌手</h3>
-                    <ul className='m-hdlist'>{Artists}</ul>
+                    {
+                        artists?.[0] && <>
+                            <h3 className='u-hd3'>相似歌手</h3>
+                            <ul className='m-hdlist'>{Artists}</ul>
+                        </>
+                    }
                     {/* 关于 */}
                     <About />
                 </div>
