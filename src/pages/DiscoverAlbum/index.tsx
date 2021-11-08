@@ -13,9 +13,7 @@ import _newest, { cancelNewest } from 'network/discover/newest'
 import _getAlbumNewAll, { cancelGetAlbumNewAll } from 'network/album/getAlbumNewAll'
 import styles from './styles/index.module.less'
 
-interface IProps extends RouteComponentProps {
-
-}
+interface IProps extends RouteComponentProps {}
 
 function DiscoverAlbum(props: IProps) {
     const { location, history } = props

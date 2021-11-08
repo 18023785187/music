@@ -8,7 +8,7 @@ import LazyLoad from '@/utils/LazyLoad'
 import styles from './styles/index.module.less'
 
 interface IProps {
-    albums: []
+    albums: { [propName: string]: any }[]
 }
 
 function Album(props: IProps) {

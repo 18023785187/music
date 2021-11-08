@@ -6,7 +6,6 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import { ARTISTS, USER } from 'pages/path'
 import { getArtistDetail, cancelArtist } from 'network/artist'
 import { artists } from '../constant'
-import { LazyLoad } from 'utils'
 import Content from './Content'
 
 interface IProps extends RouteComponentProps {
@@ -21,14 +20,12 @@ function Left(props: IProps) {
     const [artistDetail, setArtistDetail] = useState<{ [propName: string]: any }>({})
     // 歌手详情
     const { artist, user } = artistDetail
-    const { name, cover, briefDesc } = artist ?? {}
+    const { name, cover, briefDesc, albumSize, mvSize } = artist ?? {}
 
     useEffect(() => {
         getArtistDetail(id).then(res => {
             if (res.data) {
                 setArtistDetail(res.data)
-
-                LazyLoad.update()
             }
         }).catch(rej => { })
 
@@ -43,7 +40,7 @@ function Left(props: IProps) {
                 {/* 头像 */}
                 <div className='n-artist'>
                     <h2 className='sname f-thide sname-max' title={name}>{name}</h2>
-                    <img data-src={cover + '?param=640y300'} alt={name} width={640} height={300} />
+                    <img src={cover + '?param=640y300'} alt={name} width={640} height={300} />
                     <div className='mask'></div>
                     {user ? <Link className='btn-rz f-tid iconall pointer' to={USER.HOME + `?id=${user.userId}`}>Ta的个人主页</Link> : <></>}
                     <i className='btnfav f-tid iconall pointer'></i>
@@ -63,7 +60,7 @@ function Left(props: IProps) {
                     }
                 </ul>
                 {/* 歌手资料展示 */}
-                <Content id={id} name={name} briefDesc={briefDesc} path={pathname as ARTISTS} />
+                <Content id={id} name={name} briefDesc={briefDesc} albumSize={albumSize} mvSize={mvSize} path={pathname as ARTISTS} />
             </div>
         </div>
     )

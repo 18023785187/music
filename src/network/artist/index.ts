@@ -67,11 +67,13 @@ function getArtists(id: string | number) {
 /**
  *  获取歌手mv
  */
-function getArtistMv(id: string | number) {
+function getArtistMv(id: string | number, offset: string | number) {
     return request({
         url: '/artist/mv',
         ...queryStringConfig({
-            id
+            id,
+            offset: 12 * (typeof offset === 'number' ? offset : parseInt(offset)),
+            limit: 12,
         }),
         cancelToken: new axios.CancelToken(function (_cancel) {
             //cancel参数是一个函数，调用该函数取消请求

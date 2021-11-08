@@ -12,20 +12,22 @@ interface IProps {
     id: string,
     name: string,
     briefDesc: string,
+    albumSize: number,
+    mvSize: number,
     path: ARTISTS
 }
 
 function Content(props: IProps) {
-    const { id, name, briefDesc, path } = props
+    const { id, name, briefDesc, albumSize, mvSize, path } = props
 
     const ContentUI = useMemo(() => {
         switch (path) {
             case ARTISTS.ARTIST:
                 return <Song id={id} />
             case ARTISTS.ALBUM:
-                return <Album id={id} />
+                return <Album id={id} albumSize={albumSize} />
             case ARTISTS.MV:
-                return <Mv id={id} />
+                return <Mv id={id} mvSize={mvSize} />
             case ARTISTS.DESC:
                 return <Desc id={id} name={name} briefDesc={briefDesc} />
             default:
