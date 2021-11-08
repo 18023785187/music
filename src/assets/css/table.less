@@ -7,6 +7,11 @@ table {
     table-layout: fixed;
 }
 
+.m-table-4,
+.m-table-5 {
+    border: none !important;
+}
+
 .m-table {
     width: 100%;
     border: 1px solid #d9d9d9;
@@ -17,6 +22,10 @@ table {
 
     .w2-1 {
         width: 91px;
+    }
+
+    .w3-1 {
+        width: 26%;
     }
 
     .w4 {
@@ -36,6 +45,18 @@ table {
         font-weight: normal;
         color: #666;
         background: url('@{img-url}/table.png');
+    }
+
+    tr {
+        &:hover {
+            .u-dur {
+                display: none;
+            }
+
+            .hshow {
+                display: block;
+            }
+        }
     }
 
     .first {
@@ -68,6 +89,7 @@ table {
 
     .hd {
         display: flex;
+        justify-content: space-between;
         height: 18px;
 
         .num {
@@ -87,34 +109,34 @@ table {
                 background-position: 0 -128px !important;
             }
         }
+    }
 
-        .tt {
-            .ttc {
-                height: 18px;
-                margin-right: 20px;
+    .tt {
+        .ttc {
+            height: 18px;
+            margin-right: 20px;
 
-                .txt {
-                    position: relative;
-                    display: inline-block;
-                    padding-right: 25px;
-                    margin-right: -25px;
-                    max-width: 99%;
-                    height: 20 px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }
+            .txt {
+                position: relative;
+                display: inline-block;
+                padding-right: 25px;
+                margin-right: -25px;
+                max-width: 99%;
+                height: 20 px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
+    }
 
-        .text {
-            width: 100%;
-            position: relative;
-            zoom: 1;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
+    .text {
+        width: 100%;
+        position: relative;
+        zoom: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .s-fc3 {

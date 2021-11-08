@@ -33,7 +33,7 @@ function Content(props: IProps) {
             default:
                 return <Song id={id} />
         }
-    }, [id, name, briefDesc, path])
+    }, [id, name, briefDesc, albumSize, mvSize, path])
 
     return (
         <div>{ContentUI}</div>

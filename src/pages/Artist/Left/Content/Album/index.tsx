@@ -48,7 +48,6 @@ function Album(props: IProps) {
                 {
                     artist.map((artist: { [propName: string]: any }) => {
                         const { id, name, picUrl, publishTime } = artist
-                        console.log(artist)
 
                         return <li key={id}>
                             <div className='u-cover u-cover-alb3'>

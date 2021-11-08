@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 import { ARTIST } from 'pages/path'
 import { useAddSong, usePlaySong } from 'components/Player/useFunc'
 import getAlbum, { cancelGetAlbum } from 'network/album/getAlbum'
+import { getCheckMusic } from 'network/song'
 import { LazyLoad, formatDate, songFilter } from 'utils/index'
+import PubSub, { PUBSUB } from '@/utils/PubSub'
 import Buttons from 'common/Buttons'
 import Songs from './Songs'
 
@@ -28,22 +30,28 @@ function Content(props: IProps) {
     const { name, picUrl, description, status, company, publishTime, artists, info } = albumDetail
     const { commentCount, shareCount } = info ?? {}
 
-    const addSongClick = useCallback(() => {
-
-        songs.forEach((song: any) => {
+    const addSongsClick = useCallback(() => {
+        songs.forEach((song: { [propName: string]: any }) => {
             const { id } = song
 
-            songFilter(id, addSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
+            getCheckMusic(id).then((res: any) => {
+                try {
+                    if (res.success) {
+                        addSong(song)
+                    }
+                } catch (e) {
+                    PubSub.publish(PUBSUB.TOAST_SHOW, {
+                        showWran: 'err',
+                        txt: '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）'
+                    })
+                }
+            })
         })
-    }, [addSong, songs])
-
-    const playSongClick = useCallback(() => {
-
-        const playSongId = songs[0]?.id ?? 0
-        songFilter(playSongId, playSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
-
-        addSongClick()
-    }, [playSong, songs, addSongClick])
+    }, [songs, addSong])
+    const playSongsClick = useCallback(() => {
+        addSongsClick()
+        songFilter(songs[0]?.id ?? 0, playSong, '😢操作失败，该音乐不可用（可能需要登录或vip才能进行操作）')
+    }, [addSongsClick, playSong, songs])
 
     useEffect(() => {
         getAlbum(id).then((res: any) => {
@@ -103,7 +111,7 @@ function Content(props: IProps) {
                     <Buttons dynamic={{
                         commentCount: commentCount < 100000 ? commentCount : (commentCount / 10000).toFixed(1) + '万',
                         shareCount: shareCount < 100000 ? shareCount : (shareCount / 10000).toFixed(1) + '万'
-                    }} playFunc={playSongClick} addFunc={addSongClick} />
+                    }} playFunc={playSongsClick} addFunc={addSongsClick} />
                 </div>
             </div>
             {/* 专辑概述内容 */}
