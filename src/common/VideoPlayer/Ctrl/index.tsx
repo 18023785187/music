@@ -10,11 +10,12 @@ import ResolutionRatio from './ResolutionRatio'
 interface IProps {
     duration?: number,
     videoEl: HTMLVideoElement | null,
+    fullscreenEl: HTMLDivElement | null,
     callback: (flag: boolean) => void
 }
 
 const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
-    const { duration, videoEl, callback } = props
+    const { duration, videoEl, fullscreenEl, callback } = props
 
     const [flag, setFlag] = useState<boolean>(false)
     // 当前时长
@@ -225,12 +226,20 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
         const time = pos * (duration ?? 0)
 
         setCurPos(pos * 100)
-
         setCurTime(time)
         endPosRef.current = pos * 100
 
         videoEl && (videoEl.currentTime = time / 1000)
     }, [duration, videoEl])
+
+    // 全屏事件
+    const fullscreenClick = useCallback(() => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen()
+        } else {
+            fullscreenEl!.requestFullscreen()
+        }
+    }, [fullscreenEl])
 
     return (
         <div className='controls' style={{ transform: ctrlShow ? '' : 'translate3d(0,100%,0)' }}>
@@ -270,7 +279,7 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
                     <Volume changeVolume={(v) => { videoEl!.volume = v }} />
                     {/* 分辩率 */}
                     <ResolutionRatio />
-                    <i className='full pointer'></i>
+                    <i className='full pointer' onClick={fullscreenClick}></i>
                 </div>
             </div>
         </div>

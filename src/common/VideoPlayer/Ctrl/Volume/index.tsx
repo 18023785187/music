@@ -1,7 +1,7 @@
 /**
  * 音量调节
  */
-import React, { useState, useRef, useEffect, useCallback, MouseEvent } from 'react'
+import React, { useState, useRef, useEffect, useCallback, MouseEvent, memo } from 'react'
 import wLocalStoreage, { VIDEO_VOLUME } from 'utils/localStorage'
 
 const videoVolume = wLocalStoreage.getItem(VIDEO_VOLUME)
@@ -16,10 +16,10 @@ interface IProps {
 function Volume(props: IProps) {
     const { changeVolume } = props
     // 音量范围 0 ~ 100
-    const [height, setHeight] = useState<number>(100)
+    const [height, setHeight] = useState<number>(parseFloat(wLocalStoreage.getItem(VIDEO_VOLUME) as string) * 100)
     const flagRef = useRef<boolean>(false)
     const startPosRef = useRef<number>(0)
-    const endPosRef = useRef<number>(0)
+    const endPosRef = useRef<number>(height)
     // 标杆，高度元素
     const sliderElRef = useRef<HTMLDivElement>(null)
     const sliderH = useRef<number>(0)
@@ -84,4 +84,4 @@ function Volume(props: IProps) {
     )
 }
 
-export default Volume
+export default memo(Volume)
