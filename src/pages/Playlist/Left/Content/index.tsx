@@ -8,7 +8,7 @@ interface IProps {
 }
 
 function Content(props: IProps) {
-    const { id } = props
+    // const { id } = props
 
     return (
         <div className='playlist-content'>

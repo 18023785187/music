@@ -2,8 +2,8 @@
  * 分辨率
  */
 import React, { useState, useContext, useMemo, useCallback, memo } from 'react'
-import Context from '../context'
-import transformCode from '../transformCode'
+import Context from '../../context'
+import transformCode from '../../transformCode'
 
 function ResolutionRatio() {
     const [idx, setIdx] = useState<number>(0)

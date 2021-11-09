@@ -1,9 +1,10 @@
 /**
  * 控制器
  */
-import React, { useState, useCallback, useEffect,useLayoutEffect, useRef, MouseEvent, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, useCallback, useEffect, useLayoutEffect, useRef, MouseEvent, forwardRef, useImperativeHandle } from 'react'
 import { ICtrlRef } from '../typing'
 import { formatDate } from 'utils'
+import Volume from './Volume'
 import ResolutionRatio from './ResolutionRatio'
 
 interface IProps {
@@ -265,9 +266,8 @@ const Ctrl = forwardRef<ICtrlRef, IProps>((props, ref) => {
                 {/* 进度条右边 */}
                 <div className='right'>
                     <div className='duration'>{formatDate(new Date(duration ?? 0), 'mm:ss')}</div>
-                    <div className='volume'>
-                        <i className='mute pointer'></i>
-                    </div>
+                    {/* 音量调节器 */}
+                    <Volume changeVolume={(v) => { videoEl!.volume = v }} />
                     {/* 分辩率 */}
                     <ResolutionRatio />
                     <i className='full pointer'></i>

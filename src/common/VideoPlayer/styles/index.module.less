@@ -1,4 +1,5 @@
 // 视频播放器
+@import url('./volume.less');
 @import url('./brs.less');
 
 .video-player {
@@ -238,21 +239,7 @@
                     }
 
                     .volume {
-                        position: relative;
-                        margin-left: 10px;
-                        margin-right: 1px;
-                        padding: 11px 10px;
-
-                        .mute {
-                            display: block;
-                            width: 16px;
-                            height: 12px;
-                            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAMAAABcOc2zAAAARVBMVEVHcEz///////////////////////////////////////////////////////////////////////////////////////9X1DS3AAAAF3RSTlMAaX8jBXQwgHxlYmwbKxVQbRBIPE1DCA7eoYEAAABYSURBVAjXbY5JDoAwDAMHKLhl3///VJRSBFLxzRPFNkS5CQhzRdJYyIDK5vaNlwG20i8MtaJog2PXSvKi0EGvDj2gUsDJv8CuBrKXT+gZQ7Pa32FpemvTL5S2BAtdLazZAAAAAElFTkSuQmCC) no-repeat center center;
-
-                            &:hover {
-                                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAA1klEQVQokaXSoUpEYRAF4M9fw4LJYHFBUKNPoGbjKtuM2+yGrb6AsA8gLNdq0HcQ2aBWq81kMRk9lhXkcq93YQemnMM5M8wcSbR0L8llDauS3CU5+sWK5trBDQY1fAXbmOAEmiYPkjwmeZn3X64kGSV5TjJLsrWGY1xgs2UbmGIV56jQxxBnBeMOMfSwjxHgHnBYsNEhhivAAeAN0G87Yr2+Aet1ouBjAYMx4AGwC3gvmOCzw+ALr5gChoDZ0m9sS+FektsGg2qOPSU5TdIYpP+ifF2P8g/2ehMg7DdaPQAAAABJRU5ErkJggg==);
-                            }
-                        }
+                        .volume;
                     }
 
                     .brs {
@@ -267,6 +254,29 @@
 
                         &:hover {
                             background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOAQMAAAAlhr+SAAAABlBMVEX///9HcExwQjx2AAAAAnRSTlPMABHcVXoAAAAtSURBVAgdBYCxDQAQEADvrxYxgCGMZkUj6RTihbiCFQ92bFiI3OQgm8zIxUP4r0gJqtt6EUUAAAAASUVORK5CYII=);
+                        }
+                    }
+
+
+
+                    .arrow {
+                        display: block;
+                        position: absolute;
+                        top: auto;
+                        bottom: -7px;
+                        left: 0;
+                        right: auto;
+                        width: 100%;
+                        height: 7px;
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHAgMAAABB3ES3AAAADFBMVEUCAgI+Pj5HcEw4ODgkC8kmAAAABHRSTlO0awDA/mVZJgAAACRJREFUCB1jOMDAzCxwgodJh0GTiZthCRPT4QlMjLscmBgkGQBKkgUi8CVBlQAAAABJRU5ErkJggg==) no-repeat;
+                        background-position: center top;
+                        cursor: default;
+
+                        &::before {
+                            display: block;
+                            content: '';
+                            width: 100%;
+                            height: 15px;
                         }
                     }
                 }
