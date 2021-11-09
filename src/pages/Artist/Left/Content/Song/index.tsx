@@ -83,7 +83,7 @@ function Song(props: IProps) {
                     <tbody>
                         {
                             songs.map((song: { [propName: string]: any }, index: number) => {
-                                const { id, name, mv, dt, al } = song
+                                const { id, name, mv, dt, al, alia } = song
                                 const { id: alId, name: alName } = al ?? {}
 
                                 return <tr key={id} className={index % 2 === 0 ? 'even ' : ''}>
@@ -98,6 +98,7 @@ function Song(props: IProps) {
                                             <div className='ttc'>
                                                 <span className='txt'>
                                                     <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
+                                                    {alia?.[0] ? <span className='s-fc8' title={alia?.[0]}>{` - (${alia?.[0]})`}</span> : <></>}
                                                     {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv table-img">MV</Link> : ''}
                                                 </span>
                                             </div>

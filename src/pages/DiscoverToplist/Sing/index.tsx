@@ -136,7 +136,7 @@ function Sing(props: IProps) {
                     <tbody>
                         {
                             detail.playlist ? detail.playlist.tracks.map((item: any, index: number) => {
-                                const { id, al, name, ar, dt, mv } = item
+                                const { id, al, name, ar, dt, mv, alia } = item
                                 const { picUrl } = al
                                 const unm: string[] = ar.map((item: any) => item.name)
 
@@ -159,8 +159,11 @@ function Sing(props: IProps) {
                                                         </Link>
                                                         <span className='ply' onClick={() => playSongClick(item.id)}></span>
                                                         <div className='ttc'>
-                                                            <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
-                                                            {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv table-img">MV</Link> : ''}
+                                                            <span className='txt'>
+                                                                <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
+                                                                {alia?.[0] ? <span className='s-fc8' title={alia?.[0]}>{` - (${alia?.[0]})`}</span> : <></>}
+                                                                {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv">MV</Link> : ''}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -171,7 +174,8 @@ function Sing(props: IProps) {
                                                         <div className='ttc'>
                                                             <span className='txt'>
                                                                 <Link title={name} className='hover' to={`${SONG}?id=${id}`}>{name}</Link>
-                                                                {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv table-img">MV</Link> : ''}
+                                                                {alia?.[0] ? <span className='s-fc8' title={alia?.[0]}>{` - (${alia?.[0]})`}</span> : <></>}
+                                                                {mv ? <Link to={MV + `?id=${mv}`} title="播放mv" className="mv">MV</Link> : ''}
                                                             </span>
                                                         </div>
                                                     </div>

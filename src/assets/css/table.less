@@ -97,17 +97,18 @@ table {
             margin-left: 5px;
             color: #999;
         }
+    }
 
-        .ply {
-            width: 17px;
-            height: 17px;
-            cursor: pointer;
-            background-position: 0 -103px !important;
-            background: url('@{img-url}/table.png') no-repeat 0 9999px;
+    .ply {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+        background-position: 0 -103px !important;
+        background: url('@{img-url}/table.png') no-repeat 0 9999px;
 
-            &:hover {
-                background-position: 0 -128px !important;
-            }
+        &:hover {
+            background-position: 0 -128px !important;
         }
     }
 
@@ -122,7 +123,7 @@ table {
                 padding-right: 25px;
                 margin-right: -25px;
                 max-width: 99%;
-                height: 20 px;
+                height: 20px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -184,6 +185,9 @@ table {
     }
 
     .mv {
+        position: absolute;
+        top: -2px;
+        right: 0;
         display: inline-block;
         width: 23px;
         height: 17px;
@@ -193,6 +197,7 @@ table {
         text-indent: -9999px;
         cursor: pointer;
         background: url('@{img-url}/table.png') no-repeat 0 9999px;
+        transform: translate3d(0, 2px, 0);
 
         &:hover {
             background-position: -30px -151px !important;
