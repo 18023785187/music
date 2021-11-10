@@ -51,7 +51,7 @@ function Playlist(props: IProps) {
                     <div className='listhdc'>
                         <h4>播放列表(<span>{playlist.length}</span>)</h4>
                         <i className="addall pointer hover">
-                            <span className="ico ico-add playlist"></span>
+                            <span className="ico ico-add playlist_img"></span>
                             收藏全部
                         </i>
                         <span className="line"></span>
