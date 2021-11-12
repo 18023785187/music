@@ -16,7 +16,7 @@ import styles from './styles/index.module.less'
 
 function Discover() {
     return (
-        <div className={styles.discover}>
+        <main className={styles.discover}>
             <Banner />
             <Main>
                 <Fragment>
@@ -30,7 +30,7 @@ function Discover() {
                     <Anchor />
                 </Fragment>
             </Main>
-        </div>
+        </main>
     )
 }
 

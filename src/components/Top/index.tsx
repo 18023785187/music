@@ -24,7 +24,7 @@ function Top(props: IProps) {
     }, [location.pathname, navPathList])
 
     return (
-        <div className={styles.top}>
+        <nav className={styles.top}>
             <div className='top-box'>
                 <div className='top-content'>
                     {/* 左边 */}
@@ -34,9 +34,8 @@ function Top(props: IProps) {
                 </div>
             </div>
             {/* 底部导航栏 */}
-            <BottomNav showRootNav={showRootNav} location={location} />
-            
-        </div >
+            <BottomNav showRootNav={showRootNav} location={location} />         
+        </nav>
     )
 }
 

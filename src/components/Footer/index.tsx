@@ -8,7 +8,7 @@ import styles from './styles/index.module.less'
 function Footer() {
 
     return (
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
             <div className='w'>
                 <div className='footer-content'>
                     {/* 左 */}
@@ -66,7 +66,7 @@ function Footer() {
                     </ul>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 
