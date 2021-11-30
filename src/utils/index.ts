@@ -11,6 +11,7 @@ import checkNum from './checkNum'
 import testPerformance from "./testPerformance";
 import LazyLoad from "./LazyLoad";
 import PubSub from "./PubSub";
+import escapeSymbol from "./escapeSymbol";
 
 export {
     timestamp,
@@ -21,5 +22,6 @@ export {
     checkNum,
     testPerformance,
     LazyLoad,
-    PubSub
+    PubSub,
+    escapeSymbol
 }

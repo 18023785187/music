@@ -7,6 +7,7 @@ import qs from 'qs'
 import { ROOT_NAVPATH } from 'pages/path'
 import _getPlaylistCatlist from 'network/playlist/getPlaylistCatlist'
 import wLocalStoreage, { CATLIST } from '@/utils/localStorage'
+import { escapeSymbol } from 'utils'
 
 interface IProps extends RouteComponentProps {
 
@@ -122,10 +123,13 @@ function Navbar(props: IProps) {
                                     </dt>
                                     <dd className={index === 4 ? 'last' : ''}>
                                         {
-                                            list[index].map(link => <Fragment key={link}>
-                                                <Link className='hover' to={`${ROOT_NAVPATH.PLAYLIST}?cat=${link}`}>{link}</Link>
-                                                <span className="line">|</span>
-                                            </Fragment>)
+                                            list[index].map(link => (
+                                                    <Fragment key={link}>
+                                                        <Link className='hover' to={`${ROOT_NAVPATH.PLAYLIST}?cat=${escapeSymbol(link)}`}>{link}</Link>
+                                                        <span className="line">|</span>
+                                                    </Fragment>
+                                                )
+                                            )
                                         }
                                     </dd>
                                 </dl>

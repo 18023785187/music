@@ -16,7 +16,6 @@ function request(config: AxiosRequestConfig): AxiosPromise<any> {
     // 请求拦截
     instance.interceptors.request.use(
         (config: AxiosRequestConfig) => {
-
             return config
         },
         (error: any) => {

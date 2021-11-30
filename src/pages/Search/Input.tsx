@@ -6,6 +6,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import SearchSuggest from 'common/SearchSuggest'
 import { cancelSearch } from 'network/search'
 import { SEATCH } from 'pages/path'
+import { escapeSymbol } from 'utils'
 
 interface IProps extends RouteComponentProps { }
 
@@ -29,7 +30,7 @@ function Input(props: IProps) {
         if (searchValue !== '') {
             cancelSearch.cancelSearchSuggest && cancelSearch.cancelSearchSuggest();
 
-            history.push(SEATCH + `?s=${searchValue}&type=1`);
+            history.push(SEATCH + `?s=${escapeSymbol(searchValue)}&type=1`);
 
             inputRef.current?.blur()
         }
