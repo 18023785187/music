@@ -79,11 +79,11 @@ function Lyric(props: IProps) {
                             for (let i = 0; i <= curPos; i++) {
 
                                 // 在歌词偏移量达到100时才开始内容的偏移
-                                if (targetPos < 100) {
+                                if (targetPos < 130) {
                                     targetPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
 
-                                    if (targetPos > 150) {
-                                        lyricPos += 50
+                                    if (targetPos > 130) {
+                                        lyricPos += targetPos - 130
                                     }
                                 } else {
                                     lyricPos += (setPRef.current!.children[i] as HTMLProgressElement).offsetHeight
