@@ -92,7 +92,7 @@ function Player() {
                 {/* 播放切换按钮 */}
                 <Btns />
                 {/* 头像 */}
-                <Head id={playlist.length ? playlist[curPos]?.al?.id : undefined} imgUrl={playlist.length ? playlist[curPos]?.al?.picUrl : undefined} />
+                <Head id={playlist.length ? playlist[curPos]?.id : undefined} imgUrl={playlist.length ? playlist[curPos]?.al?.picUrl : undefined} />
                 {/* 播放器 */}
                 <Play play={playlist[curPos] ? playlist[curPos] : {}} />
                 {/* 分享和收藏 */}

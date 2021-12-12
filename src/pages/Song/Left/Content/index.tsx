@@ -20,7 +20,7 @@ function Content(props: IProps) {
     // 歌曲详情
     const [songDetail, setSongDetail] = useState<{ [propNme: string]: any }>({})
 
-    const { al, ar, mv, name, fee } = songDetail
+    const { al, ar, mv, name, fee } = songDetail ?? {}
     const { picUrl, name: aname, id: aid } = al ?? {}
 
     const addSong = useAddSong()
@@ -46,7 +46,7 @@ function Content(props: IProps) {
             setSongDetail(tarSongDetail)
         } else {
             getSongDetail(id).then((res: any) => {
-                setSongDetail(res.songs[0])
+                setSongDetail(res.songs[0] ?? {})
             }).catch(rej => {
 
             })
