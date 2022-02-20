@@ -1,3 +1,8 @@
+# 网易云音乐网页版分云
+<a href="https://github.com/18023785187/music/search?l=javascript"><img src="https://img.shields.io/github/languages/top/18023785187/music.svg" alt="TopLang"></a>
+
+### 🚀 高度仿写网易云音乐网页版、励志做一流的钓鱼网站！
+
 # 说明
     该项目仅供学习使用，不作任何商业用途
 
