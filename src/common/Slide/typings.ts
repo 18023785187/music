@@ -2,9 +2,9 @@
  * 
  */
 interface ISlideRef {
-    transform: (isNext: boolean) => void
+  transform: (isNext: boolean) => void
 }
 
 export type {
-    ISlideRef
+  ISlideRef
 }

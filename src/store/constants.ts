@@ -4,10 +4,10 @@
 
 // 榜单、详情等
 enum TOPLIST {
-    TOPLIST = 'toplist',
-    PLAYLIST = 'playlist'
+  TOPLIST = 'toplist',
+  PLAYLIST = 'playlist'
 }
 
 export {
-    TOPLIST
+  TOPLIST
 }

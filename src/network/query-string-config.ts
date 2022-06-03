@@ -7,14 +7,14 @@ import { urlSearchParams } from 'utils'
 import { params, qSConfig } from './typing'
 
 function queryStringConfig(
-    params: params
+  params: params
 ): qSConfig {
-    return {
-        params,
-        paramsSerializer: function (params) {
-            return urlSearchParams(params)
-        }
+  return {
+    params,
+    paramsSerializer: function (params) {
+      return urlSearchParams(params)
     }
+  }
 }
 
 export default queryStringConfig

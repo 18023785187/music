@@ -14,14 +14,14 @@ import PubSub from "./PubSub";
 import escapeSymbol from "./escapeSymbol";
 
 export {
-    timestamp,
-    urlSearchParams,
-    preload,
-    formatDate,
-    songFilter,
-    checkNum,
-    testPerformance,
-    LazyLoad,
-    PubSub,
-    escapeSymbol
+  timestamp,
+  urlSearchParams,
+  preload,
+  formatDate,
+  songFilter,
+  checkNum,
+  testPerformance,
+  LazyLoad,
+  PubSub,
+  escapeSymbol
 }

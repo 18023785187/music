@@ -27,30 +27,30 @@ import queryStringConfig from '../query-string-config'
 
  */
 interface IC {
-    cancelGetArtistList?: Canceler
+  cancelGetArtistList?: Canceler
 }
 
 const cancel: IC = {}
 
 function getArtistList(
-    limit: number = 100,
-    type: number = -1,
-    area: number = -1,
-    initial: string | number = -1
+  limit: number = 100,
+  type: number = -1,
+  area: number = -1,
+  initial: string | number = -1
 ) {
-    return request({
-        url: '/artist/list',
-        ...queryStringConfig({
-            limit,
-            type,
-            area,
-            initial
-        }),
-        cancelToken: new axios.CancelToken(function (_cancel) {
-            //cancel参数是一个函数，调用该函数取消请求
-            cancel.cancelGetArtistList = _cancel
-        })
+  return request({
+    url: '/artist/list',
+    ...queryStringConfig({
+      limit,
+      type,
+      area,
+      initial
+    }),
+    cancelToken: new axios.CancelToken(function (_cancel) {
+      //cancel参数是一个函数，调用该函数取消请求
+      cancel.cancelGetArtistList = _cancel
     })
+  })
 }
 
 export default getArtistList

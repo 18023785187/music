@@ -13,72 +13,72 @@ import _newest, { cancelNewest } from 'network/discover/newest'
 import _getAlbumNewAll, { cancelGetAlbumNewAll } from 'network/album/getAlbumNewAll'
 import styles from './styles/index.module.less'
 
-interface IProps extends RouteComponentProps {}
+interface IProps extends RouteComponentProps { }
 
 function DiscoverAlbum(props: IProps) {
-    const { location, history } = props
-    const { search } = location
-    const parse = useMemo(() => qs.parse(search.substring(1)), [search])
-    const [albumNew, setAlbumNew] = useState<{ [propName: string]: any }>({})
-    const [albumAll, setAlbumAll] = useState<{ [propName: string]: any }>({})
+  const { location, history } = props
+  const { search } = location
+  const parse = useMemo(() => qs.parse(search.substring(1)), [search])
+  const [albumNew, setAlbumNew] = useState<{ [propName: string]: any }>({})
+  const [albumAll, setAlbumAll] = useState<{ [propName: string]: any }>({})
 
-    const emitClick = (page: number | string) => {
-        const { area } = parse
-        history.push(`${ROOT_NAVPATH.ALBUM}?${area ? `area=${area}&` : ''}offset=${page}`)
+  const emitClick = (page: number | string) => {
+    const { area } = parse
+    history.push(`${ROOT_NAVPATH.ALBUM}?${area ? `area=${area}&` : ''}offset=${page}`)
+  }
+
+  useEffect(() => {
+    newest()
+
+    async function newest() {
+      const res: any = await _newest()
+      try {
+        if (res.code === 200) {
+          res.albums.length = 10
+          setAlbumNew(res)
+        }
+      } catch (e) {
+
+      }
     }
 
-    useEffect(() => {
-        newest()
+    return () => {
+      cancelNewest.cancelNewest && cancelNewest.cancelNewest()
+    }
+  }, [])
 
-        async function newest() {
-            const res: any = await _newest()
-            try {
-                if (res.code === 200) {
-                    res.albums.length = 10
-                    setAlbumNew(res)
-                }
-            } catch (e) {
+  useEffect(() => {
+    const { area, offset } = parse
+    getAlbumNewAll()
 
-            }
+    async function getAlbumNewAll() {
+      const res: any = await _getAlbumNewAll(area ? area as string : 'ALL', offset ? offset as string : 0)
+      try {
+        if (res.code === 200) {
+          setAlbumAll(res)
+          window.scrollTo(0, 0)
         }
+      } catch (e) {
 
-        return () => {
-            cancelNewest.cancelNewest && cancelNewest.cancelNewest()
-        }
-    }, [])
+      }
+    }
 
-    useEffect(() => {
-        const { area, offset } = parse
-        getAlbumNewAll()
+    return () => {
+      cancelGetAlbumNewAll.cancelGetAlbumNewAll && cancelGetAlbumNewAll.cancelGetAlbumNewAll()
+    }
+  }, [parse])
 
-        async function getAlbumNewAll() {
-            const res: any = await _getAlbumNewAll(area ? area as string : 'ALL', offset ? offset as string : 0)
-            try {
-                if (res.code === 200) {
-                    setAlbumAll(res)
-                    window.scrollTo(0, 0)
-                }
-            } catch (e) {
-
-            }
-        }
-
-        return () => {
-            cancelGetAlbumNewAll.cancelGetAlbumNewAll && cancelGetAlbumNewAll.cancelGetAlbumNewAll()
-        }
-    }, [parse])
-
-    return (
-        <div className={`${styles['discover-album']} g-bd`}>
-            <div className='g-wrap'>
-                <TitleNew />
-                <Album albums={albumNew.albums || []} />
-                <TitleAll />
-                <Album albums={albumAll.albums || []} />
-                <Page count={albumAll.total ?? 0} limit={35} initPage={parse.offset ? parseInt(parse.offset as string) : 0} callback={emitClick} />
-            </div>
-        </div>
-    )
+  return (
+    <div className={`${styles['discover-album']} g-bd`}>
+      <div className='g-wrap'>
+        <TitleNew />
+        <Album albums={albumNew.albums || []} />
+        <TitleAll />
+        <Album albums={albumAll.albums || []} />
+        <Page count={albumAll.total ?? 0} limit={35} initPage={parse.offset ? parseInt(parse.offset as string) : 0} callback={emitClick} />
+      </div>
+    </div>
+  )
 }
 
 export default DiscoverAlbum

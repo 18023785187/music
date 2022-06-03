@@ -4,16 +4,16 @@
 import React, { memo } from 'react'
 
 interface IProps {
-    id: string
+  id: string
 }
 
 function Content(props: IProps) {
-    // const { id } = props
+  // const { id } = props
 
-    return (
-        <div className='playlist-content'>
-        </div>
-    )
+  return (
+    <div className='playlist-content'>
+    </div>
+  )
 }
 
 export default memo(Content)

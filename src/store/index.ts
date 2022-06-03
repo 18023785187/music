@@ -8,7 +8,7 @@ import { IToplistState } from './states'
 import reducer from './reducers';
 
 interface IRootReducer {
-    toplistReducer: IToplistState
+  toplistReducer: IToplistState
 }
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

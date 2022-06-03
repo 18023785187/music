@@ -15,23 +15,23 @@ import Anchor from './Anchor'
 import styles from './styles/index.module.less'
 
 function Discover() {
-    return (
-        <main className={styles.discover}>
-            <Banner />
-            <Main>
-                <Fragment>
-                    <Recommend />
-                    <Album />
-                    <Toplist />
-                </Fragment>
-                <Fragment>
-                    <MyInfo />
-                    <Singer />
-                    <Anchor />
-                </Fragment>
-            </Main>
-        </main>
-    )
+  return (
+    <main className={styles.discover}>
+      <Banner />
+      <Main>
+        <Fragment>
+          <Recommend />
+          <Album />
+          <Toplist />
+        </Fragment>
+        <Fragment>
+          <MyInfo />
+          <Singer />
+          <Anchor />
+        </Fragment>
+      </Main>
+    </main>
+  )
 }
 
 export default Discover

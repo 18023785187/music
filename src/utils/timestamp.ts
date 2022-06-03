@@ -4,7 +4,7 @@
  */
 
 function timestamp(): number {
-    return Date.now()
+  return Date.now()
 }
 
 export default timestamp

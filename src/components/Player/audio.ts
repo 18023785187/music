@@ -29,136 +29,136 @@ let oPlaySong = (info: { [propName: string]: any }) => { }
 // 事件
 // 改变时长触发
 audio.ontimeupdate = function (e: any) {
-    const { currentTime, duration } = e.target
+  const { currentTime, duration } = e.target
 
-    flag && oChange(duration ? currentTime / duration : 0)
-    oButterChange(duration ? bufferedAudio() / duration : 0)
+  flag && oChange(duration ? currentTime / duration : 0)
+  oButterChange(duration ? bufferedAudio() / duration : 0)
 
 }
 // 用户改变时长时触发
 audio.onseeking = function () {
-    window.clearTimeout(timer)
-    flag = false
+  window.clearTimeout(timer)
+  flag = false
 
-    timer = window.setTimeout(() => {
-        flag = true
-    }, 300)
+  timer = window.setTimeout(() => {
+    flag = true
+  }, 300)
 }
 // 播放结束时触发
 audio.onended = function () {
-    oStop()
-    const mode = Number(wLocalStoreage.getItem(PLAY_MODE) ?? 0)
+  oStop()
+  const mode = Number(wLocalStoreage.getItem(PLAY_MODE) ?? 0)
 
-    resetAudio()
-    switch (mode) {
-        // 单曲循环
-        case 0:
-            oPlay()
-            break
-        // 循环
-        case 1:
-            oNext()
-            break
-        // 随机
-        case 2:
-            const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
-            const pos: number = Math.floor(Math.random() * playlist.length)
+  resetAudio()
+  switch (mode) {
+    // 单曲循环
+    case 0:
+      oPlay()
+      break
+    // 循环
+    case 1:
+      oNext()
+      break
+    // 随机
+    case 2:
+      const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
+      const pos: number = Math.floor(Math.random() * playlist.length)
 
-            oPlaySong(playlist[pos])
-            break
-    }
+      oPlaySong(playlist[pos])
+      break
+  }
 }
 
 // 切换音频
 function addAudio(callback?: () => void) {
-    cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
-    oStop()
+  cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
+  oStop()
 
-    const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
-    if (!playlist || playlist.length === 0) return
-    const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
+  const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
+  if (!playlist || playlist.length === 0) return
+  const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
 
-    if (playlist[curPos]) {
-        if (urlMap.has(playlist[curPos].id)) {
+  if (playlist[curPos]) {
+    if (urlMap.has(playlist[curPos].id)) {
 
-            audio.src = urlMap.get(playlist[curPos].id) as string
+      audio.src = urlMap.get(playlist[curPos].id) as string
 
-            callback && callback()
-        } else {
-            cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
+      callback && callback()
+    } else {
+      cancelGetSong.cancelGetSongUrl && cancelGetSong.cancelGetSongUrl()
 
-            getSongUrl(playlist[curPos].id).then(res => {
-                try {
-                    audio.src = 'https://' + res.data[0].url.substring(7)
-                    urlMap.set(playlist[curPos].id, 'https://' + res.data[0].url.substring(7))
+      getSongUrl(playlist[curPos].id).then(res => {
+        try {
+          audio.src = 'https://' + res.data[0].url.substring(7)
+          urlMap.set(playlist[curPos].id, 'https://' + res.data[0].url.substring(7))
 
-                    callback && callback()
-                } catch (e) {
+          callback && callback()
+        } catch (e) {
 
-                }
-            })
         }
-
-        // 发歌词请求
-        const lyriclist: { [propName: string]: any } = JSON.parse(wLocalStoreage.getItem(PLAY_LYRIC) as string)
-
-        getLyric(playlist[curPos].id).then((res: any) => {
-
-            if (res) {
-                lyriclist[playlist[curPos].id] = res
-                wLocalStoreage.setItem(PLAY_LYRIC, JSON.stringify(lyriclist))
-                setState.setLyricMap && setState.setLyricMap(lyriclist)
-            }
-        })
+      })
     }
+
+    // 发歌词请求
+    const lyriclist: { [propName: string]: any } = JSON.parse(wLocalStoreage.getItem(PLAY_LYRIC) as string)
+
+    getLyric(playlist[curPos].id).then((res: any) => {
+
+      if (res) {
+        lyriclist[playlist[curPos].id] = res
+        wLocalStoreage.setItem(PLAY_LYRIC, JSON.stringify(lyriclist))
+        setState.setLyricMap && setState.setLyricMap(lyriclist)
+      }
+    })
+  }
 }
 
 // 播放
 function playAudio() {
-    audio.play()
+  audio.play()
 }
 
 // 停止
 function stopAudio() {
-    audio.pause()
+  audio.pause()
 }
 
 // 重置音频时长等
 function resetAudio() {
-    audio.currentTime = 0
-    oChange(0)
+  audio.currentTime = 0
+  oChange(0)
 }
 
 // 改变audio播放位置
 function changeAudio(curTime: number) {
-    if (!Object.is(NaN, curTime)) {
-        audio.currentTime = curTime
-    }
+  if (!Object.is(NaN, curTime)) {
+    audio.currentTime = curTime
+  }
 }
 
 // 改变音量 0 ~ 1
 function changeAudioVolume(volume: number) {
-    audio.volume = volume
+  audio.volume = volume
 }
 
 // 返回缓冲时间
 function bufferedAudio(): number {
-    const buffered = audio.buffered
-    return buffered.length ? buffered.end(0) : 0
+  const buffered = audio.buffered
+  return buffered.length ? buffered.end(0) : 0
 }
 
 // 清除音轨
 function clearAudioUrl() {
-    audio.src = ''
+  audio.src = ''
 }
 
 export default audio
 export {
-    addAudio,
-    playAudio,
-    stopAudio,
-    resetAudio,
-    changeAudio,
-    changeAudioVolume,
-    clearAudioUrl
+  addAudio,
+  playAudio,
+  stopAudio,
+  resetAudio,
+  changeAudio,
+  changeAudioVolume,
+  clearAudioUrl
 }

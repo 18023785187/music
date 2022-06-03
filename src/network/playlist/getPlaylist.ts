@@ -6,7 +6,7 @@ import request from '../request'
 import queryStringConfig from '../query-string-config'
 
 interface IC {
-    cancelGetPlaylist?: Canceler
+  cancelGetPlaylist?: Canceler
 }
 
 const cancelGetPlaylist: IC = {}
@@ -20,18 +20,18 @@ const cancelGetPlaylist: IC = {}
 
 // 总数信息也在这个请求
 function getPlaylist(cat: string = '全部', offset: number | string = 0) {
-    return request({
-        url: `/top/playlist`,
-        ...queryStringConfig({
-            cat,
-            offset: 35 * (typeof offset === 'number' ? offset : parseInt(offset)),
-            limit: 35,
-        }),
-        cancelToken: new axios.CancelToken(function (cancel) {
-            //cancel参数是一个函数，调用该函数取消请求
-            cancelGetPlaylist.cancelGetPlaylist = cancel
-        })
+  return request({
+    url: `/top/playlist`,
+    ...queryStringConfig({
+      cat,
+      offset: 35 * (typeof offset === 'number' ? offset : parseInt(offset)),
+      limit: 35,
+    }),
+    cancelToken: new axios.CancelToken(function (cancel) {
+      //cancel参数是一个函数，调用该函数取消请求
+      cancelGetPlaylist.cancelGetPlaylist = cancel
     })
+  })
 }
 
 export default getPlaylist

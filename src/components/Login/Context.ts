@@ -4,4 +4,4 @@
 import { createContext } from "react";
 import { ISetStateProps } from './typing'
 
-export default createContext<ISetStateProps|null>(null)
+export default createContext<ISetStateProps | null>(null)

@@ -2,72 +2,72 @@
 @border: 1px solid #e2e2e2;
 
 .search-suggest {
-    :global {
-        position: absolute;
-        z-index: 120;
-        left: 0;
-        box-sizing: border-box;
-        border: 1px solid #bebebe;
-        border-radius: 4px;
-        background: #fff;
-        box-shadow: 0 4px 7px #555;
-        text-shadow: 0 1px 0 rgb(255 255 255 / 90%);
+  :global {
+    position: absolute;
+    z-index: 120;
+    left: 0;
+    box-sizing: border-box;
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 7px #555;
+    text-shadow: 0 1px 0 rgb(255 255 255 / 90%);
+    overflow: hidden;
+
+    .note {
+      height: 42px;
+      height: 17px;
+      padding: 11px 10px;
+      border-bottom: @border;
+
+      .search-user {
+        &:hover {
+          background-color: #e3e5e7;
+        }
+      }
+    }
+
+    .item {
+      display: flex;
+
+      .hd {
+        flex: 0 0 auto;
+        display: flex;
+        width: 52px;
+        padding: 10px 0 0 10px;
+        border-right: @border;
+        line-height: 17px;
+        font-weight: normal;
+
+        .u-icn {
+          margin: 2px 4px 0 0;
+        }
+      }
+
+      ul {
+        flex: 1;
+        margin-top: -1px;
+        padding: 6px 0 5px;
+        border-top: @border;
         overflow: hidden;
 
-        .note {
-            height: 42px;
-            height: 17px;
-            padding: 11px 10px;
-            border-bottom: @border;
+        li {
 
-            .search-user {
-                &:hover {
-                    background-color: #e3e5e7;
-                }
-            }
+          .item {
+            display: block;
+            text-indent: 12px;
+            line-height: 24px;
+          }
+
+          &:hover {
+            background-color: #e3e5e7;
+          }
         }
+      }
 
-        .item {
-            display: flex;
-
-            .hd {
-                flex: 0 0 auto;
-                display: flex;
-                width: 52px;
-                padding: 10px 0 0 10px;
-                border-right: @border;
-                line-height: 17px;
-                font-weight: normal;
-
-                .u-icn {
-                    margin: 2px 4px 0 0;
-                }
-            }
-
-            ul {
-                flex: 1;
-                margin-top: -1px;
-                padding: 6px 0 5px;
-                border-top: @border;
-                overflow: hidden;
-
-                li {
-
-                    .item {
-                        display: block;
-                        text-indent: 12px;
-                        line-height: 24px;
-                    }
-
-                    &:hover {
-                        background-color: #e3e5e7;
-                    }
-                }
-            }
-
-            .odd {
-                background: #f9f8f8;
-            }
-        }
+      .odd {
+        background: #f9f8f8;
+      }
     }
+  }
 }

@@ -12,52 +12,52 @@ import Header from './Header'
 import Sing from './Sing'
 import styles from './styles/index.module.less'
 
-interface IProps {}
+interface IProps { }
 
 function DiscoverToplist(props: IProps) {
-    const toplistData: { [propName: string]: any }[] = useSelector((state: IRootReducer) => state.toplistReducer.toplist);
-    const dispatch = useDispatch()
+  const toplistData: { [propName: string]: any }[] = useSelector((state: IRootReducer) => state.toplistReducer.toplist);
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        // 获取所有榜单
-        window.scrollTo(0, 0)
-        getToplist()
+  useEffect(() => {
+    // 获取所有榜单
+    window.scrollTo(0, 0)
+    getToplist()
 
-        function getToplist() {
-            if (!SessionStorage.getItem(TOPLIST)) {
-                _getToplist().then((res: any) => {
-                    try {
-                        if (res.code === 200) {
-                            SessionStorage.setItem(TOPLIST, JSON.stringify(res.list))
-                            dispatch(toplistAcion(res.list))
-                        } else {
-                            getToplist()
-                        }
-                    } catch (e) {
-                        // console.log(e)
-                    }
-                })
+    function getToplist() {
+      if (!SessionStorage.getItem(TOPLIST)) {
+        _getToplist().then((res: any) => {
+          try {
+            if (res.code === 200) {
+              SessionStorage.setItem(TOPLIST, JSON.stringify(res.list))
+              dispatch(toplistAcion(res.list))
             } else {
-                dispatch(toplistAcion(JSON.parse(SessionStorage.getItem(TOPLIST) as string)))
+              getToplist()
             }
-        }
+          } catch (e) {
+            // console.log(e)
+          }
+        })
+      } else {
+        dispatch(toplistAcion(JSON.parse(SessionStorage.getItem(TOPLIST) as string)))
+      }
+    }
 
-        return () => {
-            cancelGetToplist.cancelGetToplist && cancelGetToplist.cancelGetToplist()
-        }
-    }, [dispatch])
+    return () => {
+      cancelGetToplist.cancelGetToplist && cancelGetToplist.cancelGetToplist()
+    }
+  }, [dispatch])
 
-    return (
-        <div className={`${styles['discover-toplist']} g-bd`}>
-            <Left toplistData={toplistData} />
-            <div className='main'>
-                <div className='g-wrap'>
-                    <Header toplistData={toplistData} />
-                </div>
-                {toplistData.length ? <Sing defaultId={toplistData[0].id} /> : ''}
-            </div>
+  return (
+    <div className={`${styles['discover-toplist']} g-bd`}>
+      <Left toplistData={toplistData} />
+      <div className='main'>
+        <div className='g-wrap'>
+          <Header toplistData={toplistData} />
         </div>
-    )
+        {toplistData.length ? <Sing defaultId={toplistData[0].id} /> : ''}
+      </div>
+    </div>
+  )
 }
 
 export default DiscoverToplist

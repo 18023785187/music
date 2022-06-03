@@ -6,7 +6,7 @@ import request from '../request'
 import queryStringConfig from '../query-string-config'
 
 interface IC {
-    cancelGetComment?: Canceler
+  cancelGetComment?: Canceler
 }
 
 const cancelGetComment: IC = {}
@@ -30,28 +30,28 @@ const cancelGetComment: IC = {}
         cursor: 当sortType为3时且页数不是第一页时需传入,值为上一条数据的time
  */
 function getComment(
-    id: string | number,
-    type: string | number = 2,
-    sortType: string | number = 2,
-    pageNo: string | number = 1,
-    pageSize: string | number = 15,
-    cursor?: string | number
+  id: string | number,
+  type: string | number = 2,
+  sortType: string | number = 2,
+  pageNo: string | number = 1,
+  pageSize: string | number = 15,
+  cursor?: string | number
 ) {
-    return request({
-        url: `/comment/new`,
-        ...queryStringConfig({
-            id,
-            type,
-            sortType,
-            pageNo,
-            pageSize,
-            cursor: cursor ? cursor : 0
-        }),
-        cancelToken: new axios.CancelToken(function (cancel) {
-            //cancel参数是一个函数，调用该函数取消请求
-            cancelGetComment.cancelGetComment = cancel
-        })
+  return request({
+    url: `/comment/new`,
+    ...queryStringConfig({
+      id,
+      type,
+      sortType,
+      pageNo,
+      pageSize,
+      cursor: cursor ? cursor : 0
+    }),
+    cancelToken: new axios.CancelToken(function (cancel) {
+      //cancel参数是一个函数，调用该函数取消请求
+      cancelGetComment.cancelGetComment = cancel
     })
+  })
 }
 
 export default getComment

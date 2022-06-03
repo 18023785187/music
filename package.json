@@ -12,7 +12,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.4",
-    "h-tools-js": "^1.4.6",
+    "h-tools-js": "1.4.6",
     "pubsub-js": "^1.9.3",
     "qs": "^6.10.1",
     "react": "^17.0.2",

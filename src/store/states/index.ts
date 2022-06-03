@@ -4,9 +4,9 @@
 import toplistState, { IToplistState } from "./toplist";
 
 export {
-    toplistState
+  toplistState
 }
 
 export type {
-    IToplistState
+  IToplistState
 }

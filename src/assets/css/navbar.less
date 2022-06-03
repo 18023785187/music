@@ -1,112 +1,112 @@
 // 导航栏常用样式
 .u-title {
+  display: flex;
+  height: 40px;
+  border-bottom: 2px solid #c20c0c;
+
+  .title-left {
     display: flex;
-    height: 40px;
-    border-bottom: 2px solid #c20c0c;
+  }
 
-    .title-left {
-        display: flex;
-    }
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+  }
 
-    h3 {
-        font-size: 24px;
-        font-weight: normal;
-    }
+  .sub {
+    margin: 10px 0 0 20px;
+  }
 
-    .sub {
-        margin: 10px 0 0 20px;
-    }
-
-    .out {
-        margin-right: 20px;
-    }
+  .out {
+    margin-right: 20px;
+  }
 }
 
 .u-title-1 {
-    display: flex;
-    height: 33px;
+  display: flex;
+  height: 33px;
 
-    h3 {
-        font-size: 20px;
-        line-height: 28px;
-    }
+  h3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
 
-    .out {
-        margin-top: 5px;
-    }
+  .out {
+    margin-top: 5px;
+  }
 
-    .des {
-        color: #4996d1;
-        text-decoration: underline;
-    }
+  .des {
+    color: #4996d1;
+    text-decoration: underline;
+  }
 }
 
 .m-tabs {
-    display: flex;
+  display: flex;
+  height: 39px;
+  border: 1px solid #ccc;
+  border-width: 0 1px;
+  background-position: 0 0;
+  background-repeat: repeat-x;
+
+  li {
+    position: relative;
+    left: -1px;
     height: 39px;
-    border: 1px solid #ccc;
-    border-width: 0 1px;
-    background-position: 0 0;
-    background-repeat: repeat-x;
+    font-size: 14px;
 
-    li {
-        position: relative;
-        left: -1px;
-        height: 39px;
-        font-size: 14px;
+    &:hover {
 
-        &:hover {
+      a,
+      span {
+        background-position: -5px -45px;
 
-            a,
-            span {
-                background-position: -5px -45px;
-
-                em {
-                    background-position: right -45px;
-                }
-            }
+        em {
+          background-position: right -45px;
         }
-
-        a,
-        span {
-            display: block;
-            padding-left: 2px;
-
-            em {
-                display: block;
-                width: 134px;
-                height: 37px;
-                padding: 2px 2px 0 0;
-                line-height: 37px;
-                cursor: pointer;
-                text-align: center;
-            }
-        }
+      }
     }
 
-    .fst {
-        &:hover {
+    a,
+    span {
+      display: block;
+      padding-left: 2px;
 
-            a,
-            span {
-                background-position: left -45px;
-
-                em {
-                    background-position: right -45px;
-                }
-            }
-        }
+      em {
+        display: block;
+        width: 134px;
+        height: 37px;
+        padding: 2px 2px 0 0;
+        line-height: 37px;
+        cursor: pointer;
+        text-align: center;
+      }
     }
+  }
 
-    .high {
+  .fst {
+    &:hover {
 
-        a,
-        span {
-            background-position: left -90px !important;
+      a,
+      span {
+        background-position: left -45px;
 
-            em {
-                background-position: right -90px !important;
-            }
+        em {
+          background-position: right -45px;
         }
+      }
     }
+  }
+
+  .high {
+
+    a,
+    span {
+      background-position: left -90px !important;
+
+      em {
+        background-position: right -90px !important;
+      }
+    }
+  }
 }

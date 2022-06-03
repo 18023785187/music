@@ -3,7 +3,7 @@
  */
 
 function checkNum(str: string): boolean {
-    return /^[0-9]+$/.test(str)
+  return /^[0-9]+$/.test(str)
 }
 
 export default checkNum

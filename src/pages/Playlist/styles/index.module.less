@@ -4,17 +4,17 @@
 @import url('./right.less');
 
 .playlist {
-    :global {
-        display: flex;
-        background: url('@{img-url}/wrap4.png') repeat-y center 0;
+  :global {
+    display: flex;
+    background: url('@{img-url}/wrap4.png') repeat-y center 0;
 
-        .playlist-left {
-            flex: 1;
-            .left;
-        }
-
-        .playlist-right {
-            .right;
-        }
+    .playlist-left {
+      flex: 1;
+      .left;
     }
+
+    .playlist-right {
+      .right;
+    }
+  }
 }

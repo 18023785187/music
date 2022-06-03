@@ -1,137 +1,137 @@
 //
 .phone() {
-    .input-box {
-        .input-box;
+  .input-box {
+    .input-box;
 
-        .input-phone {
-            display: flex;
-            position: relative;
-            height: 30px;
-            margin: 0;
-            border: @input-border;
-            border-radius: 2px;
-            z-index: 10;
+    .input-phone {
+      display: flex;
+      position: relative;
+      height: 30px;
+      margin: 0;
+      border: @input-border;
+      border-radius: 2px;
+      z-index: 10;
 
-            .countries-code {
-                flex: 1 0 auto;
-                position: relative;
-                height: 30px;
-                line-height: 30px;
-                padding: 0 18px 0 5px;
-                border-right: @input-border;
+      .countries-code {
+        flex: 1 0 auto;
+        position: relative;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 18px 0 5px;
+        border-right: @input-border;
 
-                .code-down {
-                    position: absolute;
-                    top: 14px;
-                    right: 7px;
-                    width: 7px;
-                    height: 4px;
-                    background-position: -260px -450px;
-                }
-            }
-
-            .input {
-                overflow: hidden;
-
-                input {
-                    width: 206px;
-                    display: block;
-                    padding: 5px 8px 5px;
-                    height: 20px;
-                    line-height: 20px;
-                    border: none;
-                }
-            }
-
-            .options {
-                position: absolute;
-                top: 31px;
-                left: -1px;
-                width: 100%;
-                height: 128px;
-                border: @input-border;
-                border-top: none;
-                clear: both;
-                background-color: #fff;
-                overflow: auto;
-
-                .item {
-                    display: flex;
-                    justify-content: space-between;
-                    height: 32px;
-                    line-height: 32px;
-                    color: @base-color;
-                    overflow: hidden;
-
-                    .code {
-                        padding-left: 7px;
-                    }
-
-                    .countries {
-                        margin-right: 10px;
-                    }
-                }
-            }
+        .code-down {
+          position: absolute;
+          top: 14px;
+          right: 7px;
+          width: 7px;
+          height: 4px;
+          background-position: -260px -450px;
         }
+      }
 
-        .verify {
-            display: flex;
-            justify-content: space-between;
+      .input {
+        overflow: hidden;
 
-            input {
-                width: 122px;
-            }
-
-            .verify-btn {
-                width: 70px;
-                padding: 0 5px 0 0;
-                white-space: nowrap;
-                height: 31px;
-                line-height: 31px;
-                overflow: hidden;
-                vertical-align: top;
-                text-align: center;
-
-                span {
-                    display: inline-block;
-                    width: 61px;
-                    padding: 0 2px 0 7px;
-                }
-            }
+        input {
+          width: 206px;
+          display: block;
+          padding: 5px 8px 5px;
+          height: 20px;
+          line-height: 20px;
+          border: none;
         }
+      }
 
-        .password {
-            position: relative;
+      .options {
+        position: absolute;
+        top: 31px;
+        left: -1px;
+        width: 100%;
+        height: 128px;
+        border: @input-border;
+        border-top: none;
+        clear: both;
+        background-color: #fff;
+        overflow: auto;
 
-            .password-input {
-                padding-right: 66px;
-                box-sizing: border-box;
-                width: 220px;
-                height: 32px;
-            }
+        .item {
+          display: flex;
+          justify-content: space-between;
+          height: 32px;
+          line-height: 32px;
+          color: @base-color;
+          overflow: hidden;
 
-            span {
-                position: absolute;
-                right: 0;
-                top: 7px;
-                color: @tint-color;
-            }
+          .code {
+            padding-left: 7px;
+          }
+
+          .countries {
+            margin-right: 10px;
+          }
         }
-
-        .actionbox {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: @tint-color;
-
-            .pwdlogin {
-                color: @tint-color;
-            }
-
-            .u-auto {
-                margin: 0 5px 0 0;
-                vertical-align: middle;
-            }
-        }
+      }
     }
+
+    .verify {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        width: 122px;
+      }
+
+      .verify-btn {
+        width: 70px;
+        padding: 0 5px 0 0;
+        white-space: nowrap;
+        height: 31px;
+        line-height: 31px;
+        overflow: hidden;
+        vertical-align: top;
+        text-align: center;
+
+        span {
+          display: inline-block;
+          width: 61px;
+          padding: 0 2px 0 7px;
+        }
+      }
+    }
+
+    .password {
+      position: relative;
+
+      .password-input {
+        padding-right: 66px;
+        box-sizing: border-box;
+        width: 220px;
+        height: 32px;
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+        top: 7px;
+        color: @tint-color;
+      }
+    }
+
+    .actionbox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: @tint-color;
+
+      .pwdlogin {
+        color: @tint-color;
+      }
+
+      .u-auto {
+        margin: 0 5px 0 0;
+        vertical-align: middle;
+      }
+    }
+  }
 }

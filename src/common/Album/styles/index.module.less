@@ -2,65 +2,65 @@
 @import url('~assets/css/constant.less');
 
 .album {
-    :global {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 20px 0 0 -33px;
+  :global {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 0 -33px;
 
-        li {
-            padding-left: 33px;
-            padding-bottom: 30px;
-            width: 153px;
-            height: 178px;
-            overflow: hidden;
-            line-height: 1.4;
+    li {
+      padding-left: 33px;
+      padding-bottom: 30px;
+      width: 153px;
+      height: 178px;
+      overflow: hidden;
+      line-height: 1.4;
 
-            .cover {
-                position: relative;
-                width: 130px;
-                height: 130px;
+      .cover {
+        position: relative;
+        width: 130px;
+        height: 130px;
 
-                &:hover {
-                    .play {
-                        display: block;
-                    }
-                }
-
-                .msk {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 153px;
-                    height: 130px;
-                    background-position: 0 -845px;
-                }
-
-                .play {
-                    display: none;
-                    position: absolute;
-                    right: 10px;
-                    bottom: 5px;
-                    left: 94px;
-                    width: 28px;
-                    height: 28px;
-                    background-position: 0 -140px;
-                }
-            }
-
-            .dec {
-                margin: 8px 0 3px;
-                font-size: 14px;
-
-                a {
-                    color: #000;
-                }
-            }
-
-            span {
-                a {
-                    color: #666;
-                }
-            }
+        &:hover {
+          .play {
+            display: block;
+          }
         }
+
+        .msk {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 153px;
+          height: 130px;
+          background-position: 0 -845px;
+        }
+
+        .play {
+          display: none;
+          position: absolute;
+          right: 10px;
+          bottom: 5px;
+          left: 94px;
+          width: 28px;
+          height: 28px;
+          background-position: 0 -140px;
+        }
+      }
+
+      .dec {
+        margin: 8px 0 3px;
+        font-size: 14px;
+
+        a {
+          color: #000;
+        }
+      }
+
+      span {
+        a {
+          color: #666;
+        }
+      }
     }
+  }
 }

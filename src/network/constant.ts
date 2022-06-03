@@ -7,6 +7,6 @@ const TIMEOUT = 10000
 // const BASE_URL = 'http://localhost:4000'
 
 export {
-    BASE_URL,
-    TIMEOUT
+  BASE_URL,
+  TIMEOUT
 }

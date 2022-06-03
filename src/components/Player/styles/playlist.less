@@ -1,430 +1,430 @@
 // 播放列表
 .playlist() {
-    position: relative;
-    width: 59px;
-    height: 36px;
+  position: relative;
+  width: 59px;
+  height: 36px;
 
-    .tip {
-        position: absolute;
-        z-index: 10;
-        top: -51px;
-        left: -65px;
-        clear: both;
-        width: 152px;
-        height: 49px;
-        background-position: 0 -287px;
-        text-align: center;
-        color: #fff;
-        line-height: 37px;
+  .tip {
+    position: absolute;
+    z-index: 10;
+    top: -51px;
+    left: -65px;
+    clear: both;
+    width: 152px;
+    height: 49px;
+    background-position: 0 -287px;
+    text-align: center;
+    color: #fff;
+    line-height: 37px;
+  }
+
+  .icn-list {
+    display: block;
+    float: none;
+    width: 38px;
+    padding-left: 21px;
+    background-position: -42px -68px;
+    line-height: 27px;
+    text-align: center;
+    color: #666;
+    text-shadow: 0 1px 0 #080707;
+    text-indent: 0;
+    text-decoration: none;
+    height: 25px;
+    margin: 11px 2px 0 0;
+
+    &:hover {
+      background-position: -42px -98px;
     }
-
-    .icn-list {
-        display: block;
-        float: none;
-        width: 38px;
-        padding-left: 21px;
-        background-position: -42px -68px;
-        line-height: 27px;
-        text-align: center;
-        color: #666;
-        text-shadow: 0 1px 0 #080707;
-        text-indent: 0;
-        text-decoration: none;
-        height: 25px;
-        margin: 11px 2px 0 0;
-
-        &:hover {
-            background-position: -42px -98px;
-        }
-    }
+  }
 }
 
 .list() {
+  position: absolute;
+  left: 50%;
+  bottom: 47px;
+  width: 986px;
+  height: 301px;
+  transform: translate3d(-50%, 0, 0);
+
+  .listhd {
+    background-position: 0 0;
+    height: 41px;
+    padding: 0 5px;
+
+    .listhdc {
+      position: relative;
+      height: 40px;
+
+      h4 {
+        position: absolute;
+        left: 25px;
+        top: 0;
+        height: 39px;
+        line-height: 39px;
+        font-size: 14px;
+        color: #e2e2e2;
+        margin: 0;
+      }
+
+      .addall {
+        position: absolute;
+        left: 398px;
+        top: 12px;
+        height: 15px;
+        line-height: 15px;
+        color: #ccc;
+
+        &:hover {
+          color: #e2e2e2;
+
+          .ico-add {
+            background-position: -24px -20px
+          }
+        }
+      }
+
+      .line {
+        position: absolute;
+        top: 13px;
+        left: 477px;
+        height: 15px;
+        border-left: 1px solid #000;
+        border-right: 1px solid #2c2c2c;
+        margin: 0;
+      }
+
+      .clear {
+        position: absolute;
+        left: 490px;
+        top: 12px;
+        height: 15px;
+        line-height: 15px;
+        cursor: pointer;
+        color: #ccc;
+
+        &:hover {
+          color: #e2e2e2;
+
+          .icn-del {
+            background-position: -51px -20px
+          }
+        }
+      }
+
+      .lytit {
+        position: absolute;
+        left: 595px;
+        top: 0;
+        width: 346px;
+        text-align: center;
+        height: 39px;
+        line-height: 39px;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .close {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        text-indent: -999px;
+        background-position: -195px 9px;
+
+        &:hover {
+          background-position: -195px -21px;
+        }
+      }
+
+      .ico {
+        float: left;
+        height: 16px;
+        margin: 1px 6px 0 0;
+      }
+
+      .ico-add {
+        width: 16px;
+        background-position: -24px 0;
+      }
+
+      .icn-del {
+        width: 13px;
+        background-position: -51px 0;
+      }
+    }
+  }
+
+  .listbd {
     position: absolute;
-    left: 50%;
-    bottom: 47px;
-    width: 986px;
-    height: 301px;
-    transform: translate3d(-50%, 0, 0);
+    left: 0;
+    top: 41px;
+    width: 976px;
+    height: 260px;
+    padding: 0 5px;
+    overflow: hidden;
+    background-position: -1014px 0;
+    background-repeat: repeat-y;
 
-    .listhd {
-        background-position: 0 0;
-        height: 41px;
-        padding: 0 5px;
+    .imgbg {
+      position: absolute;
+      top: -360px;
+      left: 2px;
+      z-index: 1;
+      width: 980px;
+      height: auto;
+      opacity: .2;
+    }
 
-        .listhdc {
+    .msk {
+      position: absolute;
+      left: 2px;
+      top: 0;
+      z-index: 2;
+      width: 558px;
+      height: 260px;
+      background: #121212;
+      opacity: .5;
+    }
+
+    .listbdc {
+      position: absolute;
+      left: 2px;
+      top: 0;
+      z-index: 4;
+      height: 260px;
+      width: 553px;
+      overflow: hidden;
+
+      ul {
+        .z-sel {
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.3);
+
+          a {
+            color: #fff;
+          }
+
+          .col-5 {
+            color: #fff;
+          }
+        }
+
+        li {
+          display: flex;
+          color: #ccc;
+
+          &:hover {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+
+            a {
+              color: #fff;
+            }
+
+            .icns {
+              visibility: visible;
+            }
+          }
+
+          a {
+            color: #ccc;
+          }
+
+          .col {
+            padding-left: 10px;
+            height: 28px;
+            line-height: 28px;
+            overflow: hidden;
+            cursor: pointer;
+          }
+
+          .col-1 {
+            width: 10px;
+          }
+
+          .col-2 {
+            width: 256px;
+          }
+
+          .col-3 {
+            width: 78px;
             position: relative;
-            height: 40px;
+          }
 
-            h4 {
-                position: absolute;
-                left: 25px;
-                top: 0;
-                height: 39px;
-                line-height: 39px;
-                font-size: 14px;
-                color: #e2e2e2;
-                margin: 0;
-            }
+          .col-4 {
+            width: 70px;
+          }
 
-            .addall {
-                position: absolute;
-                left: 398px;
-                top: 12px;
-                height: 15px;
-                line-height: 15px;
-                color: #ccc;
+          .col-5 {
+            width: 35px;
+            color: #666;
+          }
 
-                &:hover {
-                    color: #e2e2e2;
+          .col-6 {
+            width: 37px;
+            padding-left: 6px;
+          }
 
-                    .ico-add {
-                        background-position: -24px -20px
-                    }
-                }
-            }
+          .playicn {
+            margin-top: 8px;
+            width: 10px;
+            height: 13px;
+            background-position: -182px 0;
+          }
 
-            .line {
-                position: absolute;
-                top: 13px;
-                left: 477px;
-                height: 15px;
-                border-left: 1px solid #000;
-                border-right: 1px solid #2c2c2c;
-                margin: 0;
-            }
-
-            .clear {
-                position: absolute;
-                left: 490px;
-                top: 12px;
-                height: 15px;
-                line-height: 15px;
-                cursor: pointer;
-                color: #ccc;
-
-                &:hover {
-                    color: #e2e2e2;
-
-                    .icn-del {
-                        background-position: -51px -20px
-                    }
-                }
-            }
-
-            .lytit {
-                position: absolute;
-                left: 595px;
-                top: 0;
-                width: 346px;
-                text-align: center;
-                height: 39px;
-                line-height: 39px;
-                color: #fff;
-                font-size: 14px;
-            }
-
-            .close {
-                position: absolute;
-                top: 6px;
-                right: 8px;
-                width: 30px;
-                height: 30px;
-                overflow: hidden;
-                text-indent: -999px;
-                background-position: -195px 9px;
-
-                &:hover {
-                    background-position: -195px -21px;
-                }
-            }
+          .icns {
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+            height: 23px;
 
             .ico {
-                float: left;
-                height: 16px;
-                margin: 1px 6px 0 0;
-            }
-
-            .ico-add {
-                width: 16px;
-                background-position: -24px 0;
+              float: right;
+              height: 16px;
+              overflow: hidden;
+              margin: 7px 0 0 10px;
+              text-indent: -9999px;
             }
 
             .icn-del {
-                width: 13px;
-                background-position: -51px 0;
+              width: 13px;
+              background-position: -51px 0;
+
+              &:hover {
+                background-position: -51px -20px;
+              }
             }
+
+            .ico-dl {
+              width: 14px;
+              background-position: -57px -50px;
+
+              &:hover {
+                background-position: -80px -50px;
+              }
+            }
+
+            .ico-share {
+              width: 14px;
+              background-position: 0 0;
+
+              &:hover {
+                background-position: 0 -20px;
+              }
+            }
+
+            .ico-add {
+              width: 16px;
+              background-position: -24px 0;
+
+              &:hover {
+                background-position: -24px -20px;
+              }
+            }
+          }
         }
+      }
     }
 
-    .listbd {
-        position: absolute;
-        left: 0;
-        top: 41px;
-        width: 976px;
-        height: 260px;
-        padding: 0 5px;
-        overflow: hidden;
-        background-position: -1014px 0;
-        background-repeat: repeat-y;
+    .bline {
+      position: absolute;
+      left: 555px;
+      top: -1px;
+      z-index: 2;
+      width: 6px;
+      height: 260px;
+      background: #000;
+      opacity: .5;
 
-        .imgbg {
-            position: absolute;
-            top: -360px;
-            left: 2px;
-            z-index: 1;
-            width: 980px;
-            height: auto;
-            opacity: .2;
+      .scroll {
+        width: 100%;
+        height: 100%;
+
+        .scrol {
+          width: 4px;
+          border-radius: 5px;
+          height: 100px;
+          cursor: pointer;
+          background: #868686;
+          border: 1px solid #a6a6a6;
+          opacity: .8;
         }
-
-        .msk {
-            position: absolute;
-            left: 2px;
-            top: 0;
-            z-index: 2;
-            width: 558px;
-            height: 260px;
-            background: #121212;
-            opacity: .5;
-        }
-
-        .listbdc {
-            position: absolute;
-            left: 2px;
-            top: 0;
-            z-index: 4;
-            height: 260px;
-            width: 553px;
-            overflow: hidden;
-
-            ul {
-                .z-sel {
-                    color: #fff;
-                    background-color: rgba(0, 0, 0, 0.3);
-
-                    a {
-                        color: #fff;
-                    }
-
-                    .col-5 {
-                        color: #fff;
-                    }
-                }
-
-                li {
-                    display: flex;
-                    color: #ccc;
-
-                    &:hover {
-                        color: #fff;
-                        background-color: rgba(0, 0, 0, 0.3);
-
-                        a {
-                            color: #fff;
-                        }
-
-                        .icns {
-                            visibility: visible;
-                        }
-                    }
-
-                    a {
-                        color: #ccc;
-                    }
-
-                    .col {
-                        padding-left: 10px;
-                        height: 28px;
-                        line-height: 28px;
-                        overflow: hidden;
-                        cursor: pointer;
-                    }
-
-                    .col-1 {
-                        width: 10px;
-                    }
-
-                    .col-2 {
-                        width: 256px;
-                    }
-
-                    .col-3 {
-                        width: 78px;
-                        position: relative;
-                    }
-
-                    .col-4 {
-                        width: 70px;
-                    }
-
-                    .col-5 {
-                        width: 35px;
-                        color: #666;
-                    }
-
-                    .col-6 {
-                        width: 37px;
-                        padding-left: 6px;
-                    }
-
-                    .playicn {
-                        margin-top: 8px;
-                        width: 10px;
-                        height: 13px;
-                        background-position: -182px 0;
-                    }
-
-                    .icns {
-                        visibility: hidden;
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        width: 100px;
-                        height: 23px;
-
-                        .ico {
-                            float: right;
-                            height: 16px;
-                            overflow: hidden;
-                            margin: 7px 0 0 10px;
-                            text-indent: -9999px;
-                        }
-
-                        .icn-del {
-                            width: 13px;
-                            background-position: -51px 0;
-
-                            &:hover {
-                                background-position: -51px -20px;
-                            }
-                        }
-
-                        .ico-dl {
-                            width: 14px;
-                            background-position: -57px -50px;
-
-                            &:hover {
-                                background-position: -80px -50px;
-                            }
-                        }
-
-                        .ico-share {
-                            width: 14px;
-                            background-position: 0 0;
-
-                            &:hover {
-                                background-position: 0 -20px;
-                            }
-                        }
-
-                        .ico-add {
-                            width: 16px;
-                            background-position: -24px 0;
-
-                            &:hover {
-                                background-position: -24px -20px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .bline {
-            position: absolute;
-            left: 555px;
-            top: -1px;
-            z-index: 2;
-            width: 6px;
-            height: 260px;
-            background: #000;
-            opacity: .5;
-
-            .scroll {
-                width: 100%;
-                height: 100%;
-
-                .scrol {
-                    width: 4px;
-                    border-radius: 5px;
-                    height: 100px;
-                    cursor: pointer;
-                    background: #868686;
-                    border: 1px solid #a6a6a6;
-                    opacity: .8;
-                }
-            }
-        }
-
-        .ask {
-            position: absolute;
-            right: 25px;
-            top: 12px;
-            cursor: pointer;
-            z-index: 5;
-        }
-
-        .msk2 {
-            position: absolute;
-            left: 560px;
-            top: 0;
-            z-index: 3;
-            width: 420px;
-            height: 250px;
-            background: #121212;
-            opacity: .01;
-        }
-
-        .listlyric {
-            position: absolute;
-            right: 40px;
-            top: 0;
-            z-index: 4;
-            margin: 21px 0 20px 0;
-            height: 219px;
-            width: 354px;
-            overflow: hidden;
-
-            p {
-                color: #989898;
-                word-wrap: break-word;
-                text-align: center;
-                line-height: 32px;
-                height: auto !important;
-                height: 32px;
-                min-height: 32px;
-                -webkit-transition: color 0.7s linear;
-                -moz-transition: color 0.7s linear;
-                -o-transition: color 0.7s linear;
-                transition: color 0.7s linear;
-            }
-
-            .z-sel {
-                color: #fff;
-                font-size: 14px;
-                -webkit-transition: color 0.7s linear;
-                -moz-transition: color 0.7s linear;
-                -o-transition: color 0.7s linear;
-                transition: color 0.7s linear;
-            }
-        }
-
-        .bline-1 {
-            left: auto;
-            right: 2px;
-        }
-
-        .ico-ask {
-            display: inline-block;
-            width: 21px;
-            height: 21px;
-            background-position: 0 -50px;
-            text-indent: 0;
-
-            &:hover {
-                background-position: -24px -50px;
-            }
-        }
+      }
     }
+
+    .ask {
+      position: absolute;
+      right: 25px;
+      top: 12px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .msk2 {
+      position: absolute;
+      left: 560px;
+      top: 0;
+      z-index: 3;
+      width: 420px;
+      height: 250px;
+      background: #121212;
+      opacity: .01;
+    }
+
+    .listlyric {
+      position: absolute;
+      right: 40px;
+      top: 0;
+      z-index: 4;
+      margin: 21px 0 20px 0;
+      height: 219px;
+      width: 354px;
+      overflow: hidden;
+
+      p {
+        color: #989898;
+        word-wrap: break-word;
+        text-align: center;
+        line-height: 32px;
+        height: auto !important;
+        height: 32px;
+        min-height: 32px;
+        -webkit-transition: color 0.7s linear;
+        -moz-transition: color 0.7s linear;
+        -o-transition: color 0.7s linear;
+        transition: color 0.7s linear;
+      }
+
+      .z-sel {
+        color: #fff;
+        font-size: 14px;
+        -webkit-transition: color 0.7s linear;
+        -moz-transition: color 0.7s linear;
+        -o-transition: color 0.7s linear;
+        transition: color 0.7s linear;
+      }
+    }
+
+    .bline-1 {
+      left: auto;
+      right: 2px;
+    }
+
+    .ico-ask {
+      display: inline-block;
+      width: 21px;
+      height: 21px;
+      background-position: 0 -50px;
+      text-indent: 0;
+
+      &:hover {
+        background-position: -24px -50px;
+      }
+    }
+  }
 }

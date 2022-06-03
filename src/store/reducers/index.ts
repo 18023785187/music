@@ -6,7 +6,7 @@ import toplistReducer from './toplistReducer'
 import { IRootReducer } from 'store'
 
 const reducer = combineReducers<IRootReducer>({
-    toplistReducer
+  toplistReducer
 })
 
 export default reducer

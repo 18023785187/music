@@ -9,5 +9,5 @@ const TOPLIST = 'toplist'
 
 export default SessionStorage
 export {
-    TOPLIST
+  TOPLIST
 }

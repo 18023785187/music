@@ -2,9 +2,9 @@
  * 
  */
 interface IScrollRef {
-    transform: (pos: number) => void
+  transform: (pos: number) => void
 }
 
 export type {
-    IScrollRef
+  IScrollRef
 }

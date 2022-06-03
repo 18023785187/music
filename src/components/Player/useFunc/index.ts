@@ -12,13 +12,13 @@ import useClearPlaylist from './useClearPlaylist'
 import useDeteleSong from './useDeleteSong'
 
 export {
-    useAddSong,
-    usePlaySong,
-    usePrev,
-    useNext,
-    useChange,
-    usePlay,
-    useStop,
-    useClearPlaylist,
-    useDeteleSong
+  useAddSong,
+  usePlaySong,
+  usePrev,
+  useNext,
+  useChange,
+  usePlay,
+  useStop,
+  useClearPlaylist,
+  useDeteleSong
 }

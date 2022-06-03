@@ -3,72 +3,72 @@
 @import url('./toast.less');
 
 .shade {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-    :global {
+  :global {
 
-        .shade-box {
-            position: absolute;
-            z-index: 9999;
-            width: 530px;
-            border-radius: 4px;
-            box-shadow: 0 5px 16px rgb(0 0 0 / 80%);
-            border: none;
-            background-color: @bg-main;
+    .shade-box {
+      position: absolute;
+      z-index: 9999;
+      width: 530px;
+      border-radius: 4px;
+      box-shadow: 0 5px 16px rgb(0 0 0 / 80%);
+      border: none;
+      background-color: @bg-main;
 
-            .shade-pos {
-                position: relative;
+      .shade-pos {
+        position: relative;
 
-                .shade-title {
-                    margin: 0;
-                    height: 38px;
-                    line-height: 38px;
-                    padding-left: 18px;
-                    padding-right: 45px;
-                    border-radius: 3px 3px 0 0;
-                    font-weight: bold;
-                    font-size: @nav-font-size;
-                    color: @bg-main;
-                    border-bottom: 1px solid #191919;
-                    border-radius: 4px 4px 0 0;
-                    background: #2d2d2d;
-                    background-position: 50% 0;
-                    cursor: move;
-                    user-select: none;
-                }
-
-                .shade-content {
-                    padding: 0;
-                    border: 1px solid #878787;
-                    border-width: 0 1px 1px;
-                    border-radius: 0 0 4px 4px;
-                    background: @bg-main;
-                }
-            }
+        .shade-title {
+          margin: 0;
+          height: 38px;
+          line-height: 38px;
+          padding-left: 18px;
+          padding-right: 45px;
+          border-radius: 3px 3px 0 0;
+          font-weight: bold;
+          font-size: @nav-font-size;
+          color: @bg-main;
+          border-bottom: 1px solid #191919;
+          border-radius: 4px 4px 0 0;
+          background: #2d2d2d;
+          background-position: 50% 0;
+          cursor: move;
+          user-select: none;
         }
 
-        .shade-btn {
-            position: absolute;
-            z-index: 20;
-            top: 16px;
-            right: 20px;
-            width: 10px;
-            height: 10px;
-            overflow: hidden;
-            text-indent: -9999px;
-            background-position: 0 -95px;
-            background-image: url('@{img-url}/login/layer.png');
+        .shade-content {
+          padding: 0;
+          border: 1px solid #878787;
+          border-width: 0 1px 1px;
+          border-radius: 0 0 4px 4px;
+          background: @bg-main;
         }
-
-        .shade-toast {
-            .toast;
-        }
+      }
     }
+
+    .shade-btn {
+      position: absolute;
+      z-index: 20;
+      top: 16px;
+      right: 20px;
+      width: 10px;
+      height: 10px;
+      overflow: hidden;
+      text-indent: -9999px;
+      background-position: 0 -95px;
+      background-image: url('@{img-url}/login/layer.png');
+    }
+
+    .shade-toast {
+      .toast;
+    }
+  }
 }

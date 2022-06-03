@@ -4,6 +4,6 @@
 import { toplistAcion, playlistAcion } from './toplistAcion'
 
 export {
-    toplistAcion,
-    playlistAcion
+  toplistAcion,
+  playlistAcion
 }

@@ -12,20 +12,20 @@ const oStop = onStop()
 
 function useClearPlaylist(): () => void {
 
-    return () => {
-        setState.setCurPos && setState.setCurPos(0)
-        setState.setPlaylist && setState.setPlaylist([])
-        setState.setLyricMap && setState.setLyricMap({})
+  return () => {
+    setState.setCurPos && setState.setCurPos(0)
+    setState.setPlaylist && setState.setPlaylist([])
+    setState.setLyricMap && setState.setLyricMap({})
 
-        wLocalStoreage.setItem(PLAY_POS, '0')
-        wLocalStoreage.setItem(PLAY_LIST, '[]')
-        wLocalStoreage.setItem(PLAY_LYRIC, '{}')
+    wLocalStoreage.setItem(PLAY_POS, '0')
+    wLocalStoreage.setItem(PLAY_LIST, '[]')
+    wLocalStoreage.setItem(PLAY_LYRIC, '{}')
 
-        oChange(0)
-        oStop()
+    oChange(0)
+    oStop()
 
-        clearAudioUrl()
-    }
+    clearAudioUrl()
+  }
 }
 
 export default useClearPlaylist

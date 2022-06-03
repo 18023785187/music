@@ -5,20 +5,20 @@ import { TOPLIST } from '../constants'
 
 // 所有榜单
 const toplistAcion = (toplist: Array<{}>) => {
-    return {
-        type: TOPLIST.TOPLIST,
-        toplist
-    }
+  return {
+    type: TOPLIST.TOPLIST,
+    toplist
+  }
 }
 // 详情页
 const playlistAcion = (playlist: { [propName: string]: any }) => {
-    return {
-        type: TOPLIST.PLAYLIST,
-        playlist
-    }
+  return {
+    type: TOPLIST.PLAYLIST,
+    playlist
+  }
 }
 
 export {
-    toplistAcion,
-    playlistAcion
+  toplistAcion,
+  playlistAcion
 }

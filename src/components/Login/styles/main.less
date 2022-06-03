@@ -1,115 +1,115 @@
 // 登录选择界面样式
 .login-main() {
-    min-height: @min-height;
-    padding: 40px 0 39px;
-    box-sizing: border-box;
+  min-height: @min-height;
+  padding: 40px 0 39px;
+  box-sizing: border-box;
 
-    .login-log {
-        display: flex;
+  .login-log {
+    display: flex;
 
-        .login-left {
-            width: 224px;
-            padding: 0 35px 3px 40px;
-            border-right: 1px dotted #ccc;
+    .login-left {
+      width: 224px;
+      padding: 0 35px 3px 40px;
+      border-right: 1px dotted #ccc;
 
-            .login-platform {
-                height: 120px;
-                background: url('@{img-url}/login/platform.png') no-repeat 13px 0;
-            }
+      .login-platform {
+        height: 120px;
+        background: url('@{img-url}/login/platform.png') no-repeat 13px 0;
+      }
 
-            .btn {
-                width: 219px;
-                margin-top: 10px;
-                padding: 0 5px 0 0;
-                white-space: nowrap;
-                height: 31px;
-                line-height: 31px;
-                overflow: hidden;
-                vertical-align: top;
-                text-align: center;
-            }
-
-            span {
-                display: inline-block;
-                width: 100%;
-                padding: 0 15px 0 20px;
-                box-sizing: border-box;
-            }
-
-            .login-enroll {
-                background-position: right -100px;
-
-                &:hover {
-                    background-position: right -182px;
-
-                    .btn-enroll {
-                        background-position: 0 -141px;
-                    }
-                }
-
-                .btn-enroll {
-                    background-position: 0 -59px;
-                }
-            }
-        }
-
-        .login-right {
-            padding: 3px 0 3px 39px;
-            margin-top: -15px;
-
-            ul {
-                li {
-                    margin-top: 15px;
-
-                    a,
-                    span {
-
-                        line-height: 38px;
-
-                        i {
-                            width: 38px;
-                            height: 38px;
-                            margin-right: 14px;
-                        }
-
-                        .u-wx {
-                            background-position: -150px -670px;
-                        }
-
-                        .u-qq {
-                            background-position: -190px -670px;
-                        }
-
-                        .u-sn {
-                            background-position: -231px -670px;
-                        }
-
-                        .u-wy {
-                            background-position: -271px -670px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .login-official-protocol {
+      .btn {
+        width: 219px;
+        margin-top: 10px;
+        padding: 0 5px 0 0;
         white-space: nowrap;
-        margin-left: 40px;
-        margin-top: 30px;
-        font-family: NotoSansHans-Regular;
-        font-size: 10px;
-        color: rgba(0, 0, 0, 0.40);
-        line-height: 15px;
+        height: 31px;
+        line-height: 31px;
+        overflow: hidden;
+        vertical-align: top;
+        text-align: center;
+      }
+
+      span {
+        display: inline-block;
+        width: 100%;
+        padding: 0 15px 0 20px;
+        box-sizing: border-box;
+      }
+
+      .login-enroll {
+        background-position: right -100px;
+
+        &:hover {
+          background-position: right -182px;
+
+          .btn-enroll {
+            background-position: 0 -141px;
+          }
+        }
+
+        .btn-enroll {
+          background-position: 0 -59px;
+        }
+      }
     }
 
-    .login-scan {
-        position: absolute;
-        right: 1px;
-        bottom: 1px;
-        width: 52px;
-        height: 52px;
-        background-image: url('@{img-url}/login/qr_login_icon.png');
-        background-size: contain;
+    .login-right {
+      padding: 3px 0 3px 39px;
+      margin-top: -15px;
+
+      ul {
+        li {
+          margin-top: 15px;
+
+          a,
+          span {
+
+            line-height: 38px;
+
+            i {
+              width: 38px;
+              height: 38px;
+              margin-right: 14px;
+            }
+
+            .u-wx {
+              background-position: -150px -670px;
+            }
+
+            .u-qq {
+              background-position: -190px -670px;
+            }
+
+            .u-sn {
+              background-position: -231px -670px;
+            }
+
+            .u-wy {
+              background-position: -271px -670px;
+            }
+          }
+        }
+      }
     }
+  }
+
+  .login-official-protocol {
+    white-space: nowrap;
+    margin-left: 40px;
+    margin-top: 30px;
+    font-family: NotoSansHans-Regular;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.40);
+    line-height: 15px;
+  }
+
+  .login-scan {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    width: 52px;
+    height: 52px;
+    background-image: url('@{img-url}/login/qr_login_icon.png');
+    background-size: contain;
+  }
 }

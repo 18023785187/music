@@ -4,9 +4,9 @@
 import request from '../request'
 
 function getPlaylistCatlist() {
-    return request({
-        url: '/playlist/catlist',
-    })
+  return request({
+    url: '/playlist/catlist',
+  })
 }
 
 export default getPlaylistCatlist

@@ -28,13 +28,13 @@ const VIDEO_VOLUME = 'video_volume'
 
 export default LocalStorage
 export {
-    COUNTRIES_CODE_LIST,
-    CATLIST,
-    PLAY_LOCK,
-    PLAY_LIST,
-    PLAY_POS,
-    PLAY_MODE,
-    PLAY_VOLUME,
-    PLAY_LYRIC,
-    VIDEO_VOLUME
+  COUNTRIES_CODE_LIST,
+  CATLIST,
+  PLAY_LOCK,
+  PLAY_LIST,
+  PLAY_POS,
+  PLAY_MODE,
+  PLAY_VOLUME,
+  PLAY_LYRIC,
+  VIDEO_VOLUME
 }

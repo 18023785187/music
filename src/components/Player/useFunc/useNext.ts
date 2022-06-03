@@ -12,28 +12,28 @@ const oStop = onStop()
 
 function usePrev(): () => void {
 
-    return () => {
-        oStop()
-        
-        const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
-        const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
+  return () => {
+    oStop()
 
-        let resPos: number = curPos
+    const playlist: { [propName: string]: any }[] = JSON.parse(wLocalStoreage.getItem(PLAY_LIST) as string)
+    const curPos: number = Number(wLocalStoreage.getItem(PLAY_POS))
 
-        if (curPos === playlist.length - 1) {
-            resPos = 0
-        } else {
-            resPos = curPos + 1
-        }
+    let resPos: number = curPos
 
-        setState.setCurPos && setState.setCurPos(resPos)
-        wLocalStoreage.setItem(PLAY_POS, resPos.toString())
-
-        addAudio(() => {
-            oPlay()
-            resetAudio()
-        })
+    if (curPos === playlist.length - 1) {
+      resPos = 0
+    } else {
+      resPos = curPos + 1
     }
+
+    setState.setCurPos && setState.setCurPos(resPos)
+    wLocalStoreage.setItem(PLAY_POS, resPos.toString())
+
+    addAudio(() => {
+      oPlay()
+      resetAudio()
+    })
+  }
 }
 
 export default usePrev

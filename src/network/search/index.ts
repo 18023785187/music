@@ -6,8 +6,8 @@ import request from '../request'
 import queryStringConfig from '../query-string-config'
 
 interface IC {
-    cancelSearch?: Canceler,
-    cancelSearchSuggest?: Canceler
+  cancelSearch?: Canceler,
+  cancelSearchSuggest?: Canceler
 }
 
 const cancelSearch: IC = {}
@@ -23,46 +23,46 @@ const cancelSearch: IC = {}
  */
 
 function filter(type: number | string): number {
-    switch (Number(type)) {
-        case 1:
-            return 30
-        case 100:
-            return 90
-        case 10:
-            return 75
-        case 1014:
-            return 20
-        case 1006:
-            return 30
-        case 1000:
-            return 30
-        case 1009:
-            return 30
-        case 1002:
-            return 30
-        default:
-            return 30
-    }
+  switch (Number(type)) {
+    case 1:
+      return 30
+    case 100:
+      return 90
+    case 10:
+      return 75
+    case 1014:
+      return 20
+    case 1006:
+      return 30
+    case 1000:
+      return 30
+    case 1009:
+      return 30
+    case 1002:
+      return 30
+    default:
+      return 30
+  }
 }
 
 function search(keywords: string, type: number | string, offset: number | string) {
-    return request({
-        url: `/search`,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        ...queryStringConfig({
-            keywords,
-            type,
-            limit: filter(type),
-            offset: filter(type) * (typeof offset === 'number' ? offset : parseInt(offset))
-        }),
-        cancelToken: new axios.CancelToken(function (cancel) {
-            //cancel参数是一个函数，调用该函数取消请求
-            cancelSearch.cancelSearch = cancel
-        })
+  return request({
+    url: `/search`,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    ...queryStringConfig({
+      keywords,
+      type,
+      limit: filter(type),
+      offset: filter(type) * (typeof offset === 'number' ? offset : parseInt(offset))
+    }),
+    cancelToken: new axios.CancelToken(function (cancel) {
+      //cancel参数是一个函数，调用该函数取消请求
+      cancelSearch.cancelSearch = cancel
     })
+  })
 }
 
 /**
@@ -70,26 +70,26 @@ function search(keywords: string, type: number | string, offset: number | string
  * type=mobile, 返回移动端的数据
  */
 function searchSuggest(keywords: string, type: string = '') {
-    return request({
-        url: `/search/suggest`,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        ...queryStringConfig({
-            keywords,
-            type
-        }),
-        cancelToken: new axios.CancelToken(function (cancel) {
-            //cancel参数是一个函数，调用该函数取消请求
-            cancelSearch.cancelSearchSuggest = cancel
-        })
+  return request({
+    url: `/search/suggest`,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    ...queryStringConfig({
+      keywords,
+      type
+    }),
+    cancelToken: new axios.CancelToken(function (cancel) {
+      //cancel参数是一个函数，调用该函数取消请求
+      cancelSearch.cancelSearchSuggest = cancel
     })
+  })
 }
 
 export {
-    filter,
-    search,
-    searchSuggest,
-    cancelSearch
+  filter,
+  search,
+  searchSuggest,
+  cancelSearch
 }
